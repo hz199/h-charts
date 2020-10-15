@@ -6,15 +6,10 @@
   "author": "H.Z",
   "license": "MIT",
   "scripts": {
-    "dev:e": "vue-cli-service serve",
-    "build:e": "vue-cli-service build",
-    "lint:e": "vue-cli-service lint",
     "build": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js"
   },
   "dependencies": {
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-beta.13",
-    "vuex": "^4.0.0-beta.4"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
@@ -24,20 +19,6 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0-0",
-    "@vue/eslint-config-typescript": "^5.0.2",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0",
-    "less": "^3.12.2",
-    "less-loader": "^7.0.1",
     "acorn-jsx": "^5.3.1",
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",

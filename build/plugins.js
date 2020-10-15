@@ -15,7 +15,9 @@ export default [
   }),
   resolve({ mainFields: ['module', 'main', 'browser'] }),
   commonjs({ extensions, sourceMap: true }),
-  babel({ babelHelpers: 'bundled', extensions }),
+  babel({ babelHelpers: 'bundled', extensions, plugins: [
+    ["@vue/babel-plugin-jsx"]
+  ]}),
   postcss({
     plugins: [cssnano],
     extract: 'dist/css/z-style.css',
