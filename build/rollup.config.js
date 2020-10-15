@@ -23,7 +23,7 @@ function createRollupConfig(file, name) {
   const config = {
     input: file,
     output: {
-      dir: path.resolve(__dirname, `../dist/es/${name}`),
+      dir: path.resolve(__dirname, `../libs/es/${name}`),
       format: 'es',
       name: name,
       sourcemap: true,
