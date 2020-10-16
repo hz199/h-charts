@@ -12,6 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    // "declaration": true,
+    // "outDir": "dist/types",
     "paths": {
       "@/*": ["src/*"]
     },

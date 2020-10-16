@@ -20,6 +20,6 @@ export default [
   ]}),
   postcss({
     plugins: [cssnano],
-    extract: 'dist/css/z-style.css',
+    extract: true,
   }),
 ]

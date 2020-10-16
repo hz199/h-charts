@@ -6,10 +6,12 @@
   "author": "H.Z",
   "license": "MIT",
   "scripts": {
+    "dev:docs": "cd examples && vite",
+    "build:docs": "cd examples && vite build",
     "build": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js"
   },
   "dependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.0.0-rc.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
@@ -27,6 +29,9 @@
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-postcss": "^3.1.8",
     "tslib": "^2.0.3",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+
+    "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "vite": "^1.0.0-rc.4"
   }
 }
