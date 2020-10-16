@@ -8,7 +8,8 @@
   "scripts": {
     "dev:docs": "cd examples && vite",
     "build:docs": "cd examples && vite build",
-    "build": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js"
+    "build": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js",
+    "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.js --watch"
   },
   "dependencies": {
     "vue": "^3.0.0-rc.1"
