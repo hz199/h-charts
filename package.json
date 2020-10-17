@@ -1,18 +1,19 @@
 {
   "name": "@yyr1994/h-charts",
   "version": "0.0.1",
-  "description": "echarts",
+  "description": "echarts vue3.0",
   "main": "libs/es/main.js",
   "author": "H.Z",
   "license": "MIT",
   "scripts": {
-    "dev:docs": "cd examples && vite",
-    "build:docs": "cd examples && vite build",
-    "build": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js",
-    "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.js --watch"
+    "dev": "cd examples && vite",
+    "build": "cd examples && vite build",
+    "build:r": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js",
+    "dev:r": "cross-env NODE_ENV=development rollup --config build/rollup.config.js --watch"
   },
   "dependencies": {
-    "vue": "^3.0.0-rc.1"
+    "vue": "^3.0.0-rc.1",
+    "vue-router": "^4.0.0-beta.13"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
@@ -22,17 +23,17 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
+    "@vue/compiler-sfc": "^3.0.0-rc.1",
     "acorn-jsx": "^5.3.1",
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
+    "less": "^3.12.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.30.0",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-postcss": "^3.1.8",
     "tslib": "^2.0.3",
     "typescript": "^4.0.3",
-
-    "@vue/compiler-sfc": "^3.0.0-rc.1",
-    "vite": "^1.0.0-rc.4"
+    "vite": "^1.0.0-rc.1"
   }
 }

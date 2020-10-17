@@ -5,6 +5,7 @@ lib
 /lib
 /dist
 /libs
+dist
 
 # local env files
 .env.local
