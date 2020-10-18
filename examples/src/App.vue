@@ -1,5 +1,10 @@
 <template>
-  <div></div>
+  <Layout>
+    <Sider></Sider>
+    <Layout>
+      <Header></Header>
+    </Layout>
+  </Layout>
 </template>
 
 <script>

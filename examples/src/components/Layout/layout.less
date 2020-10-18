@@ -1,0 +1,32 @@
+@siderWidth: 250px;
+
+.layout {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  min-height: 0;
+  background: #f0f2f5;
+  min-height: 100%;
+
+  // sider
+  .sider {
+    position: relative;
+    flex: 0 0 @siderWidth;
+    max-width: @siderWidth;
+    min-width: @siderWidth;
+    width: @siderWidth;
+    // background: #001529;
+    transition: all .2s;
+  }
+  .sider-children {
+    height: 100%;
+    margin-top: -0.1px;
+    padding-top: 0.1px;
+  }
+
+  // header
+  .header {
+    width: 100%;
+    height: 64px;
+  }
+}
