@@ -1,11 +1,14 @@
 @siderWidth: 250px;
 
+.layout.layout-has-sider {
+  flex-direction: row;
+}
 .layout {
   display: flex;
   flex: auto;
-  flex-direction: row;
+  flex-direction: column;
   min-height: 0;
-  background: #f0f2f5;
+  background: #ffffff;
   min-height: 100%;
 
   // sider
@@ -22,11 +25,31 @@
     height: 100%;
     margin-top: -0.1px;
     padding-top: 0.1px;
+    border-right: 1px solid #f0f0f0;
   }
 
   // header
   .header {
     width: 100%;
     height: 64px;
+    flex: 0 0 auto;
+    line-height: 64px;
+    // box-shadow: 0 2px 8px #f0f1f2;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .footer {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 64px;
+    font-size: 14px;
+    background: #ffffff;
+    text-align: center;
+    line-height: 64px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .main {
+    flex: auto;
+    min-height: 0;
+    flex-grow: 1;
   }
 }

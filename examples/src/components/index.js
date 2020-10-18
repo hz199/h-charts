@@ -3,7 +3,9 @@ import Layout from './Layout/Layout.jsx'
 const components = [
   Layout,
   Layout.Sider,
-  Layout.Header
+  Layout.Header,
+  Layout.Footer,
+  Layout.MainContent
 ]
 
 const install = function install (app) {

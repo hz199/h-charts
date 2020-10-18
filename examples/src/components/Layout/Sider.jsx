@@ -5,7 +5,11 @@ const Sider = defineComponent({
   render () {
     return (
       <div class="sider">
-        <div class="sider-children"></div>
+        <div class="sider-children">
+          {
+            this.$slots
+          }
+        </div>
       </div>
     )
   }
