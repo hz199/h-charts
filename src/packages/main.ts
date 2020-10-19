@@ -1,2 +1,2 @@
-export { default as charts } from './charts'
-export { default as line } from './line'
+export { default as hChart } from './chart'
+export { default as hLine } from './line'
