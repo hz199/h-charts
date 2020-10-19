@@ -2,6 +2,7 @@ const path = require("path")
 
 module.exports = {
   // root:,
+  base: './',
   port: 8090,
   open: true,
   alias: {

@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    home
+    Line
   </div>
 </template>
 <script>
 export default {
-  name: 'Home'
+  name: 'Line'
 }
 </script>
 <style lang="less" scoped>
