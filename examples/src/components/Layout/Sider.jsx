@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 
 const Sider = defineComponent({
-  name: 'Sider',
+  name: 'HSider',
   render () {
     return (
       <div class="sider">

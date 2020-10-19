@@ -2,7 +2,7 @@ import { defineComponent, provide, inject } from 'vue'
 import './index.less';
 
 const Menus = defineComponent({
-  name: 'Menus',
+  name: 'HMenus',
   props: {
     horizontal: {
       type: Boolean,
@@ -36,7 +36,7 @@ const Menus = defineComponent({
 })
 
 const MenuItem = defineComponent({
-  name: 'MenuItem',
+  name: 'HMenuItem',
   setup () {
     return {
       menusContext: inject('MenusContext')
@@ -65,7 +65,7 @@ const MenuItem = defineComponent({
 })
 
 const MenuItemGroup = defineComponent({
-  name: 'MenuItemGroup',
+  name: 'HMenuItemGroup',
   render () {
     return (
       <li class="menus__item-group">
@@ -83,7 +83,7 @@ const MenuItemGroup = defineComponent({
 })
 
 const MenuItemGroupItem = defineComponent({
-  name: 'MenuItemGroupItem',
+  name: 'HMenuItemGroupItem',
   props: {
     path: {
       type: String,

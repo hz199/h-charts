@@ -4,7 +4,7 @@ import Sider from './Sider'
 import './layout.less'
 
 const Layout = defineComponent({
-  name: 'Layout',
+  name: 'HLayout',
   props: {
     hasSider: {
       type: Boolean,
@@ -23,7 +23,7 @@ const Layout = defineComponent({
 })
 
 const Header = defineComponent({
-  name: 'Header',
+  name: 'HHeader',
   render () {
     return (
       <header class="header">
@@ -36,7 +36,7 @@ const Header = defineComponent({
 })
 
 const Footer = defineComponent({
-  name: 'Footer',
+  name: 'HFooter',
   render () {
     return (
       <footer class="footer">
@@ -49,7 +49,7 @@ const Footer = defineComponent({
 })
 
 const MainContent = defineComponent({
-  name: 'MainContent',
+  name: 'HMainContent',
   render () {
     return (
       <main class="main">

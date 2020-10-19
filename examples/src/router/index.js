@@ -1,29 +1,22 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from './views/Home.vue'
-import Gallery from './views/Gallery'
-import User from './views/User.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import Layout from '/@/Layout.vue'
 
-export const router = createRouter({
-  history: createWebHistory(),
+const router = createRouter({
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',
-      redirect: '/home',
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: Home,
-    },
-    {
-      path: '/gallery',
-      name: 'gallery',
-      component: Gallery,
-    },
-    {
-      path: '/user',
-      name: 'user',
-      component: User,
-    },
-  ],
+      name: 'Layout',
+      component: Layout,
+      children: [
+        {
+          path: '',
+          name: 'Home',
+          component: () => import('/@/views/Home/Index.vue'),
+        }
+      ]
+    }
+  ]
 })
+
+export default router
