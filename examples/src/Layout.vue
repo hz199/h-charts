@@ -3,8 +3,21 @@
     <HSider>
       <div class="logo"></div>
       <HMenus :onTap="handleMenuTap" v-model:currentPath="currentPath">
-        <HMenuItem :path="'/'">介绍</HMenuItem>
-        <HMenuItemGroup>
+        <template v-for="menu in menuConfig">
+          <template v-if="menu.children && menu.children.length > 0">
+            <HMenuItem :path="menu.path" :key="menu.path">{{menu.title}}</HMenuItem>
+            <HMenuItemGroup :key="menu.title">
+              <template v-slot:title><span>{{menu.title}}</span></template>
+              <HMenuItemGroupItem :path="'/23'">快速上手33</HMenuItemGroupItem>
+              <HMenuItemGroupItem :path="'/4'">快速上手55</HMenuItemGroupItem>
+            </HMenuItemGroup>
+          </template>
+          <template>
+            <HMenuItem :path="menu.path" :key="menu.path">{{menu.title}}</HMenuItem>
+          </template>
+        </template>
+
+        <!-- <HMenuItemGroup>
           <template v-slot:title><span>Layout</span></template>
           <HMenuItemGroupItem :path="'/23'">快速上手33</HMenuItemGroupItem>
           <HMenuItemGroupItem :path="'/4'">快速上手55</HMenuItemGroupItem>
@@ -13,7 +26,7 @@
           <template v-slot:title><span>Layout</span></template>
           <HMenuItemGroupItem :path="'/5'">快速上手33</HMenuItemGroupItem>
           <HMenuItemGroupItem :path="'/6'">快速上手55</HMenuItemGroupItem>
-        </HMenuItemGroup>
+        </HMenuItemGroup> -->
       </HMenus>
     </HSider>
     <HLayout>
@@ -44,12 +57,36 @@ export default {
   },
   data () {
     return {
-      currentPath: '/'
+      currentPath: '/',
+      menuConfig: [
+        {
+          title: '介绍',
+          path: '/'
+        },
+        {
+          title: 'Layout',
+          children: [
+            {
+              title: 'bar 柱状图',
+              path: '/bar'
+            },
+            {
+              title: 'line 折线图',
+              path: '/line'
+            },
+          ]
+        }
+      ]
     }
   },
   methods: {
     handleMenuTap (path) {
       console.log(path)
+    }
+  },
+  watch: {
+    '$router' () {
+      console.log(this.$router)
     }
   }
 }
@@ -65,12 +102,10 @@ export default {
 
 @keyframes bounce-in {
   0% {
-    // transform: translateX(-50px);
     opacity: 0;
   }
   100% {
     opacity: 1;
-    // transform: translateX(0);
   }
 }
 </style>

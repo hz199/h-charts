@@ -14,7 +14,6 @@ const components = [
 ]
 
 const install = function install (app) {
-  console.log(install.installed)
   components.forEach((component) => {
     app.component(component.name, component)
   })
