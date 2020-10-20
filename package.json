@@ -12,6 +12,9 @@
     "dev:r": "cross-env NODE_ENV=development rollup --config build/rollup.config.js --watch"
   },
   "dependencies": {
+    "echarts": "^4.9.0",
+    "lodash": "^4.17.20",
+    "size-sensor": "^1.0.1",
     "vue": "^3.0.0-rc.1",
     "vue-router": "^4.0.0-beta.13"
   },
@@ -22,6 +25,8 @@
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
+    "@types/echarts": "^4.8.3",
+    "@types/lodash": "^4.14.162",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
     "@vue/compiler-sfc": "^3.0.0-rc.1",
     "acorn-jsx": "^5.3.1",

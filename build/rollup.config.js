@@ -20,6 +20,7 @@ files.forEach(file => {
 })
 
 function createRollupConfig(file, name) {
+
   const config = {
     input: file,
     output: {
@@ -28,14 +29,15 @@ function createRollupConfig(file, name) {
       name: name,
       sourcemap: true,
       globals: {
-        vue: 'Vue'
+        vue: 'Vue',
+        'echarts/lib/echarts': 'echarts'
       }
     },
     plugins: [
       ...plugins
     ],
     acornInjectPlugins: [jsx()],
-    external: ['vue']
+    external: ['vue', 'echarts/lib/echarts', 'size-sensor', 'lodash']
   }
   return config
 }

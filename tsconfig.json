@@ -26,5 +26,5 @@
     "src/**/*.d.ts",
     "node_modules/vue-tsx-support/enable-check.d.ts"
   ],
-  "exclude": ["node_modules", "build", "scripts", "components"]
+  "exclude": ["node_modules", "build", "packages"]
 }
