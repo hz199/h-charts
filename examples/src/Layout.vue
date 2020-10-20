@@ -63,6 +63,10 @@ export default {
           title: '图表',
           children: [
             {
+              title: 'ChartCore',
+              path: '/chart'
+            },
+            {
               title: 'bar 柱状图',
               path: '/bar'
             },

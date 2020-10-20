@@ -1,17 +1,11 @@
 <template>
   <div class="home">
-    <HLine></HLine>
+    Chart
   </div>
 </template>
 <script>
-import HLine from '/@es/line'
-
 export default {
-  name: 'Line',
-  components: {
-    HLine
-  }
-
+  name: 'Chart'
 }
 </script>
 <style lang="less" scoped>
