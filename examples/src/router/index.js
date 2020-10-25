@@ -32,7 +32,7 @@ const router = createRouter({
         {
           path: 'line',
           name: 'Line',
-          component: () => import('../views/Charts/Line/index.vue'),
+          component: () => import('../views/Charts/Line'),
         }
       ]
     }

@@ -1,5 +1,9 @@
-import { App, defineComponent, PropType } from 'vue'
+import { App, defineComponent, PropType, CSSProperties } from 'vue'
 import echarts, { EChartOption } from 'echarts/lib/echarts'
+import 'echarts/lib/component/tooltip' // 提示框组件
+import 'echarts/lib/component/title' // 标题组件
+import 'echarts/lib/component/grid' // 布局
+import 'echarts/lib/component/legend' // 标注
 import { bind, clear } from 'size-sensor'
 import { ChartData } from './index.d'
 import { throttle } from 'lodash'
@@ -12,7 +16,7 @@ const hChart = defineComponent({
       default: () => 'canvas'
     },
     style: {
-      type: Object as PropType<{} | null>,
+      type: Object as PropType<CSSProperties | null>,
       default: () => null
     },
     notMerge: {
@@ -35,7 +39,6 @@ const hChart = defineComponent({
   data () {
     return {
       chartInstance: null,
-      el: null
     } as ChartData
   },
   methods: {
@@ -48,7 +51,7 @@ const hChart = defineComponent({
             width: 'auto',
             height: 'auto'
           })
-          resolve()
+          resolve(this.chartInstance)
         }, 0)
       })
     },
@@ -60,10 +63,10 @@ const hChart = defineComponent({
       const notMerge = this.notMerge
       const lazyUpdate = this.lazyUpdate
       const silent = this.silent
-      const option = this.options
+      const options = this.options
 
       this.chartInstance &&
-        this.chartInstance.setOption(option, {
+        this.chartInstance.setOption(options, {
           notMerge,
           lazyUpdate,
           silent
@@ -81,7 +84,7 @@ const hChart = defineComponent({
       }
       this.chartInstance.dispose()
       this.chartInstance = null
-      clear(this.el)
+      clear(this.$el)
     }
   },
   render() {
@@ -92,13 +95,12 @@ const hChart = defineComponent({
       minHeight: '300px'
     })
 
-    return <div style={initStyle} ref='chartDom'></div>
+    return <div style={initStyle}></div>
   },
   async mounted () {
-    await this.initChart(this.el!)
+    await this.initChart(this.$el as HTMLDivElement)
     this.setOption()
-    const chartDom = this.$refs.chartDom as HTMLDivElement
-    bind(chartDom, throttle(this.resize, 100))
+    bind(this.$el as HTMLDivElement, throttle(this.resize, 100))
   }
 })
 

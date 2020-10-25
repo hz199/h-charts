@@ -8,8 +8,8 @@
   "scripts": {
     "dev:docs": "cd examples && yarn dev",
     "build:docs": "cd examples && yarn build",
-    "build": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js",
-    "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.js --watch"
+    "dev": "tsc -w",
+    "build": "tsc"
   },
   "dependencies": {
     "echarts": "^4.9.0",

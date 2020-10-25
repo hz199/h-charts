@@ -30,14 +30,13 @@ function createRollupConfig(file, name) {
       sourcemap: true,
       globals: {
         vue: 'Vue',
-        'echarts/lib/echarts': 'echarts'
       }
     },
     plugins: [
       ...plugins
     ],
     acornInjectPlugins: [jsx()],
-    external: ['vue', 'echarts/lib/echarts', 'size-sensor', 'lodash']
+    external: ['vue', /echarts/, 'size-sensor', 'lodash']
   }
   return config
 }
@@ -49,3 +48,7 @@ for (let name in packages) {
 }
 
 export default buildPackages
+
+
+// "build": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js",
+//     "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.js --watch"

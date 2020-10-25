@@ -10,6 +10,9 @@
     "test:w": "npm run test-cover -- --watch"
   },
   "dependencies": {
+    "echarts": "^4.9.0",
+    "lodash": "^4.17.20",
+    "size-sensor": "^1.0.1",
     "vue": "^3.0.2",
     "vue-router": "^4.0.0-rc.1"
   },
