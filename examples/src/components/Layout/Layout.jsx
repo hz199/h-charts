@@ -15,7 +15,7 @@ const Layout = defineComponent({
     return (
       <div class={this.hasSider ? 'layout layout-has-sider' : 'layout'}>
         {
-          this.$slots
+          this.$slots.default()
         }
       </div>
     )
@@ -28,7 +28,7 @@ const Header = defineComponent({
     return (
       <header class="header">
         {
-          this.$slots
+          this.$slots.default()
         }
       </header>
     )
@@ -41,7 +41,7 @@ const Footer = defineComponent({
     return (
       <footer class="footer">
         {
-          this.$slots
+          this.$slots.default()
         }
       </footer>
     )
@@ -54,7 +54,7 @@ const MainContent = defineComponent({
     return (
       <main class="main">
         {
-          this.$slots
+          this.$slots.default()
         }
       </main>
     )

@@ -1,5 +1,6 @@
-import Layout from './Layout/Layout.jsx'
-import Menus from './Menus/index.jsx'
+// import { App } from 'vue'
+import Layout from './Layout/Layout'
+import Menus from './Menus/index'
 
 const components = [
   Layout,

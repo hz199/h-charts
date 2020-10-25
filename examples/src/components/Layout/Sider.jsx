@@ -7,7 +7,7 @@ const Sider = defineComponent({
       <aside class="sider">
         <div class="sider-children">
           {
-            this.$slots
+            this.$slots.default()
           }
         </div>
       </aside>

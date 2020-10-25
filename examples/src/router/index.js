@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Layout from '/@/Layout.vue'
+import Layout from '../Layout.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -12,27 +12,27 @@ const router = createRouter({
         {
           path: '',
           name: 'Home',
-          component: () => import('/@/views/Home/Index.vue'),
+          component: () => import('../views/Home/index.vue'),
         },
         {
           path: 'start',
           name: 'Start',
-          component: () => import('/@/views/Start/index.vue'),
+          component: () => import('../views/Start/index.vue'),
         },
         {
           path: 'chart',
           name: 'Chart',
-          component: () => import('/@/views/Charts/Chart/index.vue'),
+          component: () => import('../views/Charts/Chart/index.vue'),
         },
         {
           path: 'bar',
           name: 'Bar',
-          component: () => import('/@/views/Charts/Bar/index.vue'),
+          component: () => import('../views/Charts/Bar/index.vue'),
         },
         {
           path: 'line',
           name: 'Line',
-          component: () => import('/@/views/Charts/Line/index.vue'),
+          component: () => import('../views/Charts/Line/index.vue'),
         }
       ]
     }

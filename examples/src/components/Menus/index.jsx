@@ -20,7 +20,7 @@ const Menus = defineComponent({
     return (
       <ul class={this.horizontal ? 'menus clearfix menus__horizontal' : 'menus'}>
         {
-          this.$slots
+          this.$slots.default()
         }
       </ul>
     )
@@ -34,6 +34,8 @@ const Menus = defineComponent({
     provide('MenusContext', this)
   }
 })
+
+// export type MenusContext = typeof Menus
 
 const MenuItem = defineComponent({
   name: 'HMenuItem',
@@ -57,7 +59,7 @@ const MenuItem = defineComponent({
           onTap(this.path)
           updateCurrentPath(this.path)
         }}>
-          {this.$slots}
+          {this.$slots.default()}
         </p>
       </li>
     )
@@ -104,7 +106,7 @@ const MenuItemGroupItem = defineComponent({
           onTap(this.path)
           updateCurrentPath(this.path)
         }}>
-          {this.$slots}
+          {this.$slots.default()}
         </p>
       </li>
     )
