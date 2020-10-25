@@ -5,20 +5,18 @@
   "scripts": {
     "build": "node scripts/build.js",
     "dev": "node scripts/start.js",
-    "serve": "webpack serve --config build/webpack.config.dev.js",
     "test": "jest",
     "test-cover": "jest --coverage",
     "test:w": "npm run test-cover -- --watch"
   },
   "dependencies": {
-    "vue": "^3.0.0-rc.2",
+    "vue": "^3.0.2",
     "vue-router": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "7.10.4",
-    "@types/jest": "^26.0.14",
-    "@types/node": "12.12.50",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
     "@vue/compiler-sfc": "^3.0.0-rc.2",
     "@vue/test-utils": "^2.0.0-beta.6",

@@ -6,16 +6,16 @@
   "author": "H.Z",
   "license": "MIT",
   "scripts": {
-    "dev": "cd examples && vite",
-    "build": "cd examples && vite build",
-    "build:r": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js",
-    "dev:r": "cross-env NODE_ENV=development rollup --config build/rollup.config.js --watch"
+    "dev:docs": "cd examples && yarn dev",
+    "build:docs": "cd examples && yarn build",
+    "build": "rimraf ./libs && cross-env NODE_ENV=production rollup --config build/rollup.config.js && node build/main.js",
+    "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.js --watch"
   },
   "dependencies": {
     "echarts": "^4.9.0",
     "lodash": "^4.17.20",
     "size-sensor": "^1.0.1",
-    "vue": "^3.0.0-rc.1",
+    "vue": "^3.0.2",
     "vue-router": "^4.0.0-beta.13"
   },
   "devDependencies": {

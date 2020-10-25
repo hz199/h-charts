@@ -1,15 +1,13 @@
 <template>
   <div class="home">
-    <!-- <HLine></HLine> -->
+    <h-line></h-line>
   </div>
 </template>
 <script>
-// import HLine from '/@es/line'
 
 export default {
   name: 'Line',
   components: {
-    // HLine
   }
 
 }

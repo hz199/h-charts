@@ -3,7 +3,7 @@ import { App, defineComponent } from 'vue'
 const hLine = defineComponent({
   name: 'hLine',
   render() {
-    return <div>chart</div>
+    return <div class="h-line">chart</div>
   },
 })
 

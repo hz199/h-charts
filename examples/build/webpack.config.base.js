@@ -1,12 +1,13 @@
 const path = require('path')
+const Webpack = require('webpack')
 // const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
-
-const IS_DEV_SERVER = !!process.env.WEBPACK_DEV_SERVER
+const {
+  VueLoaderPlugin
+} = require('vue-loader')
 
 module.exports = (env) => {
   const isProduction = env.production === true
@@ -24,14 +25,15 @@ module.exports = (env) => {
       path: path.resolve(__dirname, '../dist'),
       filename: 'static/js/[name].[hash].js',
       chunkFilename: 'static/js/[name].[hash].js',
-      publicPath: IS_DEV_SERVER ? '/' : './',
+      publicPath: isProduction ? '/' : './',
       assetModuleFilename: 'static/img/[name].[hash:7][ext]'
     },
 
     resolve: {
       extensions: ['.js', '.jsx', '.vue', '.json'],
       alias: {
-        '@': 'src/',
+        '@': path.resolve(__dirname, '../src'),
+        '@es': path.resolve(__dirname, '../../libs/es'),
         vue: '@vue/runtime-dom'
       },
     },
@@ -51,12 +53,12 @@ module.exports = (env) => {
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
             parser: safePostCssParser,
-            map: !isProduction
-              ? {
-                  inline: false,
-                  annotation: true
-                }
-              : false
+            map: !isProduction ?
+              {
+                inline: false,
+                annotation: true
+              } :
+              false
           }
         })
       ],
@@ -73,32 +75,29 @@ module.exports = (env) => {
             enforce: true
           },
           common: {
-            name: 'common',
+            name: 'chunk-commons',
+            test: /\.js$/,
             chunks: 'initial',
+            minChunks: 2, //两个共享以及以上都提取,
+            minSize: 0,
+            priority: -20, //优先级
+            reuseExistingChunk: true
+          },
+          css: {
+            name: 'css-commons',
+            test: /\.less$/,
             minChunks: 2,
             minSize: 0,
-            maxInitialRequests: 5, // 最大异步请求数， 默认1
-            enforce: true
+            priority: -30,
+            chunks: 'initial',
+            reuseExistingChunk: true
           }
         }
       }
     },
 
     module: {
-      rules: [
-        {
-          test: /\.jsx?$/,
-          use: [
-            {
-              loader: 'babel-loader'
-            },
-            // {
-            //   loader: 'ts-loader',
-            //   options: {
-            //     appendTsSuffixTo: [/\.vue$/]
-            //   }
-            // }
-          ],
+      rules: [{
           exclude: /node_modules/
         },
         {
@@ -106,7 +105,7 @@ module.exports = (env) => {
           use: 'vue-loader'
         },
         {
-          test: /\.js$/,
+          test: /\.(js)x$/,
           use: {
             loader: 'babel-loader'
           }
@@ -117,36 +116,39 @@ module.exports = (env) => {
         },
         {
           test: /\.css$/,
-          use: isProduction ?
-          [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'postcss-loader']
-          :['style-loader', 'css-loader', 'postcss-loader']
+          use: isProduction ? [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'postcss-loader'] :
+            ['style-loader', 'css-loader', 'postcss-loader']
         },
         {
           test: /\.less$/,
-          use: !isProduction
-            ? [
-                'style-loader',
-                'css-loader',
-                'postcss-loader',
-                {
-                  loader: require.resolve('less-loader'),
-                  options: {}
-                }
-              ]
-            : [
-                MiniCssExtractPlugin.loader,
-                'css-loader',
-                'postcss-loader',
-                {
-                  loader: require.resolve('less-loader'),
-                  options: {}
-                }
-              ]
+          use: !isProduction ?
+            [
+              'style-loader',
+              'css-loader',
+              'postcss-loader',
+              {
+                loader: require.resolve('less-loader'),
+                options: {}
+              }
+            ] :
+            [
+              MiniCssExtractPlugin.loader,
+              'css-loader',
+              'postcss-loader',
+              {
+                loader: require.resolve('less-loader'),
+                options: {}
+              }
+            ]
         },
       ]
     },
 
     plugins: [
+      new Webpack.DefinePlugin({
+        __VUE_OPTIONS_API__: true,
+        __VUE_PROD_DEVTOOLS__: !isProduction
+      }),
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: path.resolve(__dirname, '../index.html'),
