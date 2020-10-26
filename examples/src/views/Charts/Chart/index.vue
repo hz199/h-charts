@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import HChart from '@es/chart'
+import HChart from '@libs/chart'
 console.log(HChart)
 
 export default {

@@ -1,16 +1,14 @@
 <template>
   <div class="home">
-    <!-- <h-line></h-line> -->
+    55
   </div>
 </template>
 <script>
-// import HLine from '@es/line'
-// console.log(HLine.render())
+
 
 export default {
   name: 'Line',
   components: {
-    // HLine
   }
 
 }

@@ -30,10 +30,10 @@ module.exports = (env) => {
     },
 
     resolve: {
-      extensions: ['.js', '.jsx', '.vue', '.json'],
+      extensions: ['.jsx', '.js', '.vue', '.json'],
       alias: {
         '@': path.resolve(__dirname, '../src'),
-        '@es': path.resolve(__dirname, '../../libs/es'),
+        '@libs': path.resolve(__dirname, '../src/libs'),
         vue: '@vue/runtime-dom'
       },
     },
@@ -105,7 +105,13 @@ module.exports = (env) => {
           use: 'vue-loader'
         },
         {
-          test: /\.(js)x$/,
+          test: /\.jsx$/,
+          use: {
+            loader: 'babel-loader'
+          }
+        },
+        {
+          test: /\.js$/,
           use: {
             loader: 'babel-loader'
           }

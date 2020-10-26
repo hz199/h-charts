@@ -2,14 +2,14 @@
   "name": "@yyr1994/h-charts",
   "version": "0.0.1",
   "description": "echarts vue3.0",
-  "main": "libs/es/main.js",
+  "main": "dist/main.js",
   "author": "H.Z",
   "license": "MIT",
   "scripts": {
     "dev:docs": "cd examples && yarn dev",
     "build:docs": "cd examples && yarn build",
-    "dev": "tsc -w",
-    "build": "tsc"
+    "dev": "tsc -w --outDir examples/src/libs",
+    "build": "tsc --outDir libs"
   },
   "dependencies": {
     "echarts": "^4.9.0",
@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
-    "@babel/plugin-syntax-jsx": "^7.10.4",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",

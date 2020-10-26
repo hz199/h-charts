@@ -1,12 +1,15 @@
 import { App, defineComponent, PropType, CSSProperties } from 'vue'
-import echarts, { EChartOption } from 'echarts/lib/echarts'
+import echarts, { EChartOption, ECharts } from 'echarts/lib/echarts'
 import 'echarts/lib/component/tooltip' // 提示框组件
 import 'echarts/lib/component/title' // 标题组件
 import 'echarts/lib/component/grid' // 布局
 import 'echarts/lib/component/legend' // 标注
 import { bind, clear } from 'size-sensor'
-import { ChartData } from './index.d'
 import { throttle } from 'lodash'
+
+export interface ChartData {
+  chartInstance: ECharts | null;
+}
 
 const hChart = defineComponent({
   name: 'hChart',
@@ -97,10 +100,16 @@ const hChart = defineComponent({
 
     return <div style={initStyle}></div>
   },
-  async mounted () {
-    await this.initChart(this.$el as HTMLDivElement)
-    this.setOption()
-    bind(this.$el as HTMLDivElement, throttle(this.resize, 100))
+  watch: {
+    options () {
+      this.setOption()
+    }
+  },
+  mounted () {
+    this.initChart(this.$el as HTMLDivElement).then(() => {
+      this.setOption()
+      bind(this.$el as HTMLDivElement, throttle(this.resize, 100))
+    })
   }
 })
 
