@@ -5,7 +5,7 @@ import 'echarts/lib/component/title' // 标题组件
 import 'echarts/lib/component/grid' // 布局
 import 'echarts/lib/component/legend' // 标注
 import { bind, clear } from 'size-sensor'
-import { throttle } from 'lodash'
+import { throttle } from '../../utils/index'
 import { defaultTheme } from '../../utils/theme'
 
 export interface ChartData {
@@ -120,7 +120,7 @@ const hChart = defineComponent({
   mounted () {
     this.initChart(this.$el as HTMLDivElement).then(() => {
       this.setOption()
-      bind(this.$el as HTMLDivElement, throttle(this.resize, 100))
+      bind(this.$el as HTMLDivElement, throttle(this.resize, 500))
     })
   }
 })

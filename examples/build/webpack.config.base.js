@@ -14,7 +14,7 @@ module.exports = (env) => {
 
   return {
     context: path.resolve(__dirname, '../src'),
-    devtool: isProduction ? false : 'eval-cheap-source-map',
+    devtool: isProduction ? false : 'source-map',
     mode: isProduction ? 'production' : 'development',
 
     entry: {
@@ -25,7 +25,7 @@ module.exports = (env) => {
       path: path.resolve(__dirname, '../dist'),
       filename: 'static/js/[name].[hash].js',
       chunkFilename: 'static/js/[name].[hash].js',
-      publicPath: isProduction ? '/' : './',
+      publicPath: './',
       assetModuleFilename: 'static/img/[name].[hash:7][ext]'
     },
 
@@ -76,7 +76,7 @@ module.exports = (env) => {
           },
           common: {
             name: 'chunk-commons',
-            test: /\.js$/,
+            test: /\.jsx?$/,
             chunks: 'initial',
             minChunks: 2, //两个共享以及以上都提取,
             minSize: 0,
@@ -105,24 +105,24 @@ module.exports = (env) => {
           use: 'vue-loader'
         },
         {
-          test: /\.jsx$/,
+          test: /\.jsx?$/,
           use: {
             loader: 'babel-loader'
           }
         },
-        {
-          test: /\.js$/,
-          use: {
-            loader: 'babel-loader'
-          }
-        },
+        // {
+        //   test: /\.js$/,
+        //   use: {
+        //     loader: 'babel-loader'
+        //   }
+        // },
         {
           test: /\.(png|jpg|gif)$/,
           type: 'asset/resource'
         },
         {
           test: /\.css$/,
-          use: isProduction ? [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'postcss-loader'] :
+          use: isProduction ? [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] :
             ['style-loader', 'css-loader', 'postcss-loader']
         },
         {

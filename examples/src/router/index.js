@@ -12,22 +12,22 @@ const router = createRouter({
         {
           path: '',
           name: 'Home',
-          component: () => import('../views/Home/index.vue'),
+          component: () => import('../views/Home'),
         },
         {
           path: 'start',
           name: 'Start',
-          component: () => import('../views/Start/index.vue'),
+          component: () => import('../views/Start'),
         },
         {
           path: 'chart',
           name: 'Chart',
-          component: () => import('../views/Charts/Chart/index.vue'),
+          component: () => import('../views/Charts/Chart'),
         },
         {
           path: 'bar',
           name: 'Bar',
-          component: () => import('../views/Charts/Bar/index.vue'),
+          component: () => import('../views/Charts/Bar'),
         },
         {
           path: 'line',
