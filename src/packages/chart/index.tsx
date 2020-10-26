@@ -6,6 +6,7 @@ import 'echarts/lib/component/grid' // 布局
 import 'echarts/lib/component/legend' // 标注
 import { bind, clear } from 'size-sensor'
 import { throttle } from 'lodash'
+import { defaultTheme } from '../../utils/theme'
 
 export interface ChartData {
   chartInstance: ECharts | null;
@@ -45,11 +46,13 @@ const hChart = defineComponent({
     } as ChartData
   },
   methods: {
-    initChart (el: HTMLDivElement) {
+    initChart (el: HTMLDivElement): Promise<ECharts> {
       const renderer = this.renderer
       return new Promise((resolve) => {
         setTimeout(() => {
-          this.chartInstance = echarts.init(el, undefined, {
+          // 设置主题
+          echarts.registerTheme('defaultTheme', defaultTheme)
+          this.chartInstance = echarts.init(el, 'defaultTheme', {
             renderer,
             width: 'auto',
             height: 'auto'
@@ -79,7 +82,7 @@ const hChart = defineComponent({
       this.chartInstance && this.chartInstance.resize()
     },
     getInstance () {
-      return this.chartInstance
+      return this.chartInstance as ECharts
     },
     dispose () {
       if (!this.chartInstance) {
@@ -92,17 +95,22 @@ const hChart = defineComponent({
   },
   render() {
     const { style } = this
-    const initStyle = Object.assign({}, style || {}, {
+    const initStyle = Object.assign({}, {
       width: '100%',
       height: '100%',
       minHeight: '300px'
-    })
+    }, style || {})
 
     return <div style={initStyle}></div>
   },
   watch: {
-    options () {
-      this.setOption()
+    options: {
+      deep: true,
+      handler (v) {
+        if (v) {
+          this.setOption()
+        }
+      }
     }
   },
   mounted () {

@@ -1,14 +1,15 @@
 <template>
   <div class="home">
-    55
+    <HLine></HLine>
   </div>
 </template>
 <script>
-
+import HLine from '@libs/packages/line'
 
 export default {
   name: 'Line',
   components: {
+    HLine
   }
 
 }
