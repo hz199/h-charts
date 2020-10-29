@@ -3,12 +3,13 @@
     <h1>
       Echart 的壳子
     </h1>
-    <HChart :options="option"></HChart>
+    <HChart :options="option" :theme="redTheme"></HChart>
   </div>
 </template>
 <script>
 import 'echarts/lib/chart/pie'
 import HChart from '@libs/packages/chart'
+import { redTheme } from '@libs/utils/themes'
 
 const option = {
   tooltip: {
@@ -25,7 +26,6 @@ const option = {
       name: '访问来源',
       type: 'pie',
       radius: ['50%', '70%'],
-      avoidLabelOverlap: false,
       label: {
         show: false,
         position: 'center'
@@ -36,9 +36,6 @@ const option = {
           fontSize: '20',
           fontWeight: 'bold'
         }
-      },
-      labelLine: {
-        show: false
       },
       data: [
         {value: 335, name: '直接访问'},
@@ -59,7 +56,8 @@ export default {
   },
   data () {
     return {
-      option
+      option,
+      redTheme
     }
   }
 }

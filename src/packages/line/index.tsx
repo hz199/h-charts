@@ -1,11 +1,17 @@
 import { App, defineComponent } from 'vue'
 import 'echarts/lib/chart/line'
+import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
 
 const hLine = defineComponent({
   name: 'hLine',
+  props: {
+    ...commonProps
+  },
   render() {
-    return <Chart></Chart>
+    const { options, ...rest } = this.$props
+    console.log(options)
+    return <Chart {...rest}></Chart>
   },
 })
 
