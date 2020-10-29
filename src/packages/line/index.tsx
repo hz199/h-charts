@@ -6,11 +6,18 @@ import Chart from '../chart'
 const hLine = defineComponent({
   name: 'hLine',
   props: {
-    ...commonProps
+    ...commonProps,
+    dataSource: {
+      type: Object,
+      default: () => ({})
+    },
+    settings: {
+      type: Object,
+      default: () => ({})
+    },
   },
   render() {
     const { options, ...rest } = this.$props
-    console.log(options)
     return <Chart {...rest}></Chart>
   },
 })
