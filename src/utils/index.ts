@@ -8,10 +8,9 @@ export function throttle(fn: Function, wait = 500) {
   let timerId: any = null
 
   // 是否是第一次执行
-  let firstInvoke = true
+  let firstInvoke = false
 
   let context = function throttled() {
-    // let context = this
     let args = arguments
 
     // 如果是第一次触发，直接执行

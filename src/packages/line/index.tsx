@@ -1,14 +1,21 @@
-import { App, defineComponent } from 'vue'
+import { App, defineComponent, PropType } from 'vue'
 import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
+import { EChartOption } from 'echarts/lib/echarts';
+
+export interface LineDataSource<T = {}> {
+  columns: Array<keyof T>
+  rows: Array<T>
+}
+
 
 const hLine = defineComponent({
   name: 'hLine',
   props: {
     ...commonProps,
     dataSource: {
-      type: Object,
+      type: Object as PropType<LineDataSource>,
       default: () => ({})
     },
     settings: {

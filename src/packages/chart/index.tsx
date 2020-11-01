@@ -30,7 +30,7 @@ const hChart = defineComponent({
     initChart (el: HTMLDivElement): Promise<ECharts> {
       const renderer = this.renderer
       return new Promise((resolve) => {
-        setTimeout(() => {
+        this.$nextTick(() => {
           const currentTheme = this.theme || defaultTheme
           // 设置主题
           echarts.registerTheme(currentTheme.name, currentTheme.value)
@@ -40,7 +40,7 @@ const hChart = defineComponent({
             height: 'auto'
           })
           resolve(this.chartInstance)
-        }, 0)
+        })
       })
     },
     setOption () {
@@ -60,7 +60,8 @@ const hChart = defineComponent({
           silent
         })
     },
-    resize () {
+    resizeChart () {
+      console.log(111)
       this.chartInstance && this.chartInstance.resize()
     },
     getInstance () {
@@ -74,6 +75,12 @@ const hChart = defineComponent({
       this.chartInstance = null
       clear(this.$el)
     }
+  },
+  beforeUnmount () {
+    this.dispose()
+  },
+  created () {
+    this.chartInstance = null
   },
   render() {
     const { style } = this
@@ -98,7 +105,7 @@ const hChart = defineComponent({
   mounted () {
     this.initChart(this.$el as HTMLDivElement).then(() => {
       this.setOption()
-      bind(this.$el as HTMLDivElement, throttle(this.resize, 500))
+      // bind(this.$el as HTMLDivElement, throttle(this.resizeChart, 500))
     })
   }
 })
