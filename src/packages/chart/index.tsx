@@ -4,16 +4,16 @@ import commonProps from '../../utils/commonProps'
 import 'echarts/lib/component/tooltip' // 提示框组件
 import 'echarts/lib/component/title' // 标题组件
 import 'echarts/lib/component/legend' // 标注
-import { bind, clear } from 'size-sensor'
+// import { bind, clear } from 'size-sensor'
 import { throttle } from '../../utils/index'
 import { defaultTheme } from '../../utils/themes'
 
 export interface ChartData {
   chartInstance: ECharts | null;
-}
-
-export interface ChartData {
-  chartInstance: ECharts | null;
+  handleResize: () => void
+  _once: {
+    onresize: boolean
+  }
 }
 
 const hChart = defineComponent({
@@ -24,6 +24,10 @@ const hChart = defineComponent({
   data () {
     return {
       chartInstance: null,
+      handleResize: () => {},
+      _once: {
+        onresize: false
+      }
     } as ChartData
   },
   methods: {
@@ -60,8 +64,15 @@ const hChart = defineComponent({
           silent
         })
     },
+    addResizeListener () {
+      window.addEventListener('resize', this.handleResize)
+      this._once.onresize = true
+    },
+    removeResizeListener () {
+      window.removeEventListener('resize', this.handleResize)
+      this._once.onresize = false
+    },
     resizeChart () {
-      console.log(111)
       this.chartInstance && this.chartInstance.resize()
     },
     getInstance () {
@@ -73,7 +84,7 @@ const hChart = defineComponent({
       }
       this.chartInstance.dispose()
       this.chartInstance = null
-      clear(this.$el)
+      // clear(this.$el)
     }
   },
   beforeUnmount () {
@@ -81,6 +92,7 @@ const hChart = defineComponent({
   },
   created () {
     this.chartInstance = null
+    this.handleResize = throttle(this.resizeChart, 300)
   },
   render() {
     const { style } = this
@@ -105,7 +117,10 @@ const hChart = defineComponent({
   mounted () {
     this.initChart(this.$el as HTMLDivElement).then(() => {
       this.setOption()
-      // bind(this.$el as HTMLDivElement, throttle(this.resizeChart, 500))
+
+      if (this.resizeAble && !this._once.onresize) {
+        this.addResizeListener()
+      }
     })
   }
 })

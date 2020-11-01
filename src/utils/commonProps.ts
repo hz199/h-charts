@@ -22,6 +22,11 @@ const props = {
     type: Boolean,
     default: () => false
   },
+  // 是否需要监听页面resize
+  resizeAble: {
+    type: Boolean,
+    default: () => true
+  },
   options: {
     type: Object as PropType<EChartOption>,
     default: () => ({})
