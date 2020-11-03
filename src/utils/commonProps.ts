@@ -1,4 +1,3 @@
-import { EChartOption } from 'echarts/lib/echarts'
 import { CSSProperties, PropType } from 'vue'
 
 const props = {
@@ -34,10 +33,6 @@ const props = {
   resizeAble: {
     type: Boolean,
     default: () => true
-  },
-  options: {
-    type: Object as PropType<EChartOption>,
-    default: () => ({})
   },
   theme: {
     type: Object as PropType<{

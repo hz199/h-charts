@@ -3,8 +3,13 @@ import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
 
+export interface Columns {
+  title: string
+  key: string | number
+}
+
 export interface LineDataSource<T = {}> {
-  columns: Array<keyof T>
+  columns: Array<Columns>
   rows: Array<T>
 }
 
@@ -21,11 +26,13 @@ const hLine = defineComponent({
       default: () => ({})
     },
   },
+  computed: {
+    
+  },
   render() {
-    const { options, ...rest } = this.$props
+    const { dataSource, settings, ...rest } = this.$props
     return h(Chart, {
-      ...rest,
-      options
+      ...rest
     })
   },
 })
