@@ -68,7 +68,9 @@ const HChart = defineComponent({
       return CHART_INSTANCE as ECharts
     },
     dispose () {
-      clear(this.$el)
+      if (this.resizeAble) {
+        clear(this.$el)
+      }
 
       if (!CHART_INSTANCE) {
         return
@@ -84,7 +86,9 @@ const HChart = defineComponent({
     this.initChart(this.$el as HTMLDivElement).then(() => {
       this.setOption()
 
-      bind(this.$el as HTMLDivElement, throttle(this.resizeChart, 100))
+      if (this.resizeAble) {
+        bind(this.$el as HTMLDivElement, throttle(this.resizeChart, 100))
+      }
     })
   },
   created () {

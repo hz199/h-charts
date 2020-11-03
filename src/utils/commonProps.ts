@@ -14,15 +14,23 @@ const props = {
     type: Boolean,
     default: () => false
   },
-  lazyUpdate: { // 在设置完 option 是否不立即更新视图，默认 false 立即更新
+  /**
+   * 在设置完 option 是否不立即更新视图，默认 false 立即更新
+   */
+  lazyUpdate: {
     type: Boolean,
     default: () => false
   },
-  silent: { // 是否阻止抛出事件 默认false 抛出
+  /**
+   * 是否阻止抛出事件 默认false 抛出
+   */
+  silent: {
     type: Boolean,
     default: () => false
   },
-  // 是否需要监听页面resize
+  /**
+   * 是否需要监听页面resize
+   */
   resizeAble: {
     type: Boolean,
     default: () => true
