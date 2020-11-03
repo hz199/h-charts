@@ -1,14 +1,12 @@
-import { App, defineComponent, PropType } from 'vue'
+import { App, defineComponent, h, PropType } from 'vue'
 import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
-import { EChartOption } from 'echarts/lib/echarts';
 
 export interface LineDataSource<T = {}> {
   columns: Array<keyof T>
   rows: Array<T>
 }
-
 
 const hLine = defineComponent({
   name: 'hLine',
@@ -25,7 +23,10 @@ const hLine = defineComponent({
   },
   render() {
     const { options, ...rest } = this.$props
-    return <Chart {...rest}></Chart>
+    return h(Chart, {
+      ...rest,
+      options
+    })
   },
 })
 
