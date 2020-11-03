@@ -3,15 +3,15 @@
     <h1>
       Echart 的壳子
     </h1>
-    <HChart :options="option" :theme="redTheme"></HChart>
+
+    <HChart :options="options"></HChart>
   </div>
 </template>
 <script>
 import 'echarts/lib/chart/line'
 import HChart from '@libs/packages/chart'
-import { redTheme } from '@libs/utils/themes'
 
-const option = {
+const options = {
     xAxis: {
         type: 'category',
         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -35,8 +35,7 @@ export default {
   },
   data () {
     return {
-      option,
-      redTheme
+      options
     }
   }
 }
