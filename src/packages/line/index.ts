@@ -1,20 +1,21 @@
-import { App, defineComponent, h, PropType } from 'vue'
+import { App, defineComponent, h, PropType, computed } from 'vue'
 import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
+import lineHandle, { LineDataSource, LineSettings } from './line'
 
-export interface Columns {
-  title: string
-  key: string | number
-}
-
-export interface LineDataSource<T = {}> {
-  columns: Array<Columns>
-  rows: Array<T>
-}
 
 const hLine = defineComponent({
   name: 'hLine',
+  setup (context) {
+    const { dataSource, settings } = context
+    const options = computed(() => lineHandle(dataSource, settings))
+    console.log(options, 55)
+
+    return {
+      lineOptions: options
+    }
+  },
   props: {
     ...commonProps,
     dataSource: {
@@ -22,12 +23,9 @@ const hLine = defineComponent({
       default: () => ({})
     },
     settings: {
-      type: Object,
+      type: Object as PropType<LineSettings>,
       default: () => ({})
     },
-  },
-  computed: {
-    
   },
   render() {
     const { dataSource, settings, ...rest } = this.$props
