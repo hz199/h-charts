@@ -10,7 +10,6 @@ const hLine = defineComponent({
   setup (context) {
     const { dataSource, settings } = context
     const options = computed(() => lineHandle(dataSource, settings))
-    console.log(options, 55)
 
     return {
       lineOptions: options
@@ -19,7 +18,7 @@ const hLine = defineComponent({
   props: {
     ...commonProps,
     dataSource: {
-      type: Object as PropType<LineDataSource>,
+      type: Object as PropType<LineDataSource<{}>>,
       default: () => ({})
     },
     settings: {
@@ -30,7 +29,8 @@ const hLine = defineComponent({
   render() {
     const { dataSource, settings, ...rest } = this.$props
     return h(Chart, {
-      ...rest
+      ...rest,
+      options: this.lineOptions
     })
   },
 })

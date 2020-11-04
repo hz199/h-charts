@@ -1,3 +1,5 @@
+import { Columns, ObjectKey } from './type'
+
 /**
  * 节流方法
  * @param fn 执行函数
@@ -47,4 +49,14 @@ export function debounce (fn: Function, delay = 500) {
   }
 
   return self
+}
+
+export function columnsToObject (columns: Columns[]) {
+  const results: ObjectKey<string | number> = {}
+
+  columns.forEach(column => {
+    results[column.key] = column.title
+  })
+
+  return results
 }
