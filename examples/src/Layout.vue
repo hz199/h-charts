@@ -23,6 +23,11 @@
       <HHeader class="clearfix">
         <HMenus horizontal class="pull-right">
           <HMenuItem>关于</HMenuItem>
+          <HMenuItem>
+            <a href="https://github.com/hz199/h-charts" target="_block">
+              <img src="./assets/github.png" width="20" style="display: inline-block; vertical-align: middle;" alt="" srcset="">
+            </a>
+          </HMenuItem>
         </HMenus>
       </HHeader>
       <HMainContent>
