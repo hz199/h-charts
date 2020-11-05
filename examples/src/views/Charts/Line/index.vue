@@ -1,20 +1,19 @@
 <template>
   <div class="home">
     <BaseLine></BaseLine>
-    <BaseLine></BaseLine>
 
-    <!-- <AreaLine></AreaLine> -->
+    <AreaLine></AreaLine>
   </div>
 </template>
 <script>
 import BaseLine from './BaseLine'
-// import AreaLine from './AreaLine'
+import AreaLine from './AreaLine'
 
 export default {
   name: 'Line',
   components: {
     BaseLine,
-    // AreaLine
+    AreaLine
   },
   data () {
     return {

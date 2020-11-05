@@ -19,7 +19,8 @@ export default {
   data () {
     return {
       settings: {
-        yAxisType: 'value'
+        // yAxisType: 'value'
+        area: true
       },
       dataSource: baseLineMock
     }

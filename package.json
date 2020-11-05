@@ -9,7 +9,8 @@
     "dev:docs": "cd examples && yarn dev",
     "build:docs": "cd examples && yarn build",
     "dev": "tsc -w --outDir examples/src/libs",
-    "build": "tsc --outDir libs"
+    "build": "tsc --outDir libs",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "echarts": "^4.9.0",

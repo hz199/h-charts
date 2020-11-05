@@ -3,3 +3,6 @@
 > 基于 Vue3.x 封装的 Echarts 图表组件
 
 > 本项目是个人项目
+
+### 线上地址
+> [https://hz199.github.io/hcharts/#/](https://hz199.github.io/hcharts/#/)
