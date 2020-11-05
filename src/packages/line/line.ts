@@ -5,20 +5,23 @@ import { columnsToObject } from '../../utils'
 export interface LineDataSource<T extends {}> {
   columns: Array<Columns>
   rows: Array<T>
+  xAxis: Array<string>
 }
 
 export interface LineSettings {
   xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
+  area?: boolean
+
   yAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
 }
 
 const getLineXAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
   const { xAxisType } = settings
-  const { columns } = dataSource
+  const { xAxis } = dataSource
 
   return {
     type: xAxisType,
-    data: columns.map(item => item.title)
+    data: xAxis
   }
 }
 
@@ -33,6 +36,7 @@ const getLineYAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) 
 const getLineSeries = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
   // const { yAxisType } = settings
   const { rows, columns } = dataSource
+  const { area } = settings
   const dataSourceMap: ObjectKey = {}
 
   const lineColumns = columnsToObject(columns)
@@ -56,7 +60,12 @@ const getLineSeries = <T>(dataSource: LineDataSource<T>, settings: LineSettings)
       smooth: true,
       symbol: 'circle',
       symbolSize: 10,
-      data: dataSourceMap[key]
+      data: dataSourceMap[key],
+      ...area ? {
+        areaStyle: {
+          opacity: 0.1
+        }
+      } : {}
     })
   }
 
@@ -72,10 +81,9 @@ const lineHandle = <T = any>(dataSource: LineDataSource<T>, settings: LineSettin
     legend: {
       show: true,
       icon: 'circle',
-      top: 20,
       textStyle: {
-          fontSize: 12,
-          color: '#c8c8c8'
+        fontSize: 12,
+        color: '#c8c8c8'
       },
     },
     xAxis,

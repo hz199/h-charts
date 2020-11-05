@@ -3,6 +3,7 @@ import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
 import lineHandle, { LineDataSource, LineSettings } from './line'
+import { EChartOption } from 'echarts/lib/echarts'
 
 
 const hLine = defineComponent({
@@ -30,7 +31,7 @@ const hLine = defineComponent({
     const { dataSource, settings, ...rest } = this.$props
     return h(Chart, {
       ...rest,
-      options: this.lineOptions
+      options: this.lineOptions as EChartOption
     })
   },
 })

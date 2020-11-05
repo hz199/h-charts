@@ -14,6 +14,7 @@ const defaultStyle: CSSProperties = {
   minHeight: '400px'
 }
 
+const CHART_INSTANCES = new WeakMap<Object, ECharts | null>()
 export interface HChartData {
 }
 
@@ -27,6 +28,7 @@ const HChart = defineComponent({
   },
   data () {
     return {
+      $customUuid: 0
     } as HChartData
   },
   methods: {
@@ -38,17 +40,17 @@ const HChart = defineComponent({
           // 设置主题
           echarts.registerTheme(currentTheme.name, currentTheme.value)
           // 好坑啊 CHART_INSTANCE 不能做代理proxy 也就是不能用data 里面的参数 不然 resize 会报错。。。。。
-          HChart.CHART_INSTANCE = echarts.init(el, currentTheme.name, {
+          CHART_INSTANCES.set(this, echarts.init(el, currentTheme.name, {
             renderer,
             width: 'auto',
             height: 'auto'
-          })
-          resolve(HChart.CHART_INSTANCE)
+          }))
+          resolve(CHART_INSTANCES.get(this)!)
         })
       })
     },
     setOption () {
-      if (!HChart.CHART_INSTANCE) {
+      if (!CHART_INSTANCES.get(this)) {
         return
       }
 
@@ -57,28 +59,26 @@ const HChart = defineComponent({
       const silent = this.silent
       const options = this.options
 
-      HChart.CHART_INSTANCE.setOption(options, {
+      CHART_INSTANCES.get(this)?.setOption(options, {
         notMerge,
         lazyUpdate,
         silent
       })
     },
     resizeChart () {
-      HChart.CHART_INSTANCE && HChart.CHART_INSTANCE.resize()
+      CHART_INSTANCES.get(this)?.resize()
+      // HChart.CHART_INSTANCE && HChart.CHART_INSTANCE.resize()
     },
     getInstance () {
-      return HChart.CHART_INSTANCE as ECharts
+      return CHART_INSTANCES.get(this)!
     },
     dispose () {
       if (this.resizeAble) {
         clear(this.$el)
       }
 
-      if (!HChart.CHART_INSTANCE) {
-        return
-      }
-      HChart.CHART_INSTANCE.dispose()
-      HChart.CHART_INSTANCE = null
+      CHART_INSTANCES.get(this)?.dispose()
+      CHART_INSTANCES.delete(this)
     }
   },
   beforeUnmount () {
@@ -92,19 +92,20 @@ const HChart = defineComponent({
         bind(this.$el as HTMLDivElement, throttle(this.resizeChart, 100))
       }
     })
+
   },
   created () {
-    HChart.CHART_INSTANCE = null
+    CHART_INSTANCES.set(this, null)
   },
   watch: {
-    options: {
-      deep: true,
-      handler (v) {
-        if (v) {
-          this.setOption()
-        }
-      }
-    }
+    // options: {
+    //   deep: true,
+    //   handler (v) {
+    //     if (v) {
+    //       this.setOption()
+    //     }
+    //   }
+    // }
   },
   render () {
     const { style } = this

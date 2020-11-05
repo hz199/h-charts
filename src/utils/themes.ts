@@ -1,30 +1,37 @@
 
 
-const $defaultTheme = {
+const $defaultTheme =
+{
   "color": [
-    "#11999e",
-    "#abedd8",
-    "#ffb6b9",
-    "#7ac7c4",
+    "#2ec7c9",
+    "#fb929e",
+    "#99e1e5",
+    "#ffb980",
     "#d87a80",
     "#8d98b3",
-    "#ffde7d",
-    "#e0f9b5",
-    "#928a97",
-    "#cca8e9",
+    "#e5cf0d",
+    "#97b552",
+    "#95706d",
+    "#dc69aa",
     "#07a2a4",
     "#9a7fd1",
-    "#3f72af",
-    "#f5994e"
+    "#588dd5",
+    "#f5994e",
+    "#c05050",
+    "#59678c",
+    "#c9ab00",
+    "#7eb00a",
+    "#6f5553",
+    "#c14089"
   ],
   "backgroundColor": "rgba(0,0,0,0)",
   "textStyle": {},
   "title": {
     "textStyle": {
-      "color": "#3e4149"
+      "color": "#40514e"
     },
     "subtextStyle": {
-      "color": "#323232"
+      "color": "#aaaaaa"
     }
   },
   "line": {
@@ -174,27 +181,33 @@ const $defaultTheme = {
     "lineStyle": {
       "normal": {
         "width": 1,
-        "color": "#aaaaaa"
+        "color": "#aaa"
       }
     },
     "symbolSize": 3,
     "symbol": "circle",
     "smooth": true,
     "color": [
-      "#11999e",
-      "#abedd8",
-      "#ffb6b9",
-      "#7ac7c4",
+      "#2ec7c9",
+      "#fb929e",
+      "#99e1e5",
+      "#ffb980",
       "#d87a80",
       "#8d98b3",
-      "#ffde7d",
-      "#e0f9b5",
-      "#928a97",
-      "#cca8e9",
+      "#e5cf0d",
+      "#97b552",
+      "#95706d",
+      "#dc69aa",
       "#07a2a4",
       "#9a7fd1",
-      "#3f72af",
-      "#f5994e"
+      "#588dd5",
+      "#f5994e",
+      "#c05050",
+      "#59678c",
+      "#c9ab00",
+      "#7eb00a",
+      "#6f5553",
+      "#c14089"
     ],
     "label": {
       "normal": {
@@ -260,13 +273,13 @@ const $defaultTheme = {
     "axisLine": {
       "show": true,
       "lineStyle": {
-        "color": "#eaeaea"
+        "color": "#eeeeee"
       }
     },
     "axisTick": {
       "show": true,
       "lineStyle": {
-        "color": "#eaeaea"
+        "color": "#333"
       }
     },
     "axisLabel": {
@@ -297,13 +310,13 @@ const $defaultTheme = {
     "axisLine": {
       "show": true,
       "lineStyle": {
-        "color": "#eaeaea"
+        "color": "#eeeeee"
       }
     },
     "axisTick": {
       "show": true,
       "lineStyle": {
-        "color": "#eaeaea"
+        "color": "#eeeeee"
       }
     },
     "axisLabel": {
@@ -316,12 +329,12 @@ const $defaultTheme = {
       "show": true,
       "lineStyle": {
         "color": [
-          "#eaeaea"
+          "#eeeeee"
         ]
       }
     },
     "splitArea": {
-      "show": true,
+      "show": false,
       "areaStyle": {
         "color": [
           "rgba(250,250,250,0.3)",
@@ -334,13 +347,13 @@ const $defaultTheme = {
     "axisLine": {
       "show": true,
       "lineStyle": {
-        "color": "#eaeaea"
+        "color": "#eeeeee"
       }
     },
     "axisTick": {
       "show": true,
       "lineStyle": {
-        "color": "#eaeaea"
+        "color": "#333"
       }
     },
     "axisLabel": {
@@ -371,13 +384,13 @@ const $defaultTheme = {
     "axisLine": {
       "show": true,
       "lineStyle": {
-        "color": "#eaeaea"
+        "color": "#eeeeee"
       }
     },
     "axisTick": {
       "show": true,
       "lineStyle": {
-        "color": "#eaeaea"
+        "color": "#333"
       }
     },
     "axisLabel": {
@@ -390,7 +403,7 @@ const $defaultTheme = {
       "show": true,
       "lineStyle": {
         "color": [
-          "#eaeaea"
+          "#eee"
         ]
       }
     },
@@ -407,7 +420,7 @@ const $defaultTheme = {
   "toolbox": {
     "iconStyle": {
       "normal": {
-        "borderColor": "#252a34"
+        "borderColor": "#2ec7c9"
       },
       "emphasis": {
         "borderColor": "#18a4a6"
@@ -422,23 +435,23 @@ const $defaultTheme = {
   "tooltip": {
     "axisPointer": {
       "lineStyle": {
-        "color": "#252a34",
+        "color": "#008acd",
         "width": "1"
       },
       "crossStyle": {
-        "color": "#252a34",
+        "color": "#008acd",
         "width": "1"
       }
     }
   },
   "timeline": {
     "lineStyle": {
-      "color": "#252a34",
+      "color": "#008acd",
       "width": 1
     },
     "itemStyle": {
       "normal": {
-        "color": "#eaeaea",
+        "color": "#008acd",
         "borderWidth": 1
       },
       "emphasis": {
@@ -447,29 +460,29 @@ const $defaultTheme = {
     },
     "controlStyle": {
       "normal": {
-        "color": "#252a34",
-        "borderColor": "#252a34",
+        "color": "#008acd",
+        "borderColor": "#008acd",
         "borderWidth": 0.5
       },
       "emphasis": {
-        "color": "#252a34",
-        "borderColor": "#252a34",
+        "color": "#008acd",
+        "borderColor": "#008acd",
         "borderWidth": 0.5
       }
     },
     "checkpointStyle": {
-      "color": "#d1dbdb",
-      "borderColor": "rgba(198,201,224,0.4)"
+      "color": "#2ec7c9",
+      "borderColor": "rgba(46,199,201,0.4)"
     },
     "label": {
       "normal": {
         "textStyle": {
-          "color": "#252a34"
+          "color": "#008acd"
         }
       },
       "emphasis": {
         "textStyle": {
-          "color": "#252a34"
+          "color": "#008acd"
         }
       }
     }
@@ -484,7 +497,7 @@ const $defaultTheme = {
     "backgroundColor": "rgba(47,69,84,0)",
     "dataBackgroundColor": "rgba(239,239,255,1)",
     "fillerColor": "rgba(182,162,222,0.2)",
-    "handleColor": "#008acd",
+    "handleColor": "#cfcbcb",
     "handleSize": "100%",
     "textStyle": {
       "color": "#333333"
