@@ -1,6 +1,6 @@
 {
   "name": "@yyr1994/h-charts",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "echarts vue3.0",
   "main": "libs/packages/main.js",
   "author": "H.Z",
@@ -43,8 +43,6 @@
     "url": "git+https://github.com/hz199/h-charts.git"
   },
   "keywords": [
-    "vue3.0",
-    "echarts"
   ],
   "bugs": {
     "url": "https://github.com/hz199/h-charts/issues"
