@@ -15,12 +15,12 @@ export default [
         path: '/chart'
       },
       {
-        title: 'bar 柱状图',
-        path: '/bar'
-      },
-      {
         title: 'line 折线图',
         path: '/line'
+      },
+      {
+        title: 'bar 柱状图',
+        path: '/bar'
       },
     ]
   }
