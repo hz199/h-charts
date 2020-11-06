@@ -1,6 +1,7 @@
 // import { App } from 'vue'
 import Layout from './Layout/Layout'
 import Menus from './Menus/index'
+import Prism from './Prism/index'
 
 const components = [
   Layout,
@@ -11,7 +12,8 @@ const components = [
   Menus,
   Menus.MenuItem,
   Menus.MenuItemGroup,
-  Menus.MenuItemGroupItem
+  Menus.MenuItemGroupItem,
+  Prism
 ]
 
 const install = function install (app) {
