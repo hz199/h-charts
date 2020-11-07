@@ -1,15 +1,14 @@
 <template>
   <div class="chart-content">
+    <h3 class="h3">基础示例</h3>
     <HLine :dataSource="dataSource" :settings="settings"></HLine>
-
-    <div class="code">
-
-    </div>
+    <Prism languages="html" :code="baseLineCodeStr"></Prism>
   </div>
 </template>
 <script>
 import HLine from '@libs/packages/line'
 import { baseLineMock } from '@/mocks/line'
+import baseLineCodeStr from './codes/baseLine'
 
 export default {
   name: 'BaseLine',
@@ -21,7 +20,9 @@ export default {
       settings: {
         yAxisType: 'value'
       },
-      dataSource: baseLineMock
+      dataSource: baseLineMock(),
+
+      baseLineCodeStr
     }
   }
 

@@ -78,6 +78,7 @@ const HChart = defineComponent({
       }
 
       CHART_INSTANCES.get(this)?.dispose()
+      CHART_INSTANCES.set(this, null)
       CHART_INSTANCES.delete(this)
     }
   },
