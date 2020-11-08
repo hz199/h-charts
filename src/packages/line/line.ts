@@ -1,6 +1,6 @@
 import { Columns, ObjectKey } from '../../utils/type'
 import { EChartOption } from 'echarts/lib/echarts'
-import { columnsToObject } from '../../utils'
+import { columnsToObject, isBoolean } from '../../utils'
 
 export interface LineDataSource<T extends {}> {
   columns: Array<Columns>
@@ -10,7 +10,9 @@ export interface LineDataSource<T extends {}> {
 
 export interface LineSettings {
   xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
-  area?: boolean
+
+  area?: boolean,
+  tooltip?: EChartOption.Tooltip | boolean
 
   yAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
 }
@@ -31,6 +33,21 @@ const getLineYAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) 
   return {
     type: yAxisType,
   }
+}
+
+const getLineTooltip = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
+  const { tooltip } = settings
+  const defaultTooltip = {
+    trigger: 'axis',
+    show: true,
+    axisPointer: {
+      type: 'line'
+    }
+  }
+
+  return isBoolean(tooltip) ? (
+    tooltip ? defaultTooltip : {}
+  ) : tooltip
 }
 
 const getLineSeries = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
@@ -76,6 +93,7 @@ const lineHandle = <T = any>(dataSource: LineDataSource<T>, settings: LineSettin
   const xAxis = getLineXAxis<T>(dataSource, settings)
   const yAxis = getLineYAxis<T>(dataSource, settings)
   const series = getLineSeries<T>(dataSource, settings)
+  const tooltip = getLineTooltip<T>(dataSource, settings)
 
   const options = {
     legend: {
@@ -89,13 +107,10 @@ const lineHandle = <T = any>(dataSource: LineDataSource<T>, settings: LineSettin
     xAxis,
     yAxis,
     series,
-    tooltip: {
-      trigger: 'axis',
-      show: true,
-    }
+    tooltip
   }
 
-  return options
+  return options as EChartOption
 }
 
 export default lineHandle

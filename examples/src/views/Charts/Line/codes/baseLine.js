@@ -11,16 +11,26 @@ export default {
   data () {
     return {
       dataSource: {
-        'columns': [
+        columns: [
           { title: '总计', key: 'sum'},
           { title: '用户', key: 'user' },
           { title: '数量', key: 'num' }
         ],
-        'xAxis|6': [
-          '@date("yyyy-MM-dd")'
+        xAxis: [
+          '2020-11-01',
+          '2020-11-02',
+          '2020-11-03',
+          '2020-11-04',
+          '2020-11-05',
+          '2020-11-06'
         ],
-        'rows|6': [
-          { 'sum|100-1000': 800, 'user|1000-1500': 1393, 'num|1200-2000': 1593 },
+        rows: [
+          { sum: 1111, user: 1393, num: 1593 },
+          { sum: 2222, user: 1393, num: 1593 },
+          { sum: 3333, user: 1393, num: 1593 },
+          { sum: 4444, user: 1393, num: 1593 },
+          { sum: 5555, user: 1393, num: 1593 },
+          { sum: 6666, user: 1393, num: 1593 }
         ]
       }
     }

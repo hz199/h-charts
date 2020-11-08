@@ -60,3 +60,17 @@ export function columnsToObject (columns: Columns[]) {
 
   return results
 }
+
+const toString = Object.prototype.toString
+// toString.call(1) //[object Number]
+// toString.call(undefined) //[object Undefined]
+// toString.call(null) //[object Null]
+// toString.call(false) //[object Boolean]
+// toString.call("test") //[object String]
+// toString.call({}) //[object Object]
+// toString.call(/[a-z]/g) //[object RegExp]
+// toString.call(function(){}) //[object Function]
+
+export const isBoolean = (payload: any) => {
+  return toString.call(payload) === '[object Boolean]'
+}

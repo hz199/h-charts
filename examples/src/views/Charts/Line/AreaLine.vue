@@ -19,7 +19,8 @@ export default {
   data () {
     return {
       settings: {
-        area: true
+        area: true,
+        axisPointer: true
       },
       dataSource: baseLineMock(),
 
