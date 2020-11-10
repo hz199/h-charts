@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3">堆叠面积图</h3>
+    <h3 class="h3">2. 堆叠面积图</h3>
     <HLine :dataSource="dataSource" :settings="settings"></HLine>
 
     <Prism languages="html" :code="areaLineCodeStr"></Prism>

@@ -36,7 +36,7 @@ const getLineYAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) 
 }
 
 const getLineTooltip = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
-  const { tooltip } = settings
+  const { tooltip = true } = settings
   const defaultTooltip = {
     trigger: 'axis',
     show: true,
