@@ -3,7 +3,9 @@
     <h3 class="h3">2. 堆叠面积图</h3>
     <HLine :dataSource="dataSource" :settings="settings"></HLine>
 
-    <Prism languages="html" :code="areaLineCodeStr"></Prism>
+    <ShowMore>
+      <Prism languages="html" :code="areaLineCodeStr"></Prism>
+    </ShowMore>
   </div>
 </template>
 <script>

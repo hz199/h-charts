@@ -2,6 +2,7 @@
 import Layout from './Layout/Layout'
 import Menus from './Menus/index'
 import Prism from './Prism/index'
+import ShowMore from './ShowMore'
 
 const components = [
   Layout,
@@ -13,7 +14,8 @@ const components = [
   Menus.MenuItem,
   Menus.MenuItemGroup,
   Menus.MenuItemGroupItem,
-  Prism
+  Prism,
+  ShowMore
 ]
 
 const install = function install (app) {
