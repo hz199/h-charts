@@ -1,16 +1,16 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3" id="2. 堆叠面积图">2. 堆叠面积图</h3>
-    <HLine :dataSource="dataSource" :settings="settings"></HLine>
+    <h3 class="h3">3. 设置双Y轴</h3>
+    <HLine :dataSource="dataSource"></HLine>
 
-    <ShowMore>
+    <!-- <ShowMore>
       <Prism languages="html" :code="areaLineCodeStr"></Prism>
-    </ShowMore>
+    </ShowMore> -->
   </div>
 </template>
 <script>
 import HLine from '@libs/packages/line'
-import { baseLineMock } from '@/mocks/line'
+import { doubleYLineMock } from '@/mocks/line'
 import areaLineCodeStr from './codes/areaLine'
 
 export default {
@@ -20,11 +20,7 @@ export default {
   },
   data () {
     return {
-      settings: {
-        area: true,
-        axisPointer: true
-      },
-      dataSource: baseLineMock(),
+      dataSource: doubleYLineMock(),
 
       areaLineCodeStr
     }

@@ -10,3 +10,14 @@ export const baseLineMock = () => {
     ]
   })
 }
+
+export const doubleYLineMock = () => {
+  return MockJS.mock({
+    'columns': [{ title: '余杭人数', key: 'number1'},{ title: '西湖人数', key: 'number2' },{ title: '比率', key: 'ratio', right: true }
+    ],
+    'xAxis|6': ['@date("yyyy-MM-dd")'],
+    'rows|6': [
+      { 'number1|100-1000': 800, 'number2|1000-1500': 1393, 'ratio|0-1': 0.8 },
+    ]
+  })
+}

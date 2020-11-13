@@ -2,8 +2,12 @@ import { Columns, ObjectKey } from '../../utils/type'
 import { EChartOption } from 'echarts/lib/echarts'
 import { columnsToObject, isBoolean } from '../../utils'
 
+export interface LineColumns {
+  right?: boolean // line 
+}
+
 export interface LineDataSource<T extends {}> {
-  columns: Array<Columns>
+  columns: Array<Columns & LineColumns>
   rows: Array<T>
   xAxis: Array<string>
 }
