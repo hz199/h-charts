@@ -17,7 +17,7 @@ export const doubleYLineMock = () => {
     ],
     'xAxis|6': ['@date("yyyy-MM-dd")'],
     'rows|6': [
-      { 'number1|100-1000': 800, 'number2|1000-1500': 1393, 'ratio|0-1': 0.8 },
+      { 'number1|100-1000': 800, 'number2|1000-1500': 1393, 'ratio|0-100': 50 },
     ]
   })
 }

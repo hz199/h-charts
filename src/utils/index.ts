@@ -51,11 +51,13 @@ export function debounce (fn: Function, delay = 500) {
   return self
 }
 
-export function columnsToObject (columns: Columns[]) {
-  const results: ObjectKey<string | number> = {}
+// type Partial<T> = { [P in keyof T]?: T[P] }
+
+export function columnsToObject <T extends Columns>(columns: T[]) {
+  const results: ObjectKey<T> = {}
 
   columns.forEach(column => {
-    results[column.key] = column.title
+    results[column.key] = column
   })
 
   return results

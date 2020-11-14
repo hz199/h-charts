@@ -19,8 +19,18 @@ export default {
     HLine
   },
   data () {
+    const { xAxis, rows } = doubleYLineMock()
+
     return {
-      dataSource: doubleYLineMock(),
+      dataSource: {
+        columns: [
+          { title: '余杭人数', key: 'number1'},
+          { title: '西湖人数', key: 'number2' },
+          { title: '比率', key: 'ratio', right: true }
+        ],
+        xAxis,
+        rows
+      },
 
       areaLineCodeStr
     }

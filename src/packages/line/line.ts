@@ -1,13 +1,17 @@
-import { Columns, ObjectKey } from '../../utils/type'
+import { Columns, ObjectKey, Tuple } from '../../utils/type'
 import { EChartOption } from 'echarts/lib/echarts'
 import { columnsToObject, isBoolean } from '../../utils'
 
-export interface LineColumns {
-  right?: boolean // line 
+export type YAxisType = 'KMB' | 'normal' | 'percent'
+
+export interface LineCustomsColumns {
+  right?: boolean // line
 }
 
+export type LineColumns = Columns & LineCustomsColumns
+
 export interface LineDataSource<T extends {}> {
-  columns: Array<Columns & LineColumns>
+  columns: Array<LineColumns>
   rows: Array<T>
   xAxis: Array<string>
 }
@@ -18,7 +22,8 @@ export interface LineSettings {
   area?: boolean,
   tooltip?: EChartOption.Tooltip | boolean
 
-  yAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
+  yFormatter?: Tuple<string | ((val: any) => string), 2>
+  yVisible?: boolean
 }
 
 const getLineXAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
@@ -31,22 +36,53 @@ const getLineXAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) 
   }
 }
 
-const getLineYAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
-  const { yAxisType } = settings
+const getLineYAxis = <T>(
+  dataSource: LineDataSource<T>,
+  settings: LineSettings) => {
+  const {
+    yVisible = true,
+    yFormatter = ['{value}', '{value}']
+  } = settings
 
-  return {
-    type: yAxisType,
+  const yAxisDefault: EChartOption.YAxis = {
+    type: 'value',
+    axisTick: {
+      show: false
+    },
+    show: yVisible
   }
+
+  const yAxisResult: EChartOption.YAxis[] = []
+
+  for (let i = 0; i < 2; i ++) {
+    yAxisResult[i] = Object.assign({}, yAxisDefault, {
+      position: i === 1 ? 'right' : 'left',
+      axisLabel: {
+        formatter: yFormatter[i]
+      }
+    })
+  }
+
+  return yAxisResult
 }
 
 const getLineTooltip = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
   const { tooltip = true } = settings
   const defaultTooltip = {
     trigger: 'axis',
-    show: true,
     axisPointer: {
-      type: 'line'
-    }
+      label: {
+        show: true,
+        backgroundColor: '#fff',
+        color: '#556677',
+        borderColor: 'rgba(0,0,0,0)',
+        shadowOffsetY: 0
+      },
+      lineStyle: {
+        width: 0
+      }
+    },
+    padding: [10, 10],
   }
 
   return isBoolean(tooltip) ? (
@@ -54,13 +90,14 @@ const getLineTooltip = <T>(dataSource: LineDataSource<T>, settings: LineSettings
   ) : tooltip
 }
 
-const getLineSeries = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
+const getLineSeries = <T>(
+  dataSource: LineDataSource<T>,
+  settings: LineSettings,
+  lineColumns: ObjectKey<LineColumns>) => {
   // const { yAxisType } = settings
-  const { rows, columns } = dataSource
+  const { rows } = dataSource
   const { area } = settings
   const dataSourceMap: ObjectKey = {}
-
-  const lineColumns = columnsToObject(columns)
 
   rows.forEach(item => {
     for (let key in item) {
@@ -76,11 +113,12 @@ const getLineSeries = <T>(dataSource: LineDataSource<T>, settings: LineSettings)
   const series: EChartOption.Series[] = []
   for (let key in dataSourceMap) {
     series.push({
-      name: lineColumns[key] + '',
+      name: lineColumns[key].title + '',
       type: 'line',
       smooth: true,
       symbol: 'circle',
       symbolSize: 10,
+      yAxisIndex: lineColumns[key].right ? 1 : 0,
       data: dataSourceMap[key],
       ...area ? {
         areaStyle: {
@@ -94,9 +132,11 @@ const getLineSeries = <T>(dataSource: LineDataSource<T>, settings: LineSettings)
 }
 
 const lineHandle = <T = any>(dataSource: LineDataSource<T>, settings: LineSettings) => {
+  const lineColumns = columnsToObject<LineColumns>(dataSource.columns)
+
   const xAxis = getLineXAxis<T>(dataSource, settings)
   const yAxis = getLineYAxis<T>(dataSource, settings)
-  const series = getLineSeries<T>(dataSource, settings)
+  const series = getLineSeries<T>(dataSource, settings, lineColumns)
   const tooltip = getLineTooltip<T>(dataSource, settings)
 
   const options = {
