@@ -3,10 +3,6 @@
     <h3 class="h3">5. 显示最大最小标注</h3>
     <HLine :dataSource="dataSource"></HLine>
 
-    <p>
-      import 'echarts/lib/component/markPoint'
-    </p>
-
     <ShowMore>
       <Prism languages="html" :code="codePre"></Prism>
     </ShowMore>

@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3" id="2. 堆叠面积图">2. 堆叠面积图</h3>
+    <h3 class="h3">2. 堆叠面积图</h3>
     <HLine :dataSource="dataSource" :settings="settings"></HLine>
 
     <ShowMore>

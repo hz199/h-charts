@@ -1,9 +1,15 @@
 export default `
+/*
+ * 注意使用标注需要按需手动加载 markPoint 组件
+ */
+
 <template>
   <HLine :dataSource="dataSource"></HLine>
 </template>
 <script>
 import { HLine } from '@yyr1994/h-charts'
+import 'echarts/lib/component/markPoint'
+
 export default {
   components: {
     HLine

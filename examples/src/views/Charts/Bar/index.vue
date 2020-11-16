@@ -2,7 +2,19 @@
   <div class="home">
     <Prism languages="javascript" :code="code"></Prism>
 
-    <Prism languages="html" :code="htmlCode"></Prism>
+    <Timeline>
+      <TimelineItem>
+        <p class="time">1976年</p>
+      </TimelineItem>
+      <TimelineItem>
+        <p class="time">1976年</p>
+      </TimelineItem>
+      <TimelineItem>
+        <p class="time">1976年</p>
+         <p class="time">1976年</p>
+          <p class="time">1976年</p>
+      </TimelineItem>
+    </Timeline>
   </div>
 </template>
 <script>
@@ -16,25 +28,12 @@ const code =
   components: {
   }
 }`
-
-const htmlCode = `
-<template>
-  <div class="home">
-    <Prism languages="javascript" :code="code"></Prism>
-
-    <Prism languages="html" :code="htmlCode"></Prism>
-  </div>
-</template>
-`
 export default {
   name: 'Bar',
   data () {
     return {
       code,
-      htmlCode
     }
-  },
-  components: {
   }
 }
 </script>
