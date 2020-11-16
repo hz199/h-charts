@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
     <h3 class="h3">1. 基础示例</h3>
-    <HLine :dataSource="dataSource" :settings="settings"></HLine>
+    <HLine :dataSource="dataSource"></HLine>
 
     <ShowMore>
       <Prism languages="html" :code="baseLineCodeStr"></Prism>
@@ -20,9 +20,6 @@ export default {
   },
   data () {
     return {
-      settings: {
-        yAxisType: 'value'
-      },
       dataSource: baseLineMock(),
 
       baseLineCodeStr

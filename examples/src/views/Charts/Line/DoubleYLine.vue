@@ -1,17 +1,17 @@
 <template>
   <div class="chart-content">
     <h3 class="h3">3. 设置双Y轴</h3>
-    <HLine :dataSource="dataSource"></HLine>
+    <HLine :dataSource="dataSource" :settings="settings"></HLine>
 
-    <!-- <ShowMore>
-      <Prism languages="html" :code="areaLineCodeStr"></Prism>
-    </ShowMore> -->
+    <ShowMore>
+      <Prism languages="html" :code="doubleYLine"></Prism>
+    </ShowMore>
   </div>
 </template>
 <script>
 import HLine from '@libs/packages/line'
 import { doubleYLineMock } from '@/mocks/line'
-import areaLineCodeStr from './codes/areaLine'
+import doubleYLine from './codes/doubleYLine'
 
 export default {
   name: 'BaseLine',
@@ -22,6 +22,12 @@ export default {
     const { xAxis, rows } = doubleYLineMock()
 
     return {
+      settings: {
+        yFormatter: [(val) => {
+          return `${val} 人`
+        }, '{value}'],
+        yAxisName: ['人数', '比率']
+      },
       dataSource: {
         columns: [
           { title: '余杭人数', key: 'number1'},
@@ -32,7 +38,7 @@ export default {
         rows
       },
 
-      areaLineCodeStr
+      doubleYLine
     }
   }
 

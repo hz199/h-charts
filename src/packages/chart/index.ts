@@ -4,6 +4,8 @@ import commonProps from '../../utils/commonProps'
 import 'echarts/lib/component/tooltip' // 提示框组件
 import 'echarts/lib/component/title' // 标题组件
 import 'echarts/lib/component/legend' // 标注
+import 'echarts/lib/component/markPoint'
+
 import { bind, clear } from 'size-sensor'
 import { throttle } from '../../utils/index'
 import { defaultTheme } from '../../utils/themes'

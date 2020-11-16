@@ -18,12 +18,15 @@ export interface LineDataSource<T extends {}> {
 
 export interface LineSettings {
   xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
-
+  // 区域图形显示
   area?: boolean,
+  // 是否是平滑曲线
+  smooth?: boolean
   tooltip?: EChartOption.Tooltip | boolean
 
   yFormatter?: Tuple<string | ((val: any) => string), 2>
   yVisible?: boolean
+  yAxisName?: Array<string>
 }
 
 const getLineXAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
@@ -41,7 +44,8 @@ const getLineYAxis = <T>(
   settings: LineSettings) => {
   const {
     yVisible = true,
-    yFormatter = ['{value}', '{value}']
+    yFormatter = ['{value}', '{value}'],
+    yAxisName = []
   } = settings
 
   const yAxisDefault: EChartOption.YAxis = {
@@ -61,6 +65,8 @@ const getLineYAxis = <T>(
         formatter: yFormatter[i]
       }
     })
+
+    yAxisResult[i].name = yAxisName[i] || ''
   }
 
   return yAxisResult
@@ -96,7 +102,7 @@ const getLineSeries = <T>(
   lineColumns: ObjectKey<LineColumns>) => {
   // const { yAxisType } = settings
   const { rows } = dataSource
-  const { area } = settings
+  const { area, smooth = true } = settings
   const dataSourceMap: ObjectKey = {}
 
   rows.forEach(item => {
@@ -115,11 +121,23 @@ const getLineSeries = <T>(
     series.push({
       name: lineColumns[key].title + '',
       type: 'line',
-      smooth: true,
+      smooth,
       symbol: 'circle',
       symbolSize: 10,
       yAxisIndex: lineColumns[key].right ? 1 : 0,
       data: dataSourceMap[key],
+      markPoint: {
+        data: [
+          {
+            name: '最大值',
+            type: 'max'
+          },
+          {
+            name: '55',
+            type: 'min'
+          }
+        ]
+      },
       ...area ? {
         areaStyle: {
           opacity: 0.1
