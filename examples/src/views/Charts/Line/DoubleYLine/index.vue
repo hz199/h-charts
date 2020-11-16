@@ -4,14 +4,14 @@
     <HLine :dataSource="dataSource" :settings="settings"></HLine>
 
     <ShowMore>
-      <Prism languages="html" :code="doubleYLine"></Prism>
+      <Prism languages="html" :code="codePre"></Prism>
     </ShowMore>
   </div>
 </template>
 <script>
 import HLine from '@libs/packages/line'
 import { doubleYLineMock } from '@/mocks/line'
-import doubleYLine from './codes/doubleYLine'
+import codePre from './codePre'
 
 export default {
   name: 'BaseLine',
@@ -38,7 +38,7 @@ export default {
         rows
       },
 
-      doubleYLine
+      codePre
     }
   }
 
