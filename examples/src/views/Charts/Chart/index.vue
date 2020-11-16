@@ -39,17 +39,6 @@ const options ={
       smooth: true,
       symbol: 'circle',
       symbolSize: 13,
-      markPoint: {
-        data: [{
-            type: "max",
-            name: "最大值"
-          },
-          {
-            type: "min",
-            name: "最小值"
-          }
-        ]
-      },
       data: [5, 10, 41, 35, 51, 49, 62]
     },
     {

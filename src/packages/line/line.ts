@@ -6,6 +6,8 @@ export type YAxisType = 'KMB' | 'normal' | 'percent'
 
 export interface LineCustomsColumns {
   right?: boolean // line
+  markMax?: boolean // 显示最大值标注
+  markMin?: boolean // 显示最小值标注
 }
 
 export type LineColumns = Columns & LineCustomsColumns
@@ -116,26 +118,27 @@ const getLineSeries = <T>(
     }
   })
 
+  // const a = import('echarts/lib/component/markPoint')
+
   const series: EChartOption.Series[] = []
   for (let key in dataSourceMap) {
+    const currentLineColumns = lineColumns[key]
+
+    const markMax = currentLineColumns.markMax ? [{ name: '最大值', type: 'max' }] : []
+    const markMin = currentLineColumns.markMin ? [{ name: '最小值', type: 'min' }] : []
+
     series.push({
-      name: lineColumns[key].title + '',
+      name: currentLineColumns.title + '',
       type: 'line',
       smooth,
       symbol: 'circle',
       symbolSize: 10,
-      yAxisIndex: lineColumns[key].right ? 1 : 0,
+      yAxisIndex: currentLineColumns.right ? 1 : 0,
       data: dataSourceMap[key],
       markPoint: {
         data: [
-          {
-            name: '最大值',
-            type: 'max'
-          },
-          {
-            name: '55',
-            type: 'min'
-          }
+          ...markMax,
+          ...markMin
         ]
       },
       ...area ? {
