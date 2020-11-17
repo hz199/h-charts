@@ -4,6 +4,7 @@ import Menus from './Menus/index'
 import Prism from './Prism/index'
 import ShowMore from './ShowMore'
 import Timeline from './Timeline'
+import Article from './Article'
 
 const components = [
   Layout,
@@ -18,7 +19,9 @@ const components = [
   Prism,
   ShowMore,
   Timeline,
-  Timeline.TimelineItem
+  Timeline.TimelineItem,
+  Article.ArticleH1,
+  Article.ArticleP
 ]
 
 const install = function install (app) {
