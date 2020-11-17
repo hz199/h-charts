@@ -100,14 +100,15 @@ const HChart = defineComponent({
     CHART_INSTANCES.set(this, null)
   },
   watch: {
-    // options: {
-    //   deep: true,
-    //   handler (v) {
-    //     if (v) {
-    //       this.setOption()
-    //     }
-    //   }
-    // }
+    options: {
+      deep: true,
+      handler (v) {
+        if (v) {
+          this.setOption()
+          // console.log(v)
+        }
+      }
+    }
   },
   render () {
     const { style } = this

@@ -24,6 +24,12 @@ export default {
 
       codePre
     }
+  },
+  methods: {
+    // handleClick () {
+    //   this.dataSource = baseLineMock()
+    //   console.log(JSON.stringify(this.dataSource))
+    // }
   }
 
 }

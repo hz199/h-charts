@@ -1,4 +1,4 @@
-import { App, defineComponent, h, PropType, computed } from 'vue'
+import { App, defineComponent, h, PropType, toRefs, watch, ref } from 'vue'
 import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
@@ -8,9 +8,14 @@ import { EChartOption } from 'echarts/lib/echarts'
 
 const hLine = defineComponent({
   name: 'hLine',
-  setup (context) {
-    const { dataSource, settings } = context
-    const options = computed(() => lineHandle(dataSource, settings))
+  setup (props) {
+    const { dataSource, settings } = toRefs(props)
+
+    let options = ref(lineHandle(dataSource.value, settings.value))
+
+    watch([dataSource, settings], () => {
+      options.value = lineHandle(dataSource.value, settings.value)
+    })
 
     return {
       lineOptions: options
