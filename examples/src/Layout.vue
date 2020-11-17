@@ -66,6 +66,7 @@ export default {
   },
   created () {
     this.currentPath = this.$route.fullPath
+
   }
 }
 </script>

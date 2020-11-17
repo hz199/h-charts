@@ -20,6 +20,7 @@ export interface LineDataSource<T extends {}> {
 
 export interface LineSettings {
   xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
+  xVisible?: boolean
   // 区域图形显示
   area?: boolean,
   // 是否是平滑曲线
@@ -32,12 +33,13 @@ export interface LineSettings {
 }
 
 const getLineXAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
-  const { xAxisType } = settings
-  const { xAxis } = dataSource
+  const { xAxisType = 'category', xVisible = true } = settings
+  const { xAxis = [] } = dataSource
 
   return {
     type: xAxisType,
-    data: xAxis
+    data: xAxis,
+    show: xVisible
   }
 }
 
@@ -118,9 +120,8 @@ const getLineSeries = <T>(
     }
   })
 
-  // const a = import('echarts/lib/component/markPoint')
-
   const series: EChartOption.Series[] = []
+
   for (let key in dataSourceMap) {
     const currentLineColumns = lineColumns[key]
 

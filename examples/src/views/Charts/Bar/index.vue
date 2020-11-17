@@ -11,7 +11,7 @@
       </TimelineItem>
       <TimelineItem>
         <p class="time">1976年</p>
-         <p class="time">1976年</p>
+        <p class="time">1976年</p>
           <p class="time">1976年</p>
       </TimelineItem>
     </Timeline>

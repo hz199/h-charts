@@ -5,6 +5,8 @@
     <DoubleYLine></DoubleYLine>
     <BaseLineSmooth></BaseLineSmooth>
     <LineMaxMin></LineMaxMin>
+    <XAxisTypeTime></XAxisTypeTime>
+    <XAxisType></XAxisType>
   </div>
 </template>
 <script>
@@ -13,6 +15,8 @@ import AreaLine from './AreaLine'
 import DoubleYLine from './DoubleYLine'
 import BaseLineSmooth from './BaseLineSmooth'
 import LineMaxMin from './LineMaxMin'
+import XAxisType from './XAxisType'
+import XAxisTypeTime from './XAxisType/indexTime'
 
 export default {
   name: 'Line',
@@ -21,7 +25,9 @@ export default {
     AreaLine,
     DoubleYLine,
     BaseLineSmooth,
-    LineMaxMin
+    LineMaxMin,
+    XAxisType,
+    XAxisTypeTime
   },
   data () {
     return {
