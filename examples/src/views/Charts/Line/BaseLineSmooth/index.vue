@@ -3,12 +3,20 @@
     <h3 class="h3">4. 曲线不平滑示例</h3>
     <HLine :dataSource="dataSource" :settings="settings"></HLine>
 
-    <Prism languages="javascript" :code="codeStr"></Prism>
+    <Prism languages="javascript" isLineNumber :code="codeStr"></Prism>
   </div>
 </template>
 <script>
 import HLine from '@libs/packages/line'
 import { baseLineMock } from '@/mocks/line'
+
+const codeStr = `
+// dataSource 同上
+
+settings: {
+  smooth: false
+},
+`
 
 export default {
   name: 'BaseLine',
@@ -22,13 +30,7 @@ export default {
       },
       dataSource: baseLineMock(),
 
-      codeStr: `
-        // dataSource 同上
-
-        settings: {
-          smooth: false
-        },
-      `
+      codeStr
     }
   }
 

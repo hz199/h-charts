@@ -2,7 +2,7 @@
   <div class="home">
     <HChart :options="options"></HChart>
 
-    <Prism languages="html" :code="optionsStr"></Prism>
+    <Prism languages="html" isLineNumber :code="optionsStr"></Prism>
   </div>
 </template>
 <script>

@@ -2,6 +2,7 @@
 import { defineComponent, h } from 'vue'
 import prismJs from 'prismjs'
 import './dartPrism.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
 
 const Prism = defineComponent({
   name: 'Prism',
@@ -12,6 +13,10 @@ const Prism = defineComponent({
     languages: {
       type: String,
       default: 'markup'
+    },
+    isLineNumber: {
+      type: Boolean,
+      default: () => false
     }
   },
   render() {
@@ -21,7 +26,7 @@ const Prism = defineComponent({
     const resultHtml = prismJs.highlight(this.code, grammar, prismLanguage)
 
     return h('pre', {
-      class: `language-${this.languages}`
+      class: `language-${this.languages} ${this.isLineNumber ? 'line-numbers' : ''}`
     }, [
       h('code', {
         class: `language-${this.languages}`,
@@ -29,6 +34,11 @@ const Prism = defineComponent({
       })
     ])
   },
+  mounted () {
+    if (this.isLineNumber) {
+      prismJs.highlightAll()
+    }
+  }
 })
 
 export default Prism

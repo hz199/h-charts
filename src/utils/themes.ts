@@ -5,18 +5,18 @@ const $defaultTheme =
   "color": [
     "#2ec7c9",
     "#fb929e",
-    "#99e1e5",
-    "#ffb980",
+    "#ace7ef",
+    "#f2c9a8",
     "#d87a80",
     "#8d98b3",
-    "#e5cf0d",
-    "#97b552",
-    "#95706d",
-    "#dc69aa",
-    "#07a2a4",
-    "#9a7fd1",
-    "#588dd5",
-    "#f5994e"
+    "#e6dc8f",
+    "#c4d49f",
+    "#cca19e",
+    "#fc85ae",
+    "#9adadb",
+    "#cbbaed",
+    "#abc7ed",
+    "#f2c9a8"
   ],
   "backgroundColor": "rgba(252,252,252,0)",
   "textStyle": {},
@@ -36,7 +36,7 @@ const $defaultTheme =
       "width": "3"
     },
     "symbolSize": "8",
-    "symbol": "circle",
+    "symbol": "emptyCircle",
     "smooth": false
   },
   "radar": {
@@ -47,7 +47,7 @@ const $defaultTheme =
       "width": "3"
     },
     "symbolSize": "8",
-    "symbol": "circle",
+    "symbol": "emptyCircle",
     "smooth": false
   },
   "bar": {
@@ -117,23 +117,23 @@ const $defaultTheme =
       "color": "#cccccc"
     },
     "symbolSize": "8",
-    "symbol": "circle",
+    "symbol": "emptyCircle",
     "smooth": false,
     "color": [
       "#2ec7c9",
       "#fb929e",
-      "#99e1e5",
-      "#ffb980",
+      "#ace7ef",
+      "#f2c9a8",
       "#d87a80",
       "#8d98b3",
-      "#e5cf0d",
-      "#97b552",
-      "#95706d",
-      "#dc69aa",
-      "#07a2a4",
-      "#9a7fd1",
-      "#588dd5",
-      "#f5994e"
+      "#e6dc8f",
+      "#c4d49f",
+      "#cca19e",
+      "#fc85ae",
+      "#9adadb",
+      "#cbbaed",
+      "#abc7ed",
+      "#f2c9a8"
     ],
     "label": {
       "color": "#ffffff"
@@ -195,13 +195,13 @@ const $defaultTheme =
     "axisLine": {
       "show": true,
       "lineStyle": {
-        "color": "#e3dede"
+        "color": "#cccccc"
       }
     },
     "axisTick": {
-      "show": true,
+      "show": false,
       "lineStyle": {
-        "color": "#eeeeee"
+        "color": "#333"
       }
     },
     "axisLabel": {
@@ -232,13 +232,13 @@ const $defaultTheme =
     "axisLine": {
       "show": true,
       "lineStyle": {
-        "color": "#e3dede"
+        "color": "#cccccc"
       }
     },
     "axisTick": {
-      "show": true,
+      "show": false,
       "lineStyle": {
-        "color": "#eeeeee"
+        "color": "#333"
       }
     },
     "axisLabel": {
@@ -269,13 +269,13 @@ const $defaultTheme =
     "axisLine": {
       "show": true,
       "lineStyle": {
-        "color": "#e3dede"
+        "color": "#cccccc"
       }
     },
     "axisTick": {
-      "show": true,
+      "show": false,
       "lineStyle": {
-        "color": "#eeeeee"
+        "color": "#333"
       }
     },
     "axisLabel": {
@@ -306,13 +306,13 @@ const $defaultTheme =
     "axisLine": {
       "show": true,
       "lineStyle": {
-        "color": "#e3dede"
+        "color": "#cccccc"
       }
     },
     "axisTick": {
-      "show": true,
+      "show": false,
       "lineStyle": {
-        "color": "#eeeeee"
+        "color": "#333"
       }
     },
     "axisLabel": {
@@ -436,6 +436,8 @@ const $defaultTheme =
     }
   }
 }
+
+
 
 const $redTheme = {
   "color": [
