@@ -4,7 +4,7 @@
     <HLine :dataSource="dataSource" :settings="settings"></HLine>
 
     <ShowMore>
-      <Prism languages="html" isLineNumber :code="codePre"></Prism>
+      <Prism languages="html" :code="codePre"></Prism>
     </ShowMore>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <h3 class="h3">4. 曲线不平滑示例</h3>
     <HLine :dataSource="dataSource" :settings="settings"></HLine>
 
-    <Prism languages="javascript" isLineNumber :code="codeStr"></Prism>
+    <Prism languages="javascript" :code="codeStr"></Prism>
   </div>
 </template>
 <script>
