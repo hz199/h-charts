@@ -1,9 +1,6 @@
 import { Columns, ObjectKey, Tuple } from '../../utils/type'
 import { EChartOption } from 'echarts/lib/echarts'
 import { columnsToObject, isBoolean } from '../../utils'
-
-export type YAxisType = 'KMB' | 'normal' | 'percent'
-
 export interface LineCustomsColumns {
   right?: boolean // line
   markMax?: boolean // 显示最大值标注
@@ -104,7 +101,6 @@ const getLineSeries = <T>(
   dataSource: LineDataSource<T>,
   settings: LineSettings,
   lineColumns: ObjectKey<LineColumns>) => {
-  // const { yAxisType } = settings
   const { rows } = dataSource
   const { area, smooth = true } = settings
   const dataSourceMap: ObjectKey = {}

@@ -5,6 +5,7 @@ import Prism from './Prism/index'
 import ShowMore from './ShowMore'
 import Timeline from './Timeline'
 import Article from './Article'
+import Table from './Table'
 
 const components = [
   Layout,
@@ -20,6 +21,7 @@ const components = [
   ShowMore,
   Timeline,
   Timeline.TimelineItem,
+  Table,
   Article.ArticleH1,
   Article.ArticleP
 ]

@@ -7,6 +7,8 @@
     <LineMaxMin></LineMaxMin>
     <XAxisTypeTime></XAxisTypeTime>
     <XAxisType></XAxisType>
+
+    <DocsTable></DocsTable>
   </div>
 </template>
 <script>
@@ -17,6 +19,7 @@ import BaseLineSmooth from './BaseLineSmooth'
 import LineMaxMin from './LineMaxMin'
 import XAxisType from './XAxisType'
 import XAxisTypeTime from './XAxisType/indexTime'
+import DocsTable from './DocsTable'
 
 export default {
   name: 'Line',
@@ -27,7 +30,8 @@ export default {
     BaseLineSmooth,
     LineMaxMin,
     XAxisType,
-    XAxisTypeTime
+    XAxisTypeTime,
+    DocsTable
   },
   data () {
     return {

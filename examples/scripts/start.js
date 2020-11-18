@@ -10,24 +10,16 @@ const PORT = process.env.HOST_PORT || 10086
 const compiler = Webpack(webpackConfig)
 const server = new WebpackDevServer(compiler, {
   contentBase: path.resolve(__dirname, '../dist'),
-  clientLogLevel: 'warning',
-  historyApiFallback: true,
   compress: true,
+  clientLogLevel: 'silent',
   hot: true, // 热加载
-  inline: true,
+  hotOnly:true,
   progress: true, // 打包进度
   open: true, //自动打开浏览器
-  overlay: { // 报错信息
-    warnings: true,
-    errors: false
-  },
-  noInfo: false,
+  inline:true,
+  noInfo: true,
   proxy: {}, // 代理接口转发
   quiet: true, // 日志信息
-  // watchOptions: {
-  //   aggregateTimeout: 300,
-  //   poll: 1000
-  // },
   // before (app, server) {
 
   // },

@@ -29,7 +29,6 @@ const HChart = defineComponent({
   },
   data () {
     return {
-      $customUuid: 0
     } as HChartData
   },
   methods: {

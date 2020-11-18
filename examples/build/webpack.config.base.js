@@ -34,7 +34,7 @@ module.exports = (env) => {
       alias: {
         '@': path.resolve(__dirname, '../src'),
         '@libs': path.resolve(__dirname, '../src/libs'),
-        vue: '@vue/runtime-dom'
+        'vue$': '@vue/runtime-dom'
       },
     },
     optimization: {
@@ -99,12 +99,20 @@ module.exports = (env) => {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
           }
         },
         {
           test: /\.vue$/,
-          use: 'vue-loader',
+          use: {
+            loader: 'vue-loader',
+            options: {
+              hotReload: true
+            },
+          },
           exclude: /node_modules/
         },
         // {
@@ -161,7 +169,8 @@ module.exports = (env) => {
         filename: 'static/css/[name].[hash:8].css',
         chunkFilename: 'static/css/[id].[hash:8].chunk.css'
       }),
-      new VueLoaderPlugin()
+      new VueLoaderPlugin(),
+      new Webpack.HotModuleReplacementPlugin()
     ],
 
     cache: {
