@@ -6,7 +6,7 @@ import 'echarts/lib/component/title' // 标题组件
 import 'echarts/lib/component/legend' // 标注
 
 import { bind, clear } from 'size-sensor'
-import { throttle } from '../../utils/index'
+import { throttle } from '../../utils/utils'
 import { defaultTheme } from '../../utils/themes'
 
 const defaultStyle: CSSProperties = {
@@ -110,6 +110,7 @@ const HChart = defineComponent({
     }
   },
   render () {
+    // console.log(CHART_INSTANCES)
     const { style } = this
     const initStyle = Object.assign({}, defaultStyle, style || {})
 

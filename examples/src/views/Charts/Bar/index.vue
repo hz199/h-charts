@@ -1,24 +1,18 @@
 <template>
   <div class="home">
-    <Prism languages="javascript" :code="code"></Prism>
+    <BaseBar></BaseBar>
   </div>
 </template>
 <script>
-const code =
-`export default {
-  name: 'Bar',
-  data () {
-    return {
-    }
-  },
-  components: {
-  }
-}`
+import BaseBar from './BaseBar'
+
 export default {
   name: 'Bar',
+  components: {
+    BaseBar
+  },
   data () {
     return {
-      code,
     }
   }
 }

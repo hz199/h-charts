@@ -11,7 +11,7 @@ const hLine = defineComponent({
   setup (props) {
     const { dataSource, settings } = toRefs(props)
 
-    let options = ref(lineHandle(dataSource.value, settings.value))
+    const options = ref(lineHandle(dataSource.value, settings.value))
 
     watch([dataSource, settings], () => {
       options.value = lineHandle(dataSource.value, settings.value)

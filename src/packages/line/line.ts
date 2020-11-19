@@ -1,6 +1,7 @@
 import { Columns, ObjectKey, Tuple } from '../../utils/type'
-import { EChartOption } from 'echarts/lib/echarts'
-import { columnsToObject, isBoolean } from '../../utils'
+import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
+import { columnsToObject, isBoolean } from '../../utils/utils'
+import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
 export interface LineCustomsColumns {
   right?: boolean // line
   markMax?: boolean // 显示最大值标注
@@ -16,6 +17,7 @@ export interface LineDataSource<T extends {}> {
 }
 
 export interface LineSettings {
+  title?: EChartTitleOption
   xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
   xVisible?: boolean
   // 区域图形显示
@@ -27,6 +29,8 @@ export interface LineSettings {
   yFormatter?: Tuple<string | ((val: any) => string), 2>
   yVisible?: boolean
   yAxisName?: Array<string>
+
+  LegendVisible?: boolean
 }
 
 const getLineXAxis = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
@@ -75,25 +79,10 @@ const getLineYAxis = <T>(
 
 const getLineTooltip = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
   const { tooltip = true } = settings
-  const defaultTooltip = {
-    trigger: 'axis',
-    axisPointer: {
-      label: {
-        show: true,
-        backgroundColor: '#fff',
-        color: '#556677',
-        borderColor: 'rgba(0,0,0,0)',
-        shadowOffsetY: 0
-      },
-      lineStyle: {
-        width: 0
-      }
-    },
-    padding: [10, 10],
-  }
+  const defaultTip = defaultTooltip()
 
   return isBoolean(tooltip) ? (
-    tooltip ? defaultTooltip : {}
+    tooltip ? defaultTip : {}
   ) : tooltip
 }
 
@@ -149,6 +138,12 @@ const getLineSeries = <T>(
   return series
 }
 
+const getLineLegend = <T>(dataSource: LineDataSource<T>, settings: LineSettings) => {
+  const { LegendVisible = true } = settings
+
+  return defaultLegend(LegendVisible)
+}
+
 const lineHandle = <T = any>(dataSource: LineDataSource<T>, settings: LineSettings) => {
   const lineColumns = columnsToObject<LineColumns>(dataSource.columns)
 
@@ -156,16 +151,12 @@ const lineHandle = <T = any>(dataSource: LineDataSource<T>, settings: LineSettin
   const yAxis = getLineYAxis<T>(dataSource, settings)
   const series = getLineSeries<T>(dataSource, settings, lineColumns)
   const tooltip = getLineTooltip<T>(dataSource, settings)
+  const legend = getLineLegend<T>(dataSource, settings)
+  const { title = {} } = settings
 
   const options = {
-    legend: {
-      show: true,
-      icon: 'circle',
-      textStyle: {
-        fontSize: 12,
-        color: '#c8c8c8'
-      },
-    },
+    title,
+    legend,
     xAxis,
     yAxis,
     series,
