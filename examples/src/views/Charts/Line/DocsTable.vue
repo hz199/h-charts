@@ -42,9 +42,9 @@ export default {
         },
         {
           attribute: 'xVisible',
-          type: 'boolean | undefined',
+          type: 'boolean',
           describe: 'x轴是否显示',
-          default: 'undefined'
+          default: 'true'
         },
         {
           attribute: 'area',
@@ -54,15 +54,15 @@ export default {
         },
         {
           attribute: 'smooth',
-          type: 'boolean | undefined',
+          type: 'boolean',
           describe: '是否是平滑曲线',
-          default: 'undefined'
+          default: 'true'
         },
         {
           attribute: 'tooltip',
           type: 'EChartOption.Tooltip | boolean',
           describe: 'tooltip工具',
-          default: 'undefined'
+          default: 'true'
         },
         {
           attribute: 'yFormatter',
@@ -72,9 +72,9 @@ export default {
         },
         {
           attribute: 'yVisible',
-          type: 'boolean | undefined',
+          type: 'boolean',
           describe: '是否显示y轴',
-          default: `undefined`
+          default: `true`
         },
         {
           attribute: 'yAxisName',
@@ -86,7 +86,7 @@ export default {
           attribute: 'LegendVisible',
           type: 'boolean | undefined',
           describe: 'LegendVisible',
-          default: `undefined`
+          default: `true`
         }
       ]
     }
