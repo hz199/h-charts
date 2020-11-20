@@ -79,7 +79,13 @@ export default {
         {
           attribute: 'yAxisName',
           type: 'Array<string> | undefined',
-          describe: '是否显示y轴',
+          describe: 'y轴名字',
+          default: `undefined`
+        },
+        {
+          attribute: 'LegendVisible',
+          type: 'boolean | undefined',
+          describe: 'LegendVisible',
           default: `undefined`
         }
       ]

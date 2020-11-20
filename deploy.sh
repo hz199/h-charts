@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-# 终止一个错误
 set -e
 cd examples
 

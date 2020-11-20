@@ -1,13 +1,27 @@
-import { isBoolean } from '../../utils/utils'
+import { columnsToObject, isBoolean } from '../../utils/utils'
 import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
+import { Columns, ObjectKey } from '../../utils/type'
+export interface BarCustomsColumns {
+  // right?: boolean // line
+  // markMax?: boolean // 显示最大值标注
+  // markMin?: boolean // 显示最小值标注
+  type?: 'line' | 'bar'
+}
 
-export interface BarDataSource<T> { }
+export type BarColumns = Columns & BarCustomsColumns
+export interface BarDataSource<T> {
+  columns: Array<BarColumns>
+  rows: Array<T>
+  xAxis: Array<string>
+}
 
 export interface BarSettings {
   title?: EChartTitleOption
   LegendVisible?: boolean
   tooltip?: boolean | EChartOption.Tooltip
+
+  xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
 }
 
 const getLineLegend = <T>(dataSource: BarDataSource<T>, settings: BarSettings) => {
@@ -24,44 +38,80 @@ const getBarTooltip = <T>(dataSource: BarDataSource<T>, settings: BarSettings) =
   ) : tooltip
 }
 
-const barHandle = <T = any>(dataSource: BarDataSource<T>, settings: BarSettings) => {
+const getBarXAxis = <T>(dataSource: BarDataSource<T>, settings: BarSettings) => {
+  const { xAxis = [] } = dataSource
+  const { xAxisType = 'category' } = settings
 
-  // const xAxis = getLineXAxis<T>(dataSource, settings)
-  // const yAxis = getLineYAxis<T>(dataSource, settings)
-  // const series = getLineSeries<T>(dataSource, settings, lineColumns)
+  return [
+    {
+      type: xAxisType,
+      data: xAxis
+    }
+  ]
+}
+
+const getBarYAxis = <T>(dataSource: BarDataSource<T>, settings: BarSettings) => {
+  return [
+    {
+      type: 'value'
+    }
+  ]
+}
+
+const getBarSeries = <T>(dataSource: BarDataSource<T>, settings: BarSettings, barColumnsObject: ObjectKey<BarColumns>) => {
+  const { rows } = dataSource
+  const dataSourceMap: ObjectKey = {}
+
+  rows.forEach(item => {
+    for (let key in item) {
+      const currentBarColumns = barColumnsObject[key]
+      if (!dataSourceMap[key] && currentBarColumns) {
+        dataSourceMap[key] = []
+      }
+      if (currentBarColumns) {
+        dataSourceMap[key].push(item[key])
+      }
+    }
+  })
+
+  const series: EChartOption.Series[] = []
+
+  for (let key in dataSourceMap) {
+    const currentBarColumns = barColumnsObject[key]
+
+    series.push(
+      {
+        name: currentBarColumns.title + '',
+        type: currentBarColumns.type || 'bar',
+        data: dataSourceMap[key] || [],
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 10,
+      }
+    )
+  }
+
+  return series
+}
+
+const barHandle = <T = any>(dataSource: BarDataSource<T>, settings: BarSettings) => {
+  const barColumnsObject = columnsToObject<BarColumns>(dataSource.columns)
+  // console.log(JSON.stringify(dataSource, null, 2))
+  const xAxis = getBarXAxis<T>(dataSource, settings)
+  const yAxis = getBarYAxis<T>(dataSource, settings)
+  const series = getBarSeries<T>(dataSource, settings, barColumnsObject)
   const tooltip = getBarTooltip<T>(dataSource, settings)
   const legend = getLineLegend<T>(dataSource, settings)
+
   const { title = {} } = settings
-  console.log(dataSource)
 
   const options = {
     title,
     tooltip,
     legend,
-    xAxis: [
-      {
-        type: 'category',
-        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
-      }
-    ],
-    yAxis: [
-      {
-        type: 'value'
-      }
-    ],
-    series: [
-      {
-        name: '蒸发量',
-        type: 'bar',
-        data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-      },
-      {
-        name: '降水量',
-        type: 'line',
-        symbolSize: 10,
-        data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-      }
-    ]
+    xAxis,
+    yAxis,
+    series
   }
 
   return options as EChartOption

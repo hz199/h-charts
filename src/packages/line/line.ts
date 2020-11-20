@@ -96,10 +96,13 @@ const getLineSeries = <T>(
 
   rows.forEach(item => {
     for (let key in item) {
-      if (!dataSourceMap[key]) {
+      const currentLineColumns = lineColumns[key]
+
+      if (!dataSourceMap[key] && currentLineColumns) {
         dataSourceMap[key] = []
-        dataSourceMap[key].push(item[key])
-      } else {
+      }
+
+      if (currentLineColumns) {
         dataSourceMap[key].push(item[key])
       }
     }
