@@ -1,4 +1,5 @@
 import { CSSProperties, PropType } from 'vue'
+import { ObjectKey } from './type'
 
 const props = {
   renderer: {
@@ -33,6 +34,13 @@ const props = {
   resizeAble: {
     type: Boolean,
     default: () => true
+  },
+  /**
+   * event事件
+   */
+  events: {
+    type: Object as PropType<ObjectKey<Function>>,
+    default: () => ({})
   },
   theme: {
     type: Object as PropType<{

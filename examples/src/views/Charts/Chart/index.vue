@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HChart :options="options"></HChart>
+    <HChart :options="options" :events="chartEvents"></HChart>
 
     <Prism languages="html" isLineNumber :code="optionsStr"></Prism>
   </div>
@@ -76,7 +76,16 @@ export default {
   data () {
     return {
       optionsStr,
-      options
+      options,
+
+      chartEvents: {
+        click: (...args) => {
+          console.log(args)
+        },
+        legendselectchanged: (...args) => { // [params, Echart]
+          console.log(args, 'legendselectchanged')
+        },
+      }
     }
   }
 }

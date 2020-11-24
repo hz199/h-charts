@@ -8,6 +8,7 @@ import 'echarts/lib/component/legend' // 标注
 import { bind, clear } from 'size-sensor'
 import { throttle } from '../../utils/utils'
 import { defaultTheme } from '../../utils/themes'
+import { ObjectKey } from '../../utils/type'
 
 const defaultStyle: CSSProperties = {
   width: '100%',
@@ -80,14 +81,31 @@ const HChart = defineComponent({
       CHART_INSTANCES.get(this)?.dispose()
       CHART_INSTANCES.set(this, null)
       CHART_INSTANCES.delete(this)
+    },
+    bindEvents (instance: ECharts, events: ObjectKey<Function>) {
+      const _bindEvent = (eventName: string, func: Function) => {
+        if (typeof eventName === 'string' && typeof func === 'function') {
+          instance.on(eventName, (param: any) => {
+            func(param, instance)
+          })
+        }
+      };
+      // loop and bind
+      for (const eventName in events) {
+        if (Object.prototype.hasOwnProperty.call(events, eventName)) {
+          _bindEvent(eventName, events[eventName])
+        }
+      }
     }
   },
   beforeUnmount () {
     this.dispose()
   },
   mounted () {
-    this.initChart(this.$el as HTMLDivElement).then(() => {
+    this.initChart(this.$el as HTMLDivElement).then((instance) => {
       this.setOption()
+      // 绑定事件
+      this.bindEvents(instance, this.events)
 
       if (this.resizeAble) {
         bind(this.$el as HTMLDivElement, throttle(this.resizeChart, 100))

@@ -1,7 +1,7 @@
 export const optionsStr =
 `
 <template>
-  <HChart :options="options"></HChart>
+  <HChart :options="options" :events="chartEvents"></HChart>
 </template>
 
 <script>
@@ -71,7 +71,15 @@ export const optionsStr =
     },
     data () {
       return {
-        options
+        options,
+        chartEvents: {
+          click: (...args) => {
+            console.log(args)
+          },
+          legendselectchanged: (...args) => { // [params, Echarts]
+            console.log(args, 'legendselectchanged')
+          },
+        }
       }
     }
   }
