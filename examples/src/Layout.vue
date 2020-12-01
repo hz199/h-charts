@@ -40,7 +40,7 @@
         </article>
       </HMainContent>
       <HFooter>
-        Footer
+        @yyr1994/HChart
       </HFooter>
     </HLayout>
   </HLayout>
