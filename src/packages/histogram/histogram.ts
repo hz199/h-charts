@@ -174,8 +174,6 @@ const histogramHandle = <T = any>(
     tooltip
   }
 
-  console.log(options)
-
   return options as EChartOption
 }
 
