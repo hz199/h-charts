@@ -6,14 +6,14 @@ export default `
  */
 
 <template>
-  <HLine :dataSource="dataSource"></HLine>
+  <HHistogram :dataSource="dataSource"></HHistogram>
 </template>
 <script>
-import { HLine } from '@yyr1994/h-charts'
+import { HHistogram } from '@yyr1994/h-charts'
 
 export default {
   components: {
-    HLine
+    HHistogram
   },
   data () {
     return {

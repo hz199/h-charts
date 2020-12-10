@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3">7. x轴 xAxisType: value 类型</h3>
-    <HLine :dataSource="dataSource" :settings="settings"></HLine>
+    <h3 class="h3">x轴 xAxisType: value 类型</h3>
+    <HHistogram :dataSource="dataSource" :settings="settings"></HHistogram>
 
     <ShowMore>
       <Prism languages="html" isLineNumber :code="codePre"></Prism>
@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import HLine from '@libs/packages/line'
+import HHistogram from '@libs/packages/histogram'
 import { xTypeValueLineMock } from '@/mocks/line'
 import 'echarts/lib/component/markPoint'
 
@@ -25,7 +25,7 @@ const code = `
 export default {
   name: 'XAxisType',
   components: {
-    HLine
+    HHistogram
   },
   data () {
     return {

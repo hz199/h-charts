@@ -4,15 +4,15 @@ export default `
  */
 
 <template>
-  <HLine :dataSource="dataSource"></HLine>
+  <HHistogram :dataSource="dataSource"></HHistogram>
 </template>
 <script>
-import { HLine } from '@yyr1994/h-charts'
+import { HHistogram } from '@yyr1994/h-charts'
 import 'echarts/lib/component/markPoint'
 
 export default {
   components: {
-    HLine
+    HHistogram
   },
   data () {
     return {

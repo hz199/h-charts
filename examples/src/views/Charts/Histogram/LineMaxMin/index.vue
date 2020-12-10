@@ -1,15 +1,15 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3">5. 显示最大最小标注</h3>
-    <HLine :dataSource="dataSource"></HLine>
+    <h3 class="h3">显示最大最小标注</h3>
+    <HHistogram :dataSource="dataSource"></HHistogram>
 
     <ShowMore>
-      <Prism languages="html" :code="codePre"></Prism>
+      <Prism languages="html" isLineNumber :code="codePre"></Prism>
     </ShowMore>
   </div>
 </template>
 <script>
-import HLine from '@libs/packages/line'
+import HHistogram from '@libs/packages/histogram'
 import { baseLineMock } from '@/mocks/line'
 import codePre from './codePre'
 import 'echarts/lib/component/markPoint'
@@ -17,7 +17,7 @@ import 'echarts/lib/component/markPoint'
 export default {
   name: 'BaseLine',
   components: {
-    HLine
+    HHistogram
   },
   data () {
     const { xAxis, rows } = baseLineMock()

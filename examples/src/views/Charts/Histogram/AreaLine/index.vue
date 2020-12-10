@@ -4,7 +4,7 @@
     <HHistogram :dataSource="dataSource" :settings="settings"></HHistogram>
 
     <ShowMore>
-      <Prism languages="html" :code="codePre"></Prism>
+      <Prism languages="html" isLineNumber :code="codePre"></Prism>
     </ShowMore>
   </div>
 </template>

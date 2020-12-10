@@ -33,7 +33,7 @@ const $defaultTheme =
       "borderWidth": 2
     },
     "lineStyle": {
-      "width": 4
+      "width": 3
     },
     "symbolSize": 8,
     "symbol": "emptyCircle",
