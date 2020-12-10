@@ -30,9 +30,9 @@ const router = createRouter({
           component: () => import('../views/Charts/Bar'),
         },
         {
-          path: 'line',
-          name: 'Line',
-          component: () => import('../views/Charts/Line'),
+          path: 'histogram',
+          name: 'Histogram',
+          component: () => import('../views/Charts/histogram'),
         }
       ]
     }

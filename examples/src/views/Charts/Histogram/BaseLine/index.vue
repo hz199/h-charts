@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
     <h3 class="h3">1. 基础示例</h3>
-    <HLine :dataSource="dataSource"></HLine>
+    <HHistogram :dataSource="dataSource"></HHistogram>
 
     <ShowMore>
       <Prism languages="html" :code="codePre"></Prism>
@@ -9,14 +9,14 @@
   </div>
 </template>
 <script>
-import HLine from '@libs/packages/line'
+import HHistogram from '@libs/packages/histogram'
 import { baseLineMock } from '@/mocks/line'
 import codePre from './codePre'
 
 export default {
   name: 'BaseLine',
   components: {
-    HLine
+    HHistogram
   },
   data () {
     return {

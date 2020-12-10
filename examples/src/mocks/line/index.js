@@ -2,7 +2,7 @@ import MockJS from 'mockjs'
 
 export const baseLineMock = () => {
   return MockJS.mock({
-    'columns': [{ title: '总计', key: 'sum'},{ title: '用户', key: 'user' },{ title: '数量', key: 'num' }
+    'columns': [{ title: '总计', key: 'sum', type: 'line'},{ title: '用户', key: 'user' },{ title: '数量', key: 'num' }
     ],
     'xAxis|6': ['@date("yyyy-MM-dd")'],
     'rows|6': [

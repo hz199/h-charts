@@ -12,7 +12,7 @@ export default {
     return {
       dataSource: {
         columns: [
-          { title: '总计', key: 'sum'},
+          { title: '总计', key: 'sum', type: 'line'},
           { title: '用户', key: 'user' },
           { title: '数量', key: 'num' }
         ],
