@@ -3,33 +3,33 @@ import 'echarts/lib/chart/bar'
 import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
-import handleBar, { BarDataSource, BarSettings } from './histogram'
+import handleHistogram, { HistogramDataSource, HistogramSettings } from './histogram'
 import { EChartOption } from 'echarts/lib/echarts'
 
 
 const HHistogram = defineComponent({
   name: 'HHistogram',
   setup (props) {
-    const { dataSource, settings } = toRefs(props)
+    const { dataSource, settings, ariaShow } = toRefs(props)
 
-    const options = ref(handleBar(dataSource.value, settings.value))
+    const options = ref(handleHistogram(dataSource.value, settings.value, ariaShow.value))
 
-    watch([dataSource, settings], () => {
-      options.value = handleBar(dataSource.value, settings.value)
+    watch([dataSource, settings, ariaShow], () => {
+      options.value = handleHistogram(dataSource.value, settings.value, ariaShow.value)
     })
 
     return {
-      barOptions: options
+      Options: options
     }
   },
   props: {
     ...commonProps,
     dataSource: {
-      type: Object as PropType<BarDataSource<{}>>,
+      type: Object as PropType<HistogramDataSource<{}>>,
       default: () => ({})
     },
     settings: {
-      type: Object as PropType<BarSettings>,
+      type: Object as PropType<HistogramSettings>,
       default: () => ({})
     },
   },
@@ -38,7 +38,7 @@ const HHistogram = defineComponent({
 
     return h(Chart, {
       ...rest,
-      options: this.barOptions as EChartOption
+      options: this.Options as EChartOption
     })
   },
 })

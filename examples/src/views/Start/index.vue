@@ -27,6 +27,9 @@ export default {
     var myChart = echarts.init(document.getElementById("container"), defaultTheme.name);
 
     var options = {
+      aria: {
+      show: true
+    },
   "title": {
     text: '懂法守法'
   },

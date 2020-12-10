@@ -14,6 +14,11 @@ const props = {
     type: Boolean,
     default: () => false
   },
+  // 是否无障碍
+  ariaShow: {
+    type: Boolean,
+    default: () => false
+  },
   /**
    * 在设置完 option 是否不立即更新视图，默认 false 立即更新
    */

@@ -1,35 +1,84 @@
-import { columnsToObject, isBoolean } from '../../utils/utils'
+import { Columns, ObjectKey, Tuple } from '../../utils/type'
 import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
+import { columnsToObject, isBoolean } from '../../utils/utils'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
-import { Columns, ObjectKey } from '../../utils/type'
-export interface HistogramColumns {
+export interface HistogramBaseColumns {
   right?: boolean // line
   markMax?: boolean // 显示最大值标注
   markMin?: boolean // 显示最小值标注
   type?: 'line' | 'bar'
 }
 
-export type BarColumns = Columns & HistogramColumns
-export interface BarDataSource<T> {
-  columns: Array<BarColumns>
+export type HistogramColumns = Columns & HistogramBaseColumns
+
+export interface HistogramDataSource<T extends {}> {
+  columns: Array<HistogramColumns>
   rows: Array<T>
   xAxis: Array<string>
 }
 
-export interface BarSettings {
+export interface HistogramSettings {
   title?: EChartTitleOption
-  LegendVisible?: boolean
-  tooltip?: boolean | EChartOption.Tooltip
-
   xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
+  xVisible?: boolean
+  // 区域图形显示
+  area?: boolean,
+  // 是否是平滑曲线
+  smooth?: boolean
+  tooltip?: EChartOption.Tooltip | boolean
+
+  yFormatter?: Tuple<string | ((val: any) => string), 2>
+  yVisible?: boolean
+  yAxisName?: Array<string>
+
+  LegendVisible?: boolean
 }
 
-const getLineLegend = <T>(dataSource: BarDataSource<T>, settings: BarSettings) => {
-  const { LegendVisible = true } = settings
-  return defaultLegend(LegendVisible)
+const getLineXAxis = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
+  const { xAxisType = 'category', xVisible = true } = settings
+  const { xAxis = [] } = dataSource
+
+  return {
+    type: xAxisType,
+    data: xAxis,
+    show: xVisible
+  }
 }
 
-const getBarTooltip = <T>(dataSource: BarDataSource<T>, settings: BarSettings) => {
+const getLineYAxis = <T>(
+  dataSource: HistogramDataSource<T>,
+  settings: HistogramSettings) => {
+  const {
+    yVisible = true,
+    yFormatter = ['{value}', '{value}'],
+    yAxisName = []
+  } = settings
+
+  const yAxisDefault: EChartOption.YAxis = {
+    type: 'value',
+    axisTick: {
+      show: false
+    },
+    show: yVisible
+  }
+
+  const yAxisResult: EChartOption.YAxis[] = []
+
+  for (let i = 0; i < 2; i ++) {
+    yAxisResult[i] = Object.assign({}, yAxisDefault, {
+      position: i === 1 ? 'right' : 'left',
+      axisLabel: {
+        formatter: yFormatter[i]
+      }
+    })
+
+    yAxisResult[i].name = yAxisName[i] || ''
+  }
+
+  return yAxisResult
+}
+
+const getLineTooltip = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
   const { tooltip = true } = settings
   const defaultTip = defaultTooltip()
 
@@ -38,37 +87,23 @@ const getBarTooltip = <T>(dataSource: BarDataSource<T>, settings: BarSettings) =
   ) : tooltip
 }
 
-const getBarXAxis = <T>(dataSource: BarDataSource<T>, settings: BarSettings) => {
-  const { xAxis = [] } = dataSource
-  const { xAxisType = 'category' } = settings
-
-  return [
-    {
-      type: xAxisType,
-      data: xAxis
-    }
-  ]
-}
-
-const getBarYAxis = <T>(dataSource: BarDataSource<T>, settings: BarSettings) => {
-  return [
-    {
-      type: 'value'
-    }
-  ]
-}
-
-const getBarSeries = <T>(dataSource: BarDataSource<T>, settings: BarSettings, barColumnsObject: ObjectKey<BarColumns>) => {
+const getLineSeries = <T>(
+  dataSource: HistogramDataSource<T>,
+  settings: HistogramSettings,
+  lineColumns: ObjectKey<HistogramColumns>) => {
   const { rows } = dataSource
+  const { area, smooth = true } = settings
   const dataSourceMap: ObjectKey = {}
 
   rows.forEach(item => {
     for (let key in item) {
-      const currentBarColumns = barColumnsObject[key]
-      if (!dataSourceMap[key] && currentBarColumns) {
+      const currentLineColumns = lineColumns[key]
+
+      if (!dataSourceMap[key] && currentLineColumns) {
         dataSourceMap[key] = []
       }
-      if (currentBarColumns) {
+
+      if (currentLineColumns) {
         dataSourceMap[key].push(item[key])
       }
     }
@@ -77,44 +112,71 @@ const getBarSeries = <T>(dataSource: BarDataSource<T>, settings: BarSettings, ba
   const series: EChartOption.Series[] = []
 
   for (let key in dataSourceMap) {
-    const currentBarColumns = barColumnsObject[key]
+    const currentLineColumns = lineColumns[key]
 
-    series.push(
-      {
-        name: currentBarColumns.title + '',
-        type: currentBarColumns.type || 'bar',
-        data: dataSourceMap[key] || [],
-        smooth: true,
-        symbol: 'circle',
-        symbolSize: 10,
-      }
-    )
+    const markMax = currentLineColumns.markMax ? [{ name: '最大值', type: 'max' }] : []
+    const markMin = currentLineColumns.markMin ? [{ name: '最小值', type: 'min' }] : []
+
+    series.push({
+      name: currentLineColumns.title + '',
+      type: currentLineColumns.type || 'line',
+      smooth,
+      symbol: 'circle',
+      symbolSize: 10,
+      yAxisIndex: currentLineColumns.right ? 1 : 0,
+      data: dataSourceMap[key],
+      markPoint: {
+        data: [
+          ...markMax,
+          ...markMin
+        ]
+      },
+      ...area ? {
+        areaStyle: {
+          opacity: 0.2
+        }
+      } : {}
+    })
   }
 
   return series
 }
 
-const barHandle = <T = any>(dataSource: BarDataSource<T>, settings: BarSettings) => {
-  const barColumnsObject = columnsToObject<BarColumns>(dataSource.columns)
-  // console.log(JSON.stringify(dataSource, null, 2))
-  const xAxis = getBarXAxis<T>(dataSource, settings)
-  const yAxis = getBarYAxis<T>(dataSource, settings)
-  const series = getBarSeries<T>(dataSource, settings, barColumnsObject)
-  const tooltip = getBarTooltip<T>(dataSource, settings)
-  const legend = getLineLegend<T>(dataSource, settings)
+const getLineLegend = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
+  const { LegendVisible = true } = settings
 
+  return defaultLegend(LegendVisible)
+}
+
+const lineHandle = <T = any>(
+  dataSource: HistogramDataSource<T>,
+  settings: HistogramSettings,
+  ariaShow = false
+) => {
+  const lineColumns = columnsToObject<HistogramColumns>(dataSource.columns)
+
+  const xAxis = getLineXAxis<T>(dataSource, settings)
+  const yAxis = getLineYAxis<T>(dataSource, settings)
+  const series = getLineSeries<T>(dataSource, settings, lineColumns)
+  const tooltip = getLineTooltip<T>(dataSource, settings)
+  const legend = getLineLegend<T>(dataSource, settings)
   const { title = {} } = settings
 
   const options = {
+    aria: {
+      show: ariaShow
+    },
     title,
-    tooltip,
     legend,
     xAxis,
     yAxis,
-    series
+    series,
+    tooltip
   }
+
+  console.log(options)
 
   return options as EChartOption
 }
 
-export default barHandle
+export default lineHandle

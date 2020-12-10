@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <BaseLine></BaseLine>
+    <BaseHistogram></BaseHistogram>
     <AreaLine></AreaLine>
     <DoubleYLine></DoubleYLine>
     <BaseLineSmooth></BaseLineSmooth>
@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import BaseLine from './BaseLine'
+import BaseHistogram from './BaseHistogram'
 import AreaLine from './AreaLine'
 import DoubleYLine from './DoubleYLine'
 import BaseLineSmooth from './BaseLineSmooth'
@@ -24,7 +24,7 @@ import DocsTable from './DocsTable'
 export default {
   name: 'Line',
   components: {
-    BaseLine,
+    BaseHistogram,
     AreaLine,
     DoubleYLine,
     BaseLineSmooth,

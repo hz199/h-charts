@@ -1,10 +1,10 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3">1. 基础示例</h3>
-    <HHistogram :dataSource="dataSource"></HHistogram>
+    <h3 class="h3">基础示例</h3>
+    <HHistogram :dataSource="dataSource" ariaShow></HHistogram>
 
     <ShowMore>
-      <Prism languages="html" :code="codePre"></Prism>
+      <Prism languages="html" isLineNumber :code="codePre"></Prism>
     </ShowMore>
   </div>
 </template>

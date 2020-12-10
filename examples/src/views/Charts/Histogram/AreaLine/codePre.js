@@ -1,12 +1,12 @@
 export default `
 <template>
-  <HLine :dataSource="dataSource" :settings="settings"></HLine>
+  <HHistogram :dataSource="dataSource" :settings="settings"></HHistogram>
 </template>
 <script>
-import { HLine } from '@yyr1994/h-charts'
+import { HHistogram } from '@yyr1994/h-charts'
 export default {
   components: {
-    HLine
+    HHistogram
   },
   data () {
     return {
@@ -14,26 +14,59 @@ export default {
         area: true
       },
       dataSource: {
-        columns: [
-          { title: '总计', key: 'sum'},
-          { title: '用户', key: 'user' },
-          { title: '数量', key: 'num' }
+        "columns": [
+          {
+            "title": "余杭人数",
+            "key": "number1"
+          },
+          {
+            "title": "西湖人数",
+            "key": "number2"
+          },
+          {
+            "title": "下城人数",
+            "key": "number3"
+          }
         ],
-        xAxis: [
-          '2020-11-01',
-          '2020-11-02',
-          '2020-11-03',
-          '2020-11-04',
-          '2020-11-05',
-          '2020-11-06'
+        "xAxis": [
+          "2002-04-12",
+          "2014-08-06",
+          "2017-01-24",
+          "2015-11-17",
+          "1998-06-19",
+          "1980-04-18"
         ],
-        rows: [
-          { sum: 1111, user: 1393, num: 1593 },
-          { sum: 2222, user: 1393, num: 1593 },
-          { sum: 3333, user: 1393, num: 1593 },
-          { sum: 4444, user: 1393, num: 1593 },
-          { sum: 5555, user: 1393, num: 1593 },
-          { sum: 6666, user: 1393, num: 1593 }
+        "rows": [
+          {
+            "number1": 999,
+            "number2": 1350,
+            "number3": 1606
+          },
+          {
+            "number1": 836,
+            "number2": 1491,
+            "number3": 1876
+          },
+          {
+            "number1": 494,
+            "number2": 1362,
+            "number3": 1073
+          },
+          {
+            "number1": 858,
+            "number2": 1384,
+            "number3": 1078
+          },
+          {
+            "number1": 927,
+            "number2": 1087,
+            "number3": 1146
+          },
+          {
+            "number1": 115,
+            "number2": 1036,
+            "number3": 1098
+          }
         ]
       }
     }
