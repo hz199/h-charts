@@ -5,6 +5,7 @@ export const optionsStr =
 </template>
 
 <script>
+  import 'echarts/lib/chart/bar'
   import { HChart } from '@yyr1994/h-charts'
   const options = {
     tooltip: {
@@ -32,7 +33,7 @@ export const optionsStr =
     series: [
       {
         name: 'A',
-        type: 'line',
+        type: 'bar',
         smooth: true,
         symbol: 'circle',
         symbolSize: 13,
@@ -40,7 +41,7 @@ export const optionsStr =
       },
       {
         name: 'B',
-        type: 'line',
+        type: 'bar',
         smooth: true,
         symbol: 'circle',
         symbolSize: 13,
@@ -48,7 +49,7 @@ export const optionsStr =
       },
       {
         name: 'C',
-        type: 'line',
+        type: 'bar',
         smooth: true,
         symbol: 'circle',
         symbolSize: 13,
@@ -56,7 +57,7 @@ export const optionsStr =
       },
       {
         name: 'D',
-        type: 'line',
+        type: 'bar',
         smooth: true,
         symbol: 'circle',
         symbolSize: 13,

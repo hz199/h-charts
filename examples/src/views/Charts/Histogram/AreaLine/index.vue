@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3">2. 堆叠面积图</h3>
-    <HLine :dataSource="dataSource" :settings="settings"></HLine>
+    <h3 class="h3">Line 堆叠面积图</h3>
+    <HHistogram :dataSource="dataSource" :settings="settings"></HHistogram>
 
     <ShowMore>
       <Prism languages="html" :code="codePre"></Prism>
@@ -9,14 +9,14 @@
   </div>
 </template>
 <script>
-import HLine from '@libs/packages/line'
-import { baseLineMock } from '@/mocks/line'
+import HHistogram from '@libs/packages/histogram'
+import { baseLineMock1 } from '@/mocks/line'
 import codePre from './codePre'
 
 export default {
   name: 'BaseLine',
   components: {
-    HLine
+    HHistogram
   },
   data () {
     return {
@@ -24,7 +24,7 @@ export default {
         area: true,
         axisPointer: true
       },
-      dataSource: baseLineMock(),
+      dataSource: baseLineMock1(),
 
       codePre
     }

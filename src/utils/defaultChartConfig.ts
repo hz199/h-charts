@@ -24,7 +24,7 @@ export const defaultTooltip = () => {
         shadowOffsetY: 0
       },
       lineStyle: {
-        width: 0
+        width: 1
       }
     },
     padding: [10, 10],

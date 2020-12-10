@@ -1,19 +1,19 @@
 export default `
 <template>
-  <HLine :dataSource="dataSource"></HLine>
+  <HHistogram :dataSource="dataSource"></HHistogram>
 </template>
 <script>
-import { HLine } from '@yyr1994/h-charts'
+import { HHistogram } from '@yyr1994/h-charts'
 export default {
   components: {
-    HLine
+    HHistogram
   },
   data () {
     return {
       dataSource: {
         columns: [
-          { title: '总计', key: 'sum'},
-          { title: '用户', key: 'user' },
+          { title: '总计', key: 'sum', type: 'bar' },
+          { title: '用户', key: 'user', type: 'bar' },
           { title: '数量', key: 'num' }
         ],
         xAxis: [

@@ -11,14 +11,14 @@ export default {
   data () {
     return {
       settings: {
-        yFormatter: [(val) =>  val + '人', '{value}'],
+        yFormatter: [(val) =>  val + '人', '{value}%'],
         yAxisName: ['人数', '比率']
       },
       dataSource: {
         columns: [
           { title: '余杭人数', key: 'number1'},
           { title: '西湖人数', key: 'number2' },
-          { title: '比率', key: 'ratio', right: true }  // right设置为true，比率依据右侧坐标显示
+          { title: '比率', key: 'ratio', right: true, type: 'bar' }  // right设置为true，比率依据右侧坐标显示
         ],
         xAxis: [
           '2020-11-01',

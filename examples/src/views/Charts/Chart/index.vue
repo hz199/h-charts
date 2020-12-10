@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import 'echarts/lib/chart/line'
+import 'echarts/lib/chart/bar'
 import HChart from '@libs/packages/chart'
 import { optionsStr } from './code'
 
@@ -35,7 +35,7 @@ const options ={
   },
   series: [{
       name: 'A',
-      type: 'line',
+      type: 'bar',
       smooth: true,
       symbol: 'circle',
       symbolSize: 13,
@@ -43,7 +43,7 @@ const options ={
     },
     {
       name: 'B',
-      type: 'line',
+      type: 'bar',
       smooth: true,
       symbol: 'circle',
       symbolSize: 13,
@@ -51,7 +51,7 @@ const options ={
     },
     {
       name: 'C',
-      type: 'line',
+      type: 'bar',
       smooth: true,
       symbol: 'circle',
       symbolSize: 13,
@@ -59,7 +59,7 @@ const options ={
     },
     {
       name: 'D',
-      type: 'line',
+      type: 'bar',
       smooth: true,
       symbol: 'circle',
       symbolSize: 13,
