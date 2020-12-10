@@ -34,7 +34,7 @@ export interface HistogramSettings {
   LegendVisible?: boolean
 }
 
-const getLineXAxis = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
+const histogramXAxis = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
   const { xAxisType = 'category', xVisible = true } = settings
   const { xAxis = [] } = dataSource
 
@@ -45,7 +45,7 @@ const getLineXAxis = <T>(dataSource: HistogramDataSource<T>, settings: Histogram
   }
 }
 
-const getLineYAxis = <T>(
+const histogramYAxis = <T>(
   dataSource: HistogramDataSource<T>,
   settings: HistogramSettings) => {
   const {
@@ -78,7 +78,7 @@ const getLineYAxis = <T>(
   return yAxisResult
 }
 
-const getLineTooltip = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
+const histogramTooltip = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
   const { tooltip = true } = settings
   const defaultTip = defaultTooltip()
 
@@ -87,7 +87,7 @@ const getLineTooltip = <T>(dataSource: HistogramDataSource<T>, settings: Histogr
   ) : tooltip
 }
 
-const getLineSeries = <T>(
+const histogramSeries = <T>(
   dataSource: HistogramDataSource<T>,
   settings: HistogramSettings,
   lineColumns: ObjectKey<HistogramColumns>) => {
@@ -142,7 +142,7 @@ const getLineSeries = <T>(
   return series
 }
 
-const getLineLegend = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
+const histogramLegend = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
   const { LegendVisible = true } = settings
 
   return defaultLegend(LegendVisible)
@@ -155,11 +155,11 @@ const lineHandle = <T = any>(
 ) => {
   const lineColumns = columnsToObject<HistogramColumns>(dataSource.columns)
 
-  const xAxis = getLineXAxis<T>(dataSource, settings)
-  const yAxis = getLineYAxis<T>(dataSource, settings)
-  const series = getLineSeries<T>(dataSource, settings, lineColumns)
-  const tooltip = getLineTooltip<T>(dataSource, settings)
-  const legend = getLineLegend<T>(dataSource, settings)
+  const xAxis = histogramXAxis<T>(dataSource, settings)
+  const yAxis = histogramYAxis<T>(dataSource, settings)
+  const series = histogramSeries<T>(dataSource, settings, lineColumns)
+  const tooltip = histogramTooltip<T>(dataSource, settings)
+  const legend = histogramLegend<T>(dataSource, settings)
   const { title = {} } = settings
 
   const options = {
