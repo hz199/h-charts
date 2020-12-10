@@ -90,20 +90,20 @@ const histogramTooltip = <T>(dataSource: HistogramDataSource<T>, settings: Histo
 const histogramSeries = <T>(
   dataSource: HistogramDataSource<T>,
   settings: HistogramSettings,
-  lineColumns: ObjectKey<HistogramColumns>) => {
+  histogramColumns: ObjectKey<HistogramColumns>) => {
   const { rows } = dataSource
   const { area, smooth = true } = settings
   const dataSourceMap: ObjectKey = {}
 
   rows.forEach(item => {
     for (let key in item) {
-      const currentLineColumns = lineColumns[key]
+      const currentHistogramColumns = histogramColumns[key]
 
-      if (!dataSourceMap[key] && currentLineColumns) {
+      if (!dataSourceMap[key] && currentHistogramColumns) {
         dataSourceMap[key] = []
       }
 
-      if (currentLineColumns) {
+      if (currentHistogramColumns) {
         dataSourceMap[key].push(item[key])
       }
     }
@@ -112,18 +112,18 @@ const histogramSeries = <T>(
   const series: EChartOption.Series[] = []
 
   for (let key in dataSourceMap) {
-    const currentLineColumns = lineColumns[key]
+    const currentHistogramColumns = histogramColumns[key]
 
-    const markMax = currentLineColumns.markMax ? [{ name: '最大值', type: 'max' }] : []
-    const markMin = currentLineColumns.markMin ? [{ name: '最小值', type: 'min' }] : []
+    const markMax = currentHistogramColumns.markMax ? [{ name: '最大值', type: 'max' }] : []
+    const markMin = currentHistogramColumns.markMin ? [{ name: '最小值', type: 'min' }] : []
 
     series.push({
-      name: currentLineColumns.title + '',
-      type: currentLineColumns.type || 'line',
+      name: currentHistogramColumns.title + '',
+      type: currentHistogramColumns.type || 'line',
       smooth,
       symbol: 'circle',
       symbolSize: 10,
-      yAxisIndex: currentLineColumns.right ? 1 : 0,
+      yAxisIndex: currentHistogramColumns.right ? 1 : 0,
       data: dataSourceMap[key],
       markPoint: {
         data: [
@@ -148,16 +148,16 @@ const histogramLegend = <T>(dataSource: HistogramDataSource<T>, settings: Histog
   return defaultLegend(LegendVisible)
 }
 
-const lineHandle = <T = any>(
+const histogramHandle = <T = any>(
   dataSource: HistogramDataSource<T>,
   settings: HistogramSettings,
   ariaShow = false
 ) => {
-  const lineColumns = columnsToObject<HistogramColumns>(dataSource.columns)
+  const histogramColumns = columnsToObject<HistogramColumns>(dataSource.columns)
 
   const xAxis = histogramXAxis<T>(dataSource, settings)
   const yAxis = histogramYAxis<T>(dataSource, settings)
-  const series = histogramSeries<T>(dataSource, settings, lineColumns)
+  const series = histogramSeries<T>(dataSource, settings, histogramColumns)
   const tooltip = histogramTooltip<T>(dataSource, settings)
   const legend = histogramLegend<T>(dataSource, settings)
   const { title = {} } = settings
@@ -179,4 +179,4 @@ const lineHandle = <T = any>(
   return options as EChartOption
 }
 
-export default lineHandle
+export default histogramHandle
