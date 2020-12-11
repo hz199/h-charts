@@ -90,9 +90,9 @@ export default {
         436,
         147
       ],
-      // "smooth": true,
+      "smooth": true,
       // "symbol": "circle",
-      // "symbolSize": 10
+      "symbolSize": 10
     },
     {
       "name": "用户",
@@ -111,7 +111,7 @@ export default {
     },
     {
       "name": "数量",
-      "type": "line",
+      "type": "bar",
       "data": [
         1962,
         1377,

@@ -7,6 +7,7 @@
     <LineMaxMin></LineMaxMin>
     <XAxisTypeTime></XAxisTypeTime>
     <XAxisType></XAxisType>
+    <BarStack></BarStack>
 
     <DocsTable></DocsTable>
   </div>
@@ -19,6 +20,8 @@ import BaseLineSmooth from './BaseLineSmooth'
 import LineMaxMin from './LineMaxMin'
 import XAxisType from './XAxisType'
 import XAxisTypeTime from './XAxisType/indexTime'
+import BarStack from './BarStack'
+
 import DocsTable from './DocsTable'
 
 export default {
@@ -31,6 +34,8 @@ export default {
     LineMaxMin,
     XAxisType,
     XAxisTypeTime,
+    BarStack,
+
     DocsTable
   },
   data () {

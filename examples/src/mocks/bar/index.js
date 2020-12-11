@@ -5,16 +5,12 @@ export const baseBarMock = (type = 'bar') => {
     'columns': [{
         title: '蒸发量',
         key: 'evaporation',
-        type: function () {
-          return Math.random() > 0.5 ? 'bar': type
-        }
+        type: 'bar'
       },
       {
         title: '降雨量',
         key: 'rainfall',
-        type: function () {
-          return Math.random() > 0.5 ? 'bar': type
-        }
+        type: 'bar'
       }
     ],
     'xAxis': ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],

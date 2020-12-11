@@ -32,6 +32,9 @@ export interface HistogramSettings {
   yAxisName?: Array<string>
 
   LegendVisible?: boolean
+  barGap?: string
+  stack?: boolean
+  labelShow?: boolean
 }
 
 const histogramXAxis = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
@@ -92,7 +95,13 @@ const histogramSeries = <T>(
   settings: HistogramSettings,
   histogramColumns: ObjectKey<HistogramColumns>) => {
   const { rows } = dataSource
-  const { area, smooth = true } = settings
+  const {
+    area,
+    smooth = true,
+    barGap = '20%',
+    stack = false
+    labelShow = false
+  } = settings
   const dataSourceMap: ObjectKey = {}
 
   rows.forEach(item => {
@@ -114,28 +123,40 @@ const histogramSeries = <T>(
   for (let key in dataSourceMap) {
     const currentHistogramColumns = histogramColumns[key]
 
-    const markMax = currentHistogramColumns.markMax ? [{ name: '最大值', type: 'max' }] : []
-    const markMin = currentHistogramColumns.markMin ? [{ name: '最小值', type: 'min' }] : []
-
-    series.push({
-      name: currentHistogramColumns.title + '',
-      type: currentHistogramColumns.type || 'line',
-      smooth,
-      symbol: 'circle',
-      symbolSize: 10,
-      yAxisIndex: currentHistogramColumns.right ? 1 : 0,
-      data: dataSourceMap[key],
-      markPoint: {
-        data: [
-          ...markMax,
-          ...markMin
-        ]
+    const barSeries = {
+      barGap,
+      stack,
+      label: {
+        show: labelShow,
+        color: '#314659'
       },
+    }
+
+    const lineSeries = {
+      smooth,
+      symbolSize: 10,
       ...area ? {
         areaStyle: {
           opacity: 0.2
         }
       } : {}
+    }
+
+    const type = currentHistogramColumns.type || 'line'
+
+    series.push({
+      name: currentHistogramColumns.title + '',
+      type,
+      yAxisIndex: currentHistogramColumns.right ? 1 : 0,
+      data: dataSourceMap[key],
+      markPoint: {
+        data: [
+          ...currentHistogramColumns.markMax ? [{ name: '最大值', type: 'max' }] : [],
+          ...currentHistogramColumns.markMin ? [{ name: '最小值', type: 'min' }] : []
+        ]
+      },
+      ...type === 'line' ? lineSeries : {},
+      ...type === 'bar' ? barSeries : {}
     })
   }
 
