@@ -21,7 +21,9 @@ export default {
   data () {
     return {
       settings: {
-        stack: true
+        waterfall: true,
+        fallTotalName: '哈哈哈',
+        fallLegendName: '生活费'
       },
       dataSource: waterFallMock(),
 

@@ -135,7 +135,34 @@ export default {
           describe: '柱状图中间标签知否显示（数值）',
           default: `false`,
           seriesType: 'bar'
-        }
+        },
+        {
+          attribute: '-',
+          type: '-',
+          describe: '-',
+          default: `-`
+        },
+        {
+          attribute: 'waterfall',
+          type: 'boolean',
+          describe: '是否瀑布图',
+          default: `false`,
+          seriesType: 'bar'
+        },
+        {
+          attribute: 'fallTotalName',
+          type: 'string',
+          describe: '瀑布图总计的名称',
+          default: `总计`,
+          seriesType: 'bar'
+        },
+        {
+          attribute: 'fallLegendName',
+          type: 'string',
+          describe: '瀑布图Legend名称',
+          default: `''`,
+          seriesType: 'bar'
+        },
       ]
     }
   }

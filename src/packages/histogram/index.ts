@@ -6,7 +6,6 @@ import Chart from '../chart'
 import handleHistogram, { HistogramDataSource, HistogramSettings } from './histogram'
 import { EChartOption } from 'echarts/lib/echarts'
 
-
 const HHistogram = defineComponent({
   name: 'HHistogram',
   setup (props) {

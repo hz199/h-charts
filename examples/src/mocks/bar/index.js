@@ -44,13 +44,14 @@ export const waterFallMock = () => {
         key: 'number5'
       }
     ],
-    'waterFall':
+    'rows': [
       {
-        'number1|100-1000': 800,
-        'number2|500-2000': 1393,
-        'number3|100-1000': 800,
-        'number4|500-2000': 1393,
-        'number5|100-1000': 800
+        'number1': 3000,
+        'number2': 1000,
+        'number3': 2000,
+        'number4': 400,
+        'number5': 600
       }
+    ]
   })
 }

@@ -2,6 +2,7 @@ import { Columns, ObjectKey, Tuple } from '../../utils/type'
 import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
 import { columnsToObject, isBoolean } from '../../utils/utils'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
+import { waterFallSeries, waterXAxis } from './waterfall'
 export interface HistogramBaseColumns {
   right?: boolean // line
   markMax?: boolean // 显示最大值标注
@@ -15,7 +16,6 @@ export interface HistogramDataSource<T extends {}> {
   columns: Array<HistogramColumns>
   rows: Array<T>
   xAxis: Array<string>
-  waterFall?: Object
 }
 
 export interface HistogramSettings {
@@ -36,16 +36,22 @@ export interface HistogramSettings {
   barGap?: string
   stack?: boolean
   labelShow?: boolean
+
   waterfall?: boolean
+  fallTotalName?: string
+  fallLegendName?: string
 }
 
 const histogramXAxis = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
-  const { xAxisType = 'category', xVisible = true } = settings
+  const {
+    xAxisType = 'category',
+    xVisible = true,
+    waterfall = false } = settings
   const { xAxis = [] } = dataSource
 
   return {
     type: xAxisType,
-    data: xAxis,
+    data: waterfall ? waterXAxis(dataSource.columns, settings) : xAxis,
     show: xVisible
   }
 }
@@ -84,8 +90,24 @@ const histogramYAxis = <T>(
 }
 
 const histogramTooltip = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
-  const { tooltip = true } = settings
-  const defaultTip = defaultTooltip()
+  const { tooltip = true, waterfall = false } = settings
+  let defaultTip = defaultTooltip()
+
+  if (waterfall) {
+    const waterFallTooltip: EChartOption.Tooltip = {
+      formatter: (params) => {
+        if (Array.isArray(params) && params.length >= 2) {
+          const target = params[1]
+
+          return `${target.name}<br/>${target.marker || ''}${target.seriesName} : <b style="font-weight: bold;color:#000">${target.value}</b>`
+        }
+
+        return ''
+      }
+    }
+
+    defaultTip = Object.assign({}, waterFallTooltip, defaultTip)
+  }
 
   return isBoolean(tooltip) ? (
     tooltip ? defaultTip : {}
@@ -105,6 +127,11 @@ const histogramSeries = <T>(
     labelShow = false
   } = settings
   const dataSourceMap: ObjectKey = {}
+
+  if (!Array.isArray(rows)) {
+    console.warn('rows must be an array')
+    return []
+  }
 
   rows.forEach(item => {
     for (let key in item) {
@@ -180,7 +207,9 @@ const histogramHandle = <T = any>(
 
   const xAxis = histogramXAxis<T>(dataSource, settings)
   const yAxis = histogramYAxis<T>(dataSource, settings)
-  const series = histogramSeries<T>(dataSource, settings, histogramColumns)
+  const series = settings.waterfall
+    ? waterFallSeries<T>(dataSource, settings) :
+    histogramSeries<T>(dataSource, settings, histogramColumns)
   const tooltip = histogramTooltip<T>(dataSource, settings)
   const legend = histogramLegend<T>(dataSource, settings)
   const { title = {} } = settings
