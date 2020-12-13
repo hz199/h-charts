@@ -152,17 +152,24 @@ export default {
         {
           attribute: 'fallTotalName',
           type: 'string',
-          describe: '瀑布图总计的名称',
+          describe: '瀑布图总计的名称（只适用于瀑布图）',
           default: `总计`,
           seriesType: 'bar'
         },
         {
           attribute: 'fallLegendName',
           type: 'string',
-          describe: '瀑布图Legend名称',
+          describe: '瀑布图Legend名称（只适用于瀑布图）',
           default: `''`,
           seriesType: 'bar'
         },
+        {
+          attribute: 'fallBarColor',
+          type: 'string',
+          describe: '瀑布图柱体颜色（只适用于瀑布图）',
+          default: `''`,
+          seriesType: 'bar'
+        }
       ]
     }
   }

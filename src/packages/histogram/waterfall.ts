@@ -9,7 +9,8 @@ export const waterFallSeries = <T>(
   const { rows = [] } = dataSource
   const {
     labelShow = false,
-    fallLegendName = ''
+    fallLegendName = '',
+    fallBarColor = ''
   } = settings
 
   if (!Array.isArray(rows)) {
@@ -61,6 +62,12 @@ export const waterFallSeries = <T>(
       label: {
         show: labelShow
       },
+      itemStyle: {
+        color: fallBarColor
+      },
+      // backgroundStyle: {
+      //   color: ''
+      // },
       data: [seriesDataTotal, ...seriesData]
     }
   ])

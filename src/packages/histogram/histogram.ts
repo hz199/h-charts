@@ -40,6 +40,7 @@ export interface HistogramSettings {
   waterfall?: boolean
   fallTotalName?: string
   fallLegendName?: string
+  fallBarColor?: string
 }
 
 const histogramXAxis = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {

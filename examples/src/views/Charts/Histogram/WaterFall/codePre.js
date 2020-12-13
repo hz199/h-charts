@@ -21,8 +21,9 @@ export default {
     return {
       settings: {
         waterfall: true,
-        fallTotalName: '哈哈哈',
-        fallLegendName: '生活费'
+        fallTotalName: '😂',
+        fallLegendName: '生活费',
+        fallBarColor: '#27727b'
       },
       dataSource: {
         "columns": [
