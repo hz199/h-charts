@@ -40,8 +40,15 @@ export default {
       ],
       tableData: [
         {
+          attribute: 'title',
+          type: 'EChartTitleOption',
+          describe: '图表标题',
+          default: '{}',
+          seriesType: 'bar/line'
+        },
+        {
           attribute: 'xAxisType',
-          type: 'EChartOption.BasicComponents.CartesianAxis.Type | undefined',
+          type: 'EChartOption.BasicComponents.CartesianAxis.Type',
           describe: 'x轴的类型',
           default: 'category',
           seriesType: 'bar/line'
@@ -76,21 +83,21 @@ export default {
         },
         {
           attribute: 'yAxisName',
-          type: 'Array<string> | undefined',
+          type: 'Array<string>',
           describe: 'y轴名字',
           default: `undefined`,
           seriesType: 'bar/line'
         },
         {
           attribute: 'LegendVisible',
-          type: 'boolean | undefined',
+          type: 'boolean',
           describe: '图例是否显示',
           default: `true`,
           seriesType: 'bar/line'
         },
         {
           attribute: 'area',
-          type: 'boolean | undefined',
+          type: 'boolean',
           describe: '区域图形显示',
           default: 'undefined',
           seriesType: 'line'

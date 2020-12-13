@@ -20,3 +20,37 @@ export const baseBarMock = (type = 'bar') => {
     }, ]
   })
 }
+
+export const waterFallMock = () => {
+  return MockJS.mock({
+    'columns': [{
+        title: '房租',
+        key: 'number1'
+      },
+      {
+        title: '水电费',
+        key: 'number2'
+      },
+      {
+        title: '交通费',
+        key: 'number3'
+      },
+      {
+        title: '伙食费',
+        key: 'number4'
+      },
+      {
+        title: '日用品数',
+        key: 'number5'
+      }
+    ],
+    'waterFall':
+      {
+        'number1|100-1000': 800,
+        'number2|500-2000': 1393,
+        'number3|100-1000': 800,
+        'number4|500-2000': 1393,
+        'number5|100-1000': 800
+      }
+  })
+}

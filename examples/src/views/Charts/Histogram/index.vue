@@ -8,6 +8,7 @@
     <XAxisTypeTime></XAxisTypeTime>
     <XAxisType></XAxisType>
     <BarStack></BarStack>
+    <WaterFall></WaterFall>
 
     <DocsTable></DocsTable>
   </div>
@@ -21,6 +22,7 @@ import LineMaxMin from './LineMaxMin'
 import XAxisType from './XAxisType'
 import XAxisTypeTime from './XAxisType/indexTime'
 import BarStack from './BarStack'
+import WaterFall from './WaterFall'
 
 import DocsTable from './DocsTable'
 
@@ -35,6 +37,7 @@ export default {
     XAxisType,
     XAxisTypeTime,
     BarStack,
+    WaterFall,
 
     DocsTable
   },

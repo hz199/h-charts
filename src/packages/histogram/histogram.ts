@@ -15,6 +15,7 @@ export interface HistogramDataSource<T extends {}> {
   columns: Array<HistogramColumns>
   rows: Array<T>
   xAxis: Array<string>
+  waterFall?: Object
 }
 
 export interface HistogramSettings {
@@ -35,6 +36,7 @@ export interface HistogramSettings {
   barGap?: string
   stack?: boolean
   labelShow?: boolean
+  waterfall?: boolean
 }
 
 const histogramXAxis = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
@@ -94,12 +96,12 @@ const histogramSeries = <T>(
   dataSource: HistogramDataSource<T>,
   settings: HistogramSettings,
   histogramColumns: ObjectKey<HistogramColumns>) => {
-  const { rows } = dataSource
+  const { rows = [] } = dataSource
   const {
     area,
     smooth = true,
     barGap = '20%',
-    stack = false
+    stack = false,
     labelShow = false
   } = settings
   const dataSourceMap: ObjectKey = {}
@@ -129,7 +131,7 @@ const histogramSeries = <T>(
       label: {
         show: labelShow,
         color: '#314659'
-      },
+      }
     }
 
     const lineSeries = {

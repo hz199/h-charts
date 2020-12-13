@@ -12,10 +12,18 @@ const HHistogram = defineComponent({
   setup (props) {
     const { dataSource, settings, ariaShow } = toRefs(props)
 
-    const options = ref(handleHistogram(dataSource.value, settings.value, ariaShow.value))
+    const options = ref(handleHistogram(
+      dataSource.value,
+      settings.value,
+      ariaShow.value
+    ))
 
     watch([dataSource, settings, ariaShow], () => {
-      options.value = handleHistogram(dataSource.value, settings.value, ariaShow.value)
+      options.value = handleHistogram(
+        dataSource.value,
+        settings.value,
+        ariaShow.value
+      )
     })
 
     return {
