@@ -18,6 +18,7 @@ const handlePie = <T = any>(
   dataSource: PieDataSource<T>,
   settings: PieSettings,
 ) => {
+  console.log(dataSource, settings)
   
   const options = {
     

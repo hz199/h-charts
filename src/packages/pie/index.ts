@@ -8,7 +8,6 @@ import handlePie, { PieDataSource, PieSettings } from './pie'
 const HPie = defineComponent({
   name: 'HHistogram',
   setup (props) {
-    console.log(props)
     const { dataSource, settings } = toRefs(props)
 
     const options: Ref<EChartOption> = ref(handlePie(
