@@ -89,8 +89,7 @@ const HChart = defineComponent({
             func(param, instance)
           })
         }
-      };
-      // loop and bind
+      }
       for (const eventName in events) {
         if (Object.prototype.hasOwnProperty.call(events, eventName)) {
           _bindEvent(eventName, events[eventName])
@@ -108,7 +107,7 @@ const HChart = defineComponent({
       this.bindEvents(instance, this.events)
 
       if (this.resizeAble) {
-        bind(this.$el as HTMLDivElement, throttle(this.resizeChart, 100))
+        bind(this.$el as HTMLDivElement, throttle(this.resizeChart, 200))
       }
     })
 

@@ -15,12 +15,12 @@ export default [
         path: '/chart'
       },
       {
-        title: 'line 折线图',
-        path: '/line'
+        title: 'histogram 直方图',
+        path: '/histogram'
       },
       {
-        title: 'bar 柱状图',
-        path: '/bar'
+        title: 'pie 饼状图',
+        path: '/pie'
       },
     ]
   }

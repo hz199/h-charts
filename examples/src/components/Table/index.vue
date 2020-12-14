@@ -85,11 +85,13 @@ export default {
   border-bottom: 1px solid #e9eaec;
   height: 44px;
   line-height: 44px;
-  white-space: nowrap;
+  // white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
   padding: 0 5px;
   font-size: 12px;
+  line-height: 1.5;
+  vertical-align: middle;
 }
 
 .table.is-border > thead > tr > th {

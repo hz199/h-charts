@@ -261,10 +261,10 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@types/echarts@^4.8.3":
-  version "4.8.3"
-  resolved "https://registry.npm.taobao.org/@types/echarts/download/@types/echarts-4.8.3.tgz#78ef1ede01c3705b52342da997b3d54571d3604e"
-  integrity sha1-eO8e3gHDcFtSNC2pl7PVRXHTYE4=
+"@types/echarts@^4.9.2":
+  version "4.9.2"
+  resolved "https://registry.npmjs.org/@types/echarts/-/echarts-4.9.2.tgz#305d250aabf3cb4c47e26ef6b335aab5354339f6"
+  integrity sha512-ycAmdt/PbQEuj+9cI9O0mZV6Dd+R1+ngs9S8P7Cbxj8RWXbL8NOvnzXdJRvR/+9lx/hq/O1rdLxXYXXTVImujw==
   dependencies:
     "@types/zrender" "*"
 
@@ -856,12 +856,12 @@ echarts-wordcloud@^1.1.3:
   resolved "https://registry.npmjs.org/echarts-wordcloud/-/echarts-wordcloud-1.1.3.tgz#07b140c8ba76b19c317b43c310f3d5dc99289ff2"
   integrity sha512-Et8D5xEAoYkidmHun+hEH+2lF9dhCt6D0JJ390vlr2r/1zwhhZAbcL01CEvG93QcMcJpSvSPK8vRiGkTbMHRxg==
 
-echarts@^4.9.0:
-  version "4.9.0"
-  resolved "https://registry.npm.taobao.org/echarts/download/echarts-4.9.0.tgz?cache=0&sync_timestamp=1603712814249&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fecharts%2Fdownload%2Fecharts-4.9.0.tgz#a9b9baa03f03a2a731e6340c55befb57a9e1347d"
-  integrity sha1-qbm6oD8Doqcx5jQMVb77V6nhNH0=
+echarts@^5.0.0-beta.2:
+  version "5.0.0-beta.2"
+  resolved "https://registry.npmjs.org/echarts/-/echarts-5.0.0-beta.2.tgz#6e25bee063f645caeb6fcd3f73aaf089ca0d8c46"
+  integrity sha512-i3cxjm6/t0JgoxDonUltC0sRX1y4y5kiD6VPuBvJejZm2houIah4em1C+4F3MDqO9wKoNiQtQ/30J0/KOuqhdA==
   dependencies:
-    zrender "4.3.2"
+    zrender "5.0.0-beta.2"
 
 electron-to-chromium@^1.3.571:
   version "1.3.580"
@@ -2181,6 +2181,11 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+tslib@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
+  integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
+
 tslib@^2.0.3:
   version "2.0.3"
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-2.0.3.tgz?cache=0&sync_timestamp=1602286854330&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
@@ -2245,7 +2250,9 @@ wrappy@1:
   resolved "https://registry.npm.taobao.org/wrappy/download/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-zrender@4.3.2:
-  version "4.3.2"
-  resolved "https://registry.npm.taobao.org/zrender/download/zrender-4.3.2.tgz?cache=0&sync_timestamp=1603693374070&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fzrender%2Fdownload%2Fzrender-4.3.2.tgz#ec7432f9415c82c73584b6b7b8c47e1b016209c6"
-  integrity sha1-7HQy+UFcgsc1hLa3uMR+GwFiCcY=
+zrender@5.0.0-beta.2:
+  version "5.0.0-beta.2"
+  resolved "https://registry.npmjs.org/zrender/-/zrender-5.0.0-beta.2.tgz#0932cd2a50f580472add1ae902a66935440c4697"
+  integrity sha512-VClfQCYzpjR9nDs3A1jYcHNPeg5tjNlhV8he9CHLQTK8lz1ZMthwBASxwfli4AK2J9muwuLQ9XXRmEWV5ebARQ==
+  dependencies:
+    tslib "1.10.0"
