@@ -1,5 +1,5 @@
 import { App, defineComponent, h, PropType, Ref, ref, toRefs, watch } from 'vue'
-import 'echarts/lib/chart/bar'
+import 'echarts/lib/chart/pie'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
 import { EChartOption } from 'echarts/lib/echarts'
@@ -23,7 +23,7 @@ const HPie = defineComponent({
     })
 
     return {
-      Options: {}
+      Options: options
     }
   },
   props: {

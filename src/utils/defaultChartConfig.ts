@@ -1,5 +1,5 @@
 
-export const defaultLegend = (LegendVisible: boolean) => {
+export const defaultLegend = (LegendVisible = true) => {
   const defaultLegend = {
     show: LegendVisible,
     icon: 'circle',
@@ -12,9 +12,9 @@ export const defaultLegend = (LegendVisible: boolean) => {
   return defaultLegend
 }
 
-export const defaultTooltip = () => {
+export const defaultTooltip = (trigger = 'axis') => {
   return {
-    trigger: 'axis',
+    trigger,
     axisPointer: {
       label: {
         show: true,

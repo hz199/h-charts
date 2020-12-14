@@ -12,7 +12,7 @@ export interface HistogramBaseColumns {
 
 export type HistogramColumns = Columns & HistogramBaseColumns
 
-export interface HistogramDataSource<T extends {}> {
+export interface HistogramDataSource<T extends ObjectKey> {
   columns: Array<HistogramColumns>
   rows: Array<T>
   xAxis: Array<string>

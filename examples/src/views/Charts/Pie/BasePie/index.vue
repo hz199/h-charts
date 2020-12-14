@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3">Bar 堆叠图</h3>
+    <h3 class="h3">基础饼状图</h3>
     <HPie :dataSource="dataSource"></HPie>
 
     <ShowMore>
