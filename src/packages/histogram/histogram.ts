@@ -199,7 +199,7 @@ const histogramLegend = <T>(dataSource: HistogramDataSource<T>, settings: Histog
   return defaultLegend(LegendVisible)
 }
 
-const histogramHandle = <T = any>(
+const handleHistogram = <T = any>(
   dataSource: HistogramDataSource<T>,
   settings: HistogramSettings,
   ariaShow = false
@@ -230,4 +230,4 @@ const histogramHandle = <T = any>(
   return options as EChartOption
 }
 
-export default histogramHandle
+export default handleHistogram

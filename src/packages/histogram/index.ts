@@ -1,4 +1,4 @@
-import { App, defineComponent, h, PropType, ref, toRefs, watch } from 'vue'
+import { App, defineComponent, h, PropType, Ref, ref, toRefs, watch } from 'vue'
 import 'echarts/lib/chart/bar'
 import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
@@ -11,7 +11,7 @@ const HHistogram = defineComponent({
   setup (props) {
     const { dataSource, settings, ariaShow } = toRefs(props)
 
-    const options = ref(handleHistogram(
+    const options: Ref<EChartOption> = ref(handleHistogram(
       dataSource.value,
       settings.value,
       ariaShow.value
@@ -45,7 +45,7 @@ const HHistogram = defineComponent({
 
     return h(Chart, {
       ...rest,
-      options: this.Options as EChartOption
+      options: this.Options
     })
   },
 })
