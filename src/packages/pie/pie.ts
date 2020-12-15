@@ -1,6 +1,6 @@
 import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
 import { Columns, ObjectKey } from '../../utils/type'
-import { isBoolean } from '../../utils/utils'
+import { isBoolean, isObject } from '../../utils/utils'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
 
 export interface PieBaseColumns {
@@ -18,6 +18,14 @@ export interface PieSettings {
   title?: EChartTitleOption
   tooltip?: EChartOption.Tooltip | boolean
   legend?: EChartOption.Legend | boolean
+
+  eRadius?: string
+  wRadius?: string
+  xOffset?: string
+  yOffset?: string
+  toolTipName?: string
+  hasBorder?: boolean
+  labelFontSize?: number
 }
 
 const pieTooltip = <T>(dataSource: PieDataSource<T>, settings: PieSettings) => {
@@ -29,10 +37,76 @@ const pieTooltip = <T>(dataSource: PieDataSource<T>, settings: PieSettings) => {
   ) : tooltip
 }
 
-const pieLegend = <T>(dataSource: PieDataSource<T>, settings: PieSettings) => {
+const pieLegend = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: PieSettings) => {
   const { legend = true } = settings
 
   return isBoolean(legend) ? defaultLegend() : legend
+}
+
+const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: PieSettings) => {
+  const { rows, columns } = dataSource
+  const {
+    eRadius = '60%',
+    wRadius = '0%',
+    xOffset = '50%',
+    yOffset = '50%',
+    toolTipName = '',
+    hasBorder = true,
+    labelFontSize
+  } = settings
+
+  if (!isObject(rows)) {
+    console.warn('rows must be a object')
+    return
+  }
+
+  const seriesData: Array<{
+    value: number
+    name: string}> =[]
+
+  columns.forEach(item => {
+    seriesData.push({
+      value: rows[item.key],
+      name: item.title + ''
+    })
+  })
+
+  const series: EChartOption.Series[] = [
+    {
+      name: toolTipName,
+      type: 'pie', // [eRadius, wRadius]
+      radius: wRadius === '0%' ? eRadius: [eRadius, wRadius],
+      center: [xOffset, yOffset],
+      data: seriesData.sort(function (a, b) {
+        return a.value - b.value;
+      }),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      },
+      label: {
+        show: true,
+        position: wRadius === '0%' ? 'outside' : 'center',
+        fontSize: labelFontSize
+      },
+      itemStyle: hasBorder ? {
+        borderRadius: 6,
+        borderColor: '#f0f0f0',
+        borderWidth: 2
+      } : {},
+      roseType: 'radius',
+      animationType: 'scale',
+      animationEasing: 'elasticOut',
+      animationDelay: function () {
+        return Math.random() * 300;
+      }
+    }
+  ]
+
+  return series
 }
 
 const handlePie = <T = {}>(
@@ -41,55 +115,14 @@ const handlePie = <T = {}>(
 ) => {
   const tooltip = pieTooltip<T>(dataSource, settings)
   const legend = pieLegend<T>(dataSource, settings)
-  // console.log(dataSource, settings)
+  const series = pieSeries<T>(dataSource, settings)
   const { title = {} } = settings
 
   const options = {
     title,
     tooltip,
     legend,
-    series: [
-      {
-        name: '',
-        type: 'pie',
-        radius: '60%',
-        center: ['25%', '50%'],
-        data: [
-          { value: 1048, name: '搜索引擎' },
-          { value: 735, name: '直接访问' },
-          { value: 580, name: '邮件营销' },
-          { value: 484, name: '联盟广告' },
-          { value: 300, name: '视频广告' }
-        ],
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          }
-        }
-      },
-      {
-        name: '',
-        type: 'pie',
-        radius: '60%',
-        center: ['75%', '50%'],
-        data: [
-          { value: 1048, name: '搜索引擎1' },
-          { value: 735, name: '直接访问1' },
-          { value: 580, name: '邮件营销1' },
-          { value: 484, name: '联盟广告1' },
-          { value: 300, name: '视频广告1' }
-        ],
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
-          }
-        }
-      }
-    ]
+    series
   };
 
   return options as EChartOption
