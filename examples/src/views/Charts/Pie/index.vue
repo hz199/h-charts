@@ -1,15 +1,18 @@
 <template>
   <div class="home">
     <BasePie></BasePie>
+    <RadiusPie></RadiusPie>
   </div>
 </template>
 <script>
 import BasePie from './BasePie'
+import RadiusPie from './RadiusPie'
 
 export default {
   name: 'Pie',
   components: {
-    BasePie
+    BasePie,
+    RadiusPie
   }
 }
 </script>

@@ -19,13 +19,17 @@ export interface PieSettings {
   tooltip?: EChartOption.Tooltip | boolean
   legend?: EChartOption.Legend | boolean
 
-  eRadius?: string
-  wRadius?: string
+  eRadius?: string // 外半径
+  wRadius?: string // 内半径
   xOffset?: string
   yOffset?: string
   toolTipName?: string
   hasBorder?: boolean
+  borderRadius?: number
   labelFontSize?: number
+  labelShow?: boolean
+
+  roseType?: 'radius' | 'area'
 }
 
 const pieTooltip = <T>(dataSource: PieDataSource<T>, settings: PieSettings) => {
@@ -51,8 +55,11 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
     xOffset = '50%',
     yOffset = '50%',
     toolTipName = '',
-    hasBorder = true,
-    labelFontSize
+    hasBorder = false,
+    borderRadius = 6,
+    labelFontSize,
+    roseType = '',
+    labelShow = true
   } = settings
 
   if (!isObject(rows)) {
@@ -88,16 +95,18 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
         }
       },
       label: {
-        show: true,
         position: wRadius === '0%' ? 'outside' : 'center',
-        fontSize: labelFontSize
+        fontSize: labelFontSize,
+        show: labelShow,
+        distanceToLabelLine: 5,
+        formatter: '{b}：{d}%',
       },
       itemStyle: hasBorder ? {
-        borderRadius: 6,
+        borderRadius: borderRadius,
         borderColor: '#f0f0f0',
         borderWidth: 2
       } : {},
-      roseType: 'radius',
+      roseType,
       animationType: 'scale',
       animationEasing: 'elasticOut',
       animationDelay: function () {
