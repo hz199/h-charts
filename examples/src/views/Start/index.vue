@@ -10,122 +10,51 @@
   </div>
 </template>
 <script>
-import { defaultTheme } from '@libs/utils/themes'
-import echarts from 'echarts/lib/echarts'
-import 'echarts/lib/chart/bar'
-import 'echarts/lib/chart/line'
-import 'echarts/lib/component/tooltip' // 提示框组件
-import 'echarts/lib/component/title' // 标题组件
-import 'echarts/lib/component/legend' // 标注
-
+import { defaultTheme } from "@libs/utils/themes";
+import echarts from "echarts/lib/echarts";
+import "echarts/lib/chart/pie";
+import "echarts/lib/component/tooltip"; // 提示框组件
+import "echarts/lib/component/title"; // 标题组件
+import "echarts/lib/component/legend"; // 标注
 
 export default {
   name: "Start",
   mounted() {
-    echarts.registerTheme(defaultTheme.name, defaultTheme.value)
+    echarts.registerTheme(defaultTheme.name, defaultTheme.value);
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById("container"), defaultTheme.name);
+    var myChart = echarts.init(
+      document.getElementById("container"),
+      defaultTheme.name
+    );
 
     var options = {
-      aria: {
-      show: true
-    },
-  "title": {
-    text: '懂法守法'
-  },
-  "tooltip": {
-    "trigger": "axis",
-    "axisPointer": {
-      "label": {
-        "show": true,
-        "backgroundColor": "#fff",
-        "color": "#556677",
-        "borderColor": "rgba(0,0,0,0)",
-        "shadowOffsetY": 0
+      tooltip: {
+        trigger: "item",
+        formatter: "{a} <br/>{b}: {c} ({d}%)",
       },
-      "lineStyle": {
-        "width": 0
-      }
-    },
-    "padding": [
-      10,
-      10
-    ]
-  },
-  "legend": {
-    "show": true,
-    "icon": "circle",
-    "textStyle": {
-      "fontSize": 12,
-      "color": "#c8c8c8"
-    }
-  },
-  "xAxis": [
-    {
-      "type": "category",
-      "data": [
-        "1976-11-18",
-        "1988-10-11",
-        "2007-03-24",
-        "1999-01-03",
-        "2019-05-20",
-        "1999-09-23"
-      ]
-    }
-  ],
-  "yAxis": [
-    {
-      "type": "value"
-    }
-  ],
-  "series": [
-    {
-      "name": "总计",
-      "type": "line",
-      "data": [
-        233,
-        115,
-        680,
-        800,
-        436,
-        147
+      series: [
+        {
+            name: '面积模式',
+            type: 'pie',
+            radius: [20, 140],
+            center: ['50%', '50%'],
+            roseType: 'area',
+            itemStyle: {
+                borderRadius: 5
+            },
+            data: [
+                {value: 30, name: 'rose 1'},
+                {value: 28, name: 'rose 2'},
+                {value: 26, name: 'rose 3'},
+                {value: 24, name: 'rose 4'},
+                {value: 22, name: 'rose 5'},
+                {value: 20, name: 'rose 6'},
+                {value: 18, name: 'rose 7'},
+                {value: 16, name: 'rose 8'}
+            ]
+        }
       ],
-      "smooth": true,
-      // "symbol": "circle",
-      "symbolSize": 10
-    },
-    {
-      "name": "用户",
-      "type": "bar",
-      "data": [
-        1028,
-        1059,
-        1310,
-        1048,
-        1217,
-        1106
-      ],
-      "smooth": true,
-      "symbol": "circle",
-      "symbolSize": 10
-    },
-    {
-      "name": "数量",
-      "type": "bar",
-      "data": [
-        1962,
-        1377,
-        1876,
-        1938,
-        1299,
-        1286
-      ],
-      "smooth": true,
-      "symbol": "circle",
-      "symbolSize": 10
-    }
-  ]
-}
+    };
 
     // 绘制图表
     myChart.setOption(options);

@@ -55,7 +55,7 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
     xOffset = '50%',
     yOffset = '50%',
     toolTipName = '',
-    hasBorder = false,
+    hasBorder = true,
     borderRadius = 6,
     labelFontSize,
     roseType = '',
@@ -92,12 +92,16 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
           shadowBlur: 10,
           shadowOffsetX: 0,
           shadowColor: 'rgba(0, 0, 0, 0.5)'
+        },
+        label: {
+          show: true,
+          fontWeight: 'bold'
         }
       },
       label: {
         position: wRadius === '0%' ? 'outside' : 'center',
         fontSize: labelFontSize,
-        show: labelShow,
+        show: wRadius === '0%' ? labelShow : false,
         distanceToLabelLine: 5,
         formatter: '{b}：{d}%',
       },

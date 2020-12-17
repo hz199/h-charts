@@ -13,8 +13,6 @@ import HPie from '@libs/packages/pie'
 import { basePieMock } from '@/mocks/pie'
 import codePre from './codePre'
 
-console.log(JSON.stringify(basePieMock(), null, 2))
-
 export default {
   name: 'BaseLine',
   components: {
