@@ -23,7 +23,7 @@ export interface PieSettings {
   wRadius?: string // 内半径
   xOffset?: string
   yOffset?: string
-  toolTipName?: string
+  seriesName?: string
   hasBorder?: boolean
   borderRadius?: number
   labelFontSize?: number
@@ -54,7 +54,7 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
     wRadius = '0%',
     xOffset = '50%',
     yOffset = '50%',
-    toolTipName = '',
+    seriesName = '',
     hasBorder = true,
     borderRadius = 6,
     labelFontSize,
@@ -80,7 +80,7 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
 
   const series: EChartOption.Series[] = [
     {
-      name: toolTipName,
+      name: seriesName,
       type: 'pie',
       radius: [wRadius, eRadius],
       center: [xOffset, yOffset],
