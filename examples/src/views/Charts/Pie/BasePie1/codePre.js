@@ -11,8 +11,8 @@ export default {
   data () {
     return {
       settings: {
-        wRadius: '10%',
-        roseType: 'radius'
+        wRadius: '10%', // 内圆半径大小，默认0%
+        eRadius: '30%', // 外圆半径大小 默认60%
       },
       dataSource: {
         "columns": [

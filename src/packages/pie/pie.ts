@@ -81,8 +81,8 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
   const series: EChartOption.Series[] = [
     {
       name: toolTipName,
-      type: 'pie', // [eRadius, wRadius]
-      radius: wRadius === '0%' ? eRadius: [eRadius, wRadius],
+      type: 'pie',
+      radius: [wRadius, eRadius],
       center: [xOffset, yOffset],
       data: seriesData.sort(function (a, b) {
         return a.value - b.value;
@@ -99,9 +99,9 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
         }
       },
       label: {
-        position: wRadius === '0%' ? 'outside' : 'center',
+        position: 'outside',
         fontSize: labelFontSize,
-        show: wRadius === '0%' ? labelShow : false,
+        show: labelShow,
         distanceToLabelLine: 5,
         formatter: '{b}：{d}%',
       },
@@ -114,7 +114,7 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
       animationType: 'scale',
       animationEasing: 'elasticOut',
       animationDelay: function () {
-        return Math.random() * 300;
+        return Math.random() * 120;
       }
     }
   ]

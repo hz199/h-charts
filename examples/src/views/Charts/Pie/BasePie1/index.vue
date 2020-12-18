@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <h3 class="h3">南丁格尔玫瑰</h3>
+    <h3 class="h3">半径调整</h3>
     <HPie :dataSource="dataSource" :settings="settings"></HPie>
 
     <ShowMore>
@@ -22,9 +22,7 @@ export default {
     return {
       settings: {
         wRadius: '10%',
-        roseType: 'radius'
-        // labelFontSize: 13,
-        // labelShow: false
+        eRadius: '30%',
       },
       dataSource: basePieMock(),
 

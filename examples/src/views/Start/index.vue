@@ -27,34 +27,61 @@ export default {
       defaultTheme.name
     );
 
-    var options = {
-      tooltip: {
-        trigger: "item",
-        formatter: "{a} <br/>{b}: {c} ({d}%)",
+    let data = [
+      { name: "农、林、牧、鱼业", value: 100 },
+      { name: "制造业", value: 200 },
+      { name: "电力、热力、燃气及水生产和供应业", value: 300 },
+      { name: "建筑业", value: 500 },
+      { name: "批发和零售业", value: 800 },
+      { name: "住宿和餐饮业", value: 900 },
+      { name: "金融业", value: 1000 },
+    ];
+
+    let legendData = [],
+      seriesData = [];
+
+    data.map((v, i) => {
+      legendData.push(v.name);
+      seriesData.push({
+        value: v.value,
+        name: v.name,
+      });
+    });
+
+    for (let i = 0; i < 7; i++) {
+      seriesData.push({
+        value: 0,
+        name: "",
+        label: { show: false },
+        labelLine: { show: false },
+        itemStyle: { color: "rgba(0,0,0,0)" },
+      });
+    }
+
+    const options = {
+      legend: {
+        icon: "circle",
       },
+      // 遗留一个问题，hover时底图会遮住，暂时没有解决
       series: [
         {
-            name: '面积模式',
-            type: 'pie',
-            radius: [20, 140],
-            center: ['50%', '50%'],
-            roseType: 'area',
-            itemStyle: {
-                borderRadius: 5
-            },
-            data: [
-                {value: 30, name: 'rose 1'},
-                {value: 28, name: 'rose 2'},
-                {value: 26, name: 'rose 3'},
-                {value: 24, name: 'rose 4'},
-                {value: 22, name: 'rose 5'},
-                {value: 20, name: 'rose 6'},
-                {value: 18, name: 'rose 7'},
-                {value: 16, name: 'rose 8'}
-            ]
-        }
+          name: "",
+          type: "pie",
+          radius: ["10%", "60%"],
+          startAngle: 180,
+          center: ["50%", "50%"],
+          roseType: "area",
+          selectedMode: "single",
+          label: {
+            show: true,
+            position: 'inside',
+          },
+          data: seriesData
+        },
       ],
     };
+
+    console.log(options)
 
     // 绘制图表
     myChart.setOption(options);
