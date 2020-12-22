@@ -76,3 +76,7 @@ const toString = Object.prototype.toString
 export const isBoolean = (payload: any) => {
   return toString.call(payload) === '[object Boolean]'
 }
+
+export const isObject = (payload: any) => {
+  return toString.call(payload) === '[object Object]'
+}

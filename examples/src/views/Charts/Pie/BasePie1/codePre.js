@@ -1,6 +1,6 @@
 export default `
 <template>
-  <HPie :dataSource="dataSource"></HPie>
+  <HPie :dataSource="dataSource" :settings="settings"></HPie>
 </template>
 <script>
 import { HPie } from '@yyr1994/h-charts'
@@ -10,6 +10,10 @@ export default {
   },
   data () {
     return {
+      settings: {
+        wRadius: '10%', // 内圆半径大小，默认0%
+        eRadius: '30%', // 外圆半径大小 默认60%
+      },
       dataSource: {
         "columns": [
           {

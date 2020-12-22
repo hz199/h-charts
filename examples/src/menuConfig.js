@@ -22,6 +22,10 @@ export default [
         title: 'pie 饼状图',
         path: '/pie'
       },
+      {
+        title: 'Radar 雷达图',
+        path: '/radar'
+      },
     ]
   }
 ]

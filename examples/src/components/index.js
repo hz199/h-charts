@@ -23,6 +23,7 @@ const components = [
   Timeline.TimelineItem,
   Table,
   Article.ArticleH1,
+  Article.ArticleH3,
   Article.ArticleP
 ]
 

@@ -36,7 +36,7 @@ const router = createRouter({
         {
           path: 'histogram',
           name: 'Histogram',
-          component: () => import('../views/Charts/histogram'),
+          component: () => import('../views/Charts/Histogram'),
           meta: {
             title: '直方图'
           }
@@ -44,9 +44,17 @@ const router = createRouter({
         {
           path: 'pie',
           name: 'Pie',
-          component: () => import('../views/Charts/pie'),
+          component: () => import('../views/Charts/Pie'),
           meta: {
             title: '饼状图'
+          }
+        },
+        {
+          path: 'radar',
+          name: 'Radar',
+          component: () => import('../views/Charts/Radar'),
+          meta: {
+            title: '雷达图'
           }
         }
       ]
