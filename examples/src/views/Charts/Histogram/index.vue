@@ -9,7 +9,8 @@
     <XAxisType></XAxisType>
     <BarStack></BarStack>
     <WaterFall></WaterFall>
-
+    
+    <DocsColumnsTable/>
     <DocsTable></DocsTable>
   </div>
 </template>
@@ -25,6 +26,7 @@ import BarStack from './BarStack'
 import WaterFall from './WaterFall'
 
 import DocsTable from './DocsTable'
+import DocsColumnsTable from './DocsColumnsTable'
 
 export default {
   name: 'Line',
@@ -39,7 +41,8 @@ export default {
     BarStack,
     WaterFall,
 
-    DocsTable
+    DocsTable,
+    DocsColumnsTable
   },
   data () {
     return {

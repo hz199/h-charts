@@ -136,7 +136,7 @@ const handlePie = <T = {}>(
     tooltip,
     legend,
     series
-  };
+  }
 
   return options as EChartOption
 }
