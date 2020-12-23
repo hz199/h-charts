@@ -2,18 +2,18 @@
   <div class="home">
     <BaseRadar></BaseRadar>
 
-    <DocsTable></DocsTable>
+    <!-- <DocsTable></DocsTable> -->
   </div>
 </template>
 <script>
 import BaseRadar from './BaseRadar'
-import DocsTable from './DocsTable'
+// import DocsTable from './DocsTable'
 
 export default {
   name: 'Radar',
   components: {
     BaseRadar,
-    DocsTable
+    // DocsTable
   }
 }
 </script>
