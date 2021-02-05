@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
 set -e
+yarn build
+
 cd examples
 
 # 构建

@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const {
   VueLoaderPlugin
 } = require('vue-loader')
@@ -160,6 +161,13 @@ module.exports = (env) => {
         __VUE_OPTIONS_API__: true,
         __VUE_PROD_DEVTOOLS__: !isProduction
       }),
+      new WorkboxPlugin.GenerateSW({
+        // 这些选项帮助快速启用 ServiceWorkers
+        // 不允许遗留任何“旧的” ServiceWorkers
+        clientsClaim: true,
+        skipWaiting: true,
+      }),
+      
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: path.resolve(__dirname, '../index.html'),
