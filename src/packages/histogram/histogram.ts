@@ -1,7 +1,7 @@
 import { Columns, ObjectKey, Tuple } from '../../utils/type'
 // import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
 import * as echarts from 'echarts/core'
-import { ECBasicOption } from 'echarts/types/dist/shared'
+import { EChartsOption } from 'echarts/types/dist/shared'
 import { columnsToObject, isBoolean } from '../../utils/utils'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
 import { waterFallSeries, waterXAxis } from './waterfall'
