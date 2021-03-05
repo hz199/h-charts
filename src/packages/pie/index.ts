@@ -1,30 +1,20 @@
-import { App, defineComponent, h, PropType, Ref, ref, toRefs, watch } from 'vue'
+import { App, defineComponent, h, PropType } from 'vue'
 import 'echarts/lib/chart/pie'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
 import { EChartOption } from 'echarts/lib/echarts'
 import handlePie, { PieDataSource, PieSettings } from './pie'
 
+interface HPieData {
+  Options: EChartOption
+}
+
 const HPie = defineComponent({
   name: 'HPie',
-  setup (props) {
-    const { dataSource, settings } = toRefs(props)
-
-    const options: Ref<EChartOption> = ref(handlePie(
-      dataSource.value,
-      settings.value
-    ))
-
-    watch([dataSource, settings], () => {
-      options.value = handlePie(
-        dataSource.value,
-        settings.value
-      )
-    })
-
+  data () {
     return {
-      Options: options
-    }
+      Options: {}
+    } as HPieData
   },
   props: {
     ...commonProps,
@@ -45,6 +35,18 @@ const HPie = defineComponent({
       options: this.Options
     })
   },
+  mounted () {
+    const { dataSource, settings, ariaShow } = this.$props
+
+    this.Options = handlePie(dataSource, settings, ariaShow)
+  },
+  watch: {
+    $props () {
+      const { dataSource, settings, ariaShow } = this.$props
+
+      this.Options = handlePie(dataSource, settings, ariaShow)
+    }
+  }
 })
 
 HPie.install = (app: App) => {

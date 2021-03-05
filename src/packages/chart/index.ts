@@ -17,20 +17,14 @@ const defaultStyle: CSSProperties = {
 }
 
 const CHART_INSTANCES = new WeakMap<Object, ECharts | null>()
-export interface HChartData {
-}
 
 const HChart = defineComponent({
   props: {
     ...commonProps,
     options: {
       type: Object as PropType<EChartOption>,
-      default: () => ({})
+      required: true
     }
-  },
-  data () {
-    return {
-    } as HChartData
   },
   methods: {
     initChart (el: HTMLDivElement): Promise<ECharts> {

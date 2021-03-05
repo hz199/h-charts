@@ -13,10 +13,10 @@
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
-    "echarts": "^5.0.0-beta.2",
-    "echarts-wordcloud": "^1.1.3",
+    "echarts": "^5.0.2",
+    "echarts-wordcloud": "^2.0.0",
     "size-sensor": "^1.0.1",
-    "vue": "^3.0.2"
+    "vue": "^3.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
@@ -24,7 +24,7 @@
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
-    "@types/echarts": "^4.9.2",
+    "@types/echarts": "^4.9.4",
     "@types/lodash": "^4.14.162",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
     "acorn-jsx": "^5.3.1",
@@ -34,7 +34,7 @@
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-postcss": "^3.1.8",
     "tslib": "^2.0.3",
-    "typescript": "^4.0.3"
+    "typescript": "^4.2.2"
   },
   "directories": {
     "example": "examples"

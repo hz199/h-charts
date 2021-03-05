@@ -1,4 +1,4 @@
-import { App, defineComponent, h, PropType, Ref, ref, toRefs, watch } from 'vue'
+import { App, defineComponent, h, PropType } from 'vue'
 import 'echarts/lib/chart/bar'
 import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
@@ -6,28 +6,16 @@ import Chart from '../chart'
 import handleHistogram, { HistogramDataSource, HistogramSettings } from './histogram'
 import { EChartOption } from 'echarts/lib/echarts'
 
+interface HHistogramData {
+  Options: EChartOption
+}
+
 const HHistogram = defineComponent({
   name: 'HHistogram',
-  setup (props) {
-    const { dataSource, settings, ariaShow } = toRefs(props)
-
-    const options: Ref<EChartOption> = ref(handleHistogram(
-      dataSource.value,
-      settings.value,
-      ariaShow.value
-    ))
-
-    watch([dataSource, settings, ariaShow], () => {
-      options.value = handleHistogram(
-        dataSource.value,
-        settings.value,
-        ariaShow.value
-      )
-    })
-
+  data () {
     return {
-      Options: options
-    }
+      Options: {}
+    } as HHistogramData
   },
   props: {
     ...commonProps,
@@ -48,6 +36,18 @@ const HHistogram = defineComponent({
       options: this.Options
     })
   },
+  mounted () {
+    const { dataSource, settings, ariaShow } = this.$props
+
+    this.Options = handleHistogram(dataSource, settings, ariaShow)
+  },
+  watch: {
+    $props () {
+      const { dataSource, settings, ariaShow } = this.$props
+
+      this.Options = handleHistogram(dataSource, settings, ariaShow)
+    }
+  }
 })
 
 HHistogram.install = (app: App) => {

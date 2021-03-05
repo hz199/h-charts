@@ -125,6 +125,7 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
 const handlePie = <T = {}>(
   dataSource: PieDataSource<T>,
   settings: PieSettings,
+  ariaShow?: boolean
 ) => {
   const tooltip = pieTooltip<T>(dataSource, settings)
   const legend = pieLegend<T>(dataSource, settings)
@@ -132,6 +133,9 @@ const handlePie = <T = {}>(
   const { title = {} } = settings
 
   const options = {
+    aria: {
+      show: ariaShow
+    },
     title,
     tooltip,
     legend,
