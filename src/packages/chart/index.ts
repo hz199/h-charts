@@ -1,14 +1,25 @@
 import { App, defineComponent, h, CSSProperties, PropType } from 'vue'
-import echarts, { EChartOption, ECharts } from 'echarts/lib/echarts'
 import commonProps from '../../utils/commonProps'
-import 'echarts/lib/component/tooltip' // 提示框组件
-import 'echarts/lib/component/title' // 标题组件
-import 'echarts/lib/component/legend' // 标注
+import * as echarts from 'echarts/core'
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent
+} from 'echarts/components'
+import {
+  CanvasRenderer
+} from 'echarts/renderers'
+
+echarts.use(
+  [TitleComponent, TooltipComponent, GridComponent, CanvasRenderer, LegendComponent]
+)
 
 import { bind, clear } from 'size-sensor'
 import { throttle } from '../../utils/utils'
 import { defaultTheme } from '../../utils/themes'
 import { ObjectKey } from '../../utils/type'
+import { ECBasicOption } from 'echarts/types/dist/shared'
 
 const defaultStyle: CSSProperties = {
   width: '100%',
@@ -16,18 +27,18 @@ const defaultStyle: CSSProperties = {
   minHeight: '400px'
 }
 
-const CHART_INSTANCES = new WeakMap<Object, ECharts | null>()
+const CHART_INSTANCES = new WeakMap<Object, echarts.ECharts | null>()
 
 const HChart = defineComponent({
   props: {
     ...commonProps,
     options: {
-      type: Object as PropType<EChartOption>,
+      type: Object as PropType<ECBasicOption>,
       required: true
     }
   },
   methods: {
-    initChart (el: HTMLDivElement): Promise<ECharts> {
+    initChart(el: HTMLDivElement): Promise<echarts.ECharts> {
       const renderer = this.renderer || 'canvas'
       return new Promise((resolve) => {
         this.$nextTick(() => {
@@ -35,16 +46,18 @@ const HChart = defineComponent({
           // 设置主题
           echarts.registerTheme(currentTheme.name, currentTheme.value)
           // 好坑啊 CHART_INSTANCE 不能做代理proxy 也就是不能用data 里面的参数 不然 resize 会报错。。。。。
-          CHART_INSTANCES.set(this, echarts.init(el, currentTheme.name, {
+          const chartInstance = echarts.init(el, currentTheme.name, {
             renderer,
-            width: 'auto',
-            height: 'auto'
-          }))
+            width: undefined,
+            height: undefined
+          })
+
+          CHART_INSTANCES.set(this, chartInstance)
           resolve(CHART_INSTANCES.get(this)!)
         })
       })
     },
-    setOption () {
+    setOption() {
       if (!CHART_INSTANCES.get(this)) {
         return
       }
@@ -60,14 +73,14 @@ const HChart = defineComponent({
         silent
       })
     },
-    resizeChart () {
+    resizeChart() {
       CHART_INSTANCES.get(this)?.resize()
       // HChart.CHART_INSTANCE && HChart.CHART_INSTANCE.resize()
     },
-    getInstance () {
+    getInstance() {
       return CHART_INSTANCES.get(this)!
     },
-    dispose () {
+    dispose() {
       if (this.resizeAble) {
         clear(this.$el)
       }
@@ -76,7 +89,7 @@ const HChart = defineComponent({
       CHART_INSTANCES.set(this, null)
       CHART_INSTANCES.delete(this)
     },
-    bindEvents (instance: ECharts, events: ObjectKey<Function>) {
+    bindEvents(instance: echarts.ECharts, events: ObjectKey<Function>) {
       const _bindEvent = (eventName: string, func: Function) => {
         if (typeof eventName === 'string' && typeof func === 'function') {
           instance.on(eventName, (param: any) => {
@@ -91,10 +104,10 @@ const HChart = defineComponent({
       }
     }
   },
-  beforeUnmount () {
+  beforeUnmount() {
     this.dispose()
   },
-  mounted () {
+  mounted() {
     this.initChart(this.$el as HTMLDivElement).then((instance) => {
       this.setOption()
       // 绑定事件
@@ -106,13 +119,13 @@ const HChart = defineComponent({
     })
 
   },
-  created () {
+  created() {
     CHART_INSTANCES.set(this, null)
   },
   watch: {
     options: {
       deep: true,
-      handler (v) {
+      handler(v) {
         if (v) {
           this.setOption()
           // console.log(v)
@@ -120,7 +133,7 @@ const HChart = defineComponent({
       }
     }
   },
-  render () {
+  render() {
     // console.log(CHART_INSTANCES)
     const { style } = this
     const initStyle = Object.assign({}, defaultStyle, style || {})

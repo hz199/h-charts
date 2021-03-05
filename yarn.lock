@@ -261,13 +261,6 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@types/echarts@^4.9.4":
-  version "4.9.4"
-  resolved "https://registry.npm.taobao.org/@types/echarts/download/@types/echarts-4.9.4.tgz#5076ba17b0635b420fc7fd4df7daf5bb42e8240f"
-  integrity sha1-UHa6F7BjW0IPx/1N99r1u0LoJA8=
-  dependencies:
-    "@types/zrender" "*"
-
 "@types/estree@*":
   version "0.0.45"
   resolved "https://registry.npm.taobao.org/@types/estree/download/@types/estree-0.0.45.tgz#e9387572998e5ecdac221950dab3e8c3b16af884"
@@ -319,11 +312,6 @@
   integrity sha1-Ov1q2JZ8d+Q3bFmKgt3Vj0bsRdY=
   dependencies:
     "@types/node" "*"
-
-"@types/zrender@*":
-  version "4.0.0"
-  resolved "https://registry.npm.taobao.org/@types/zrender/download/@types/zrender-4.0.0.tgz#a6806f12ec4eccaaebd9b0d816f049aca6188fbd"
-  integrity sha1-poBvEuxOzKrr2bDYFvBJrKYYj70=
 
 "@vue/babel-helper-vue-transform-on@^1.0.0-rc.2":
   version "1.0.0-rc.2"
@@ -858,8 +846,8 @@ echarts-wordcloud@^2.0.0:
 
 echarts@^5.0.2:
   version "5.0.2"
-  resolved "https://registry.npm.taobao.org/echarts/download/echarts-5.0.2.tgz#1726d17a57cf05d62cd0567b4325e1201a56baf6"
-  integrity sha1-FybRelfPBdYs0FZ7QyXhIBpWuvY=
+  resolved "https://registry.npmjs.org/echarts/-/echarts-5.0.2.tgz#1726d17a57cf05d62cd0567b4325e1201a56baf6"
+  integrity sha512-En0VYpc96nw2/2AZoBWPHsGi471zMublttj50kfFpYAeR4geup0Tj9iVgEXh7QYZFPnRiruDJEjcB5PXZ+BYzQ==
   dependencies:
     tslib "2.0.3"
     zrender "5.0.4"

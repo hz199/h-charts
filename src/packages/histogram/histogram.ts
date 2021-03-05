@@ -1,8 +1,11 @@
 import { Columns, ObjectKey, Tuple } from '../../utils/type'
-import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
+// import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
+import * as echarts from 'echarts/core'
+import { ECBasicOption } from 'echarts/types/dist/shared'
 import { columnsToObject, isBoolean } from '../../utils/utils'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
 import { waterFallSeries, waterXAxis } from './waterfall'
+
 export interface HistogramBaseColumns {
   right?: boolean // line
   markMax?: boolean // 显示最大值标注
@@ -18,6 +21,10 @@ export interface HistogramDataSource<T extends ObjectKey> {
   xAxis: Array<string>
 }
 
+const opt: echarts.EChartsCoreOption = {
+  baseOption: {}
+}
+
 export interface HistogramSettings {
   title?: EChartTitleOption
   xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
@@ -26,7 +33,7 @@ export interface HistogramSettings {
   area?: boolean,
   // 是否是平滑曲线
   smooth?: boolean
-  tooltip?: EChartOption.Tooltip | boolean
+  tooltip?: ECBasicOption.Tooltip | boolean
 
   yFormatter?: Tuple<string | ((val: any) => string), 2>
   yVisible?: boolean
@@ -215,7 +222,8 @@ const handleHistogram = <T = any>(
   const legend = histogramLegend<T>(dataSource, settings)
   const { title = {} } = settings
 
-  const options = {
+  const options: ECBasicOption = {
+    baseOption: {},
     aria: {
       show: ariaShow
     },
@@ -227,7 +235,7 @@ const handleHistogram = <T = any>(
     tooltip
   }
 
-  return options as EChartOption
+  return options
 }
 
 export default handleHistogram

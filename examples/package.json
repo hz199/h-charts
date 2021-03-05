@@ -10,7 +10,7 @@
     "test:w": "npm run test-cover -- --watch"
   },
   "dependencies": {
-    "echarts": "^5.0.0-beta.2",
+    "echarts": "^5.0.2",
     "lodash": "^4.17.20",
     "mockjs": "^1.1.0",
     "prismjs": "^1.22.0",

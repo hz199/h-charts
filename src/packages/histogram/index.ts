@@ -1,13 +1,13 @@
 import { App, defineComponent, h, PropType } from 'vue'
-import 'echarts/lib/chart/bar'
-import 'echarts/lib/chart/line'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
 import handleHistogram, { HistogramDataSource, HistogramSettings } from './histogram'
-import { EChartOption } from 'echarts/lib/echarts'
+import * as echarts from 'echarts/core'
+import { BarChart, LineChart } from 'echarts/charts'
+echarts.use([BarChart, LineChart])
 
 interface HHistogramData {
-  Options: EChartOption
+  Options: echarts.EChartsCoreOption
 }
 
 const HHistogram = defineComponent({
