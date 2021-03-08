@@ -4,10 +4,11 @@ import Chart from '../chart'
 import handleHistogram, { HistogramDataSource, HistogramSettings } from './histogram'
 import * as echarts from 'echarts/core'
 import { BarChart, LineChart } from 'echarts/charts'
+import { EChartsOption } from 'echarts/types/dist/shared'
 echarts.use([BarChart, LineChart])
 
 interface HHistogramData {
-  Options: echarts.EChartsCoreOption
+  Options: EChartsOption
 }
 
 const HHistogram = defineComponent({

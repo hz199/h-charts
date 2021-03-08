@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import HHistogram from '@libs/packages/histogram'
+import HHistogram from '@/libs/packages/histogram'
 import { baseLineMock1 } from '@/mocks/line'
 
 const codeStr = `

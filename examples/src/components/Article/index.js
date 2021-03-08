@@ -1,7 +1,7 @@
 import './article.less'
-import ArticleH1 from './ArticleH1'
-import ArticleH3 from './ArticleH3'
-import ArticleP from './ArticleP'
+import ArticleH1 from './ArticleH1.vue'
+import ArticleH3 from './ArticleH3.vue'
+import ArticleP from './ArticleP.vue'
 
 export default {
   ArticleH1,

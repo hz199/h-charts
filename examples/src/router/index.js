@@ -12,7 +12,7 @@ const router = createRouter({
         {
           path: '',
           name: 'Home',
-          component: () => import('../views/Home'),
+          component: () => import('../views/Home/index.vue'),
           meta: {
             title: '介绍'
           }
@@ -20,7 +20,7 @@ const router = createRouter({
         {
           path: 'start',
           name: 'Start',
-          component: () => import('../views/Start'),
+          component: () => import('../views/Start/index.vue'),
           meta: {
             title: '开始'
           }
@@ -28,7 +28,7 @@ const router = createRouter({
         {
           path: 'chart',
           name: 'Chart',
-          component: () => import('../views/Charts/Chart'),
+          component: () => import('../views/Charts/Chart/index.vue'),
           meta: {
             title: 'chart'
           }
@@ -36,7 +36,7 @@ const router = createRouter({
         {
           path: 'histogram',
           name: 'Histogram',
-          component: () => import('../views/Charts/Histogram'),
+          component: () => import('../views/Charts/Histogram/index.vue'),
           meta: {
             title: '直方图'
           }
@@ -44,7 +44,7 @@ const router = createRouter({
         {
           path: 'pie',
           name: 'Pie',
-          component: () => import('../views/Charts/Pie'),
+          component: () => import('../views/Charts/Pie/index.vue'),
           meta: {
             title: '饼状图'
           }
@@ -52,7 +52,7 @@ const router = createRouter({
         {
           path: 'radar',
           name: 'Radar',
-          component: () => import('../views/Charts/Radar'),
+          component: () => import('../views/Charts/Radar/index.vue'),
           meta: {
             title: '雷达图'
           }

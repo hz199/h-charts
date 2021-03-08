@@ -1,19 +1,13 @@
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
 import TimelineItem from './TimelineItem'
 import './style.less'
 
 const Timeline = defineComponent({
   name: 'Timeline',
-  setup(context) {
-  },
   render() {
-    return (
-      <ul class="timeline">
-        {
-          this.$slots.default()
-        }
-      </ul>
-    )
+    return h('ul', {
+      class: 'timeline'
+    }, this.$slots.default())
   },
 })
 

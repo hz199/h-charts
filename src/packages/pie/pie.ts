@@ -1,4 +1,5 @@
-import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
+// import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
+import { EChartsOption, LegendComponentOption, PieSeriesOption, TitleOption, TooltipOption } from 'echarts/types/dist/shared'
 import { Columns, ObjectKey } from '../../utils/type'
 import { isBoolean, isObject } from '../../utils/utils'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
@@ -15,9 +16,9 @@ export interface PieDataSource<T extends ObjectKey> {
 }
 
 export interface PieSettings {
-  title?: EChartTitleOption
-  tooltip?: EChartOption.Tooltip | boolean
-  legend?: EChartOption.Legend | boolean
+  title?: TitleOption
+  tooltip?: TooltipOption | boolean
+  legend?: LegendComponentOption | boolean
 
   eRadius?: string // 外半径
   wRadius?: string // 内半径
@@ -58,7 +59,7 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
     hasBorder = true,
     borderRadius = 6,
     labelFontSize,
-    roseType = '',
+    roseType = undefined,
     labelShow = true
   } = settings
 
@@ -78,7 +79,7 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
     })
   })
 
-  const series: EChartOption.Series[] = [
+  const series: PieSeriesOption[] = [
     {
       name: seriesName,
       type: 'pie',
@@ -127,14 +128,16 @@ const handlePie = <T = {}>(
   settings: PieSettings,
   ariaShow?: boolean
 ) => {
-  const tooltip = pieTooltip<T>(dataSource, settings)
-  const legend = pieLegend<T>(dataSource, settings)
+  const tooltip = pieTooltip<T>(dataSource, settings) as TooltipOption
+  const legend = pieLegend<T>(dataSource, settings) as LegendComponentOption
   const series = pieSeries<T>(dataSource, settings)
   const { title = {} } = settings
 
-  const options = {
+  const options: EChartsOption = {
     aria: {
-      show: ariaShow
+      decal: {
+        show: ariaShow
+      }
     },
     title,
     tooltip,
@@ -142,7 +145,7 @@ const handlePie = <T = {}>(
     series
   }
 
-  return options as EChartOption
+  return options
 }
 
 export default handlePie

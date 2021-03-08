@@ -1,6 +1,13 @@
 import { App, defineComponent, h, CSSProperties, PropType } from 'vue'
 import commonProps from '../../utils/commonProps'
+
+import { bind, clear } from 'size-sensor'
+import { throttle } from '../../utils/utils'
+import { defaultTheme } from '../../utils/themes'
+import { ObjectKey } from '../../utils/type'
+import { EChartsOption } from 'echarts/types/dist/shared'
 import * as echarts from 'echarts/core'
+
 import {
   TitleComponent,
   TooltipComponent,
@@ -15,11 +22,6 @@ echarts.use(
   [TitleComponent, TooltipComponent, GridComponent, CanvasRenderer, LegendComponent]
 )
 
-import { bind, clear } from 'size-sensor'
-import { throttle } from '../../utils/utils'
-import { defaultTheme } from '../../utils/themes'
-import { ObjectKey } from '../../utils/type'
-import { ECBasicOption } from 'echarts/types/dist/shared'
 
 const defaultStyle: CSSProperties = {
   width: '100%',
@@ -33,7 +35,7 @@ const HChart = defineComponent({
   props: {
     ...commonProps,
     options: {
-      type: Object as PropType<ECBasicOption>,
+      type: Object as PropType<EChartsOption>,
       required: true
     }
   },
@@ -67,7 +69,9 @@ const HChart = defineComponent({
       const silent = this.silent
       const options = this.options
 
-      CHART_INSTANCES.get(this)?.setOption(options, {
+      const chart = CHART_INSTANCES.get(this)
+
+      chart?.setOption(options, {
         notMerge,
         lazyUpdate,
         silent
@@ -75,7 +79,6 @@ const HChart = defineComponent({
     },
     resizeChart() {
       CHART_INSTANCES.get(this)?.resize()
-      // HChart.CHART_INSTANCE && HChart.CHART_INSTANCE.resize()
     },
     getInstance() {
       return CHART_INSTANCES.get(this)!
@@ -128,13 +131,11 @@ const HChart = defineComponent({
       handler(v) {
         if (v) {
           this.setOption()
-          // console.log(v)
         }
       }
     }
   },
   render() {
-    // console.log(CHART_INSTANCES)
     const { style } = this
     const initStyle = Object.assign({}, defaultStyle, style || {})
 

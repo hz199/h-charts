@@ -1,4 +1,4 @@
-import { defineComponent, provide, inject } from 'vue'
+import { defineComponent, provide, inject, h } from 'vue'
 import './index.less';
 
 const Menus = defineComponent({
@@ -17,13 +17,9 @@ const Menus = defineComponent({
     }
   },
   render () {
-    return (
-      <ul class={this.horizontal ? 'menus clearfix menus__horizontal' : 'menus'}>
-        {
-          this.$slots.default()
-        }
-      </ul>
-    )
+    return h('ul', {
+      class: this.horizontal ? 'menus clearfix menus__horizontal' : 'menus'
+    }, this.$slots.default())
   },
   methods: {
     updateCurrentPath (path) {
@@ -34,8 +30,6 @@ const Menus = defineComponent({
     provide('MenusContext', this)
   }
 })
-
-// export type MenusContext = typeof Menus
 
 const MenuItem = defineComponent({
   name: 'HMenuItem',
@@ -53,35 +47,32 @@ const MenuItem = defineComponent({
   render () {
     const { onTap, updateCurrentPath, currentPath } = this.menusContext
 
-    return (
-      <li class={currentPath === this.path ? 'menus__item menus__item--active' : 'menus__item'}>
-        <p class="menus__text" onClick={() => {
-          onTap(this.path)
-          updateCurrentPath(this.path)
-        }}>
-          {this.$slots.default()}
-        </p>
-      </li>
-    )
+    return h('li', {
+      class: currentPath === this.path ? 'menus__item menus__item--active' : 'menus__item'
+    }, h('p', {
+      class: 'menus__text',
+      onClick: () => {
+        onTap(this.path)
+        updateCurrentPath(this.path)
+      }
+    }, this.$slots.default()))
   }
 })
 
 const MenuItemGroup = defineComponent({
   name: 'HMenuItemGroup',
   render () {
-    return (
-      <li class="menus__item-group">
-        <div class="menus__item-group-title">
-          {this.$slots.title()}
-        </div>
-        <ul class="menu__item-group-list">
-         {
-           this.$slots.default()
-         }
-        </ul>
-      </li>
-    )
-  }
+    return h('li', {
+        class: 'menus__item-group'
+      }, [
+        h('div', {
+          class: 'menus__item-group-title'
+        }, this.$slots.title()),
+        h('ul', {
+          class: 'menu__item-group-list'
+        }, this.$slots.default())
+      ])
+    }
 })
 
 const MenuItemGroupItem = defineComponent({
@@ -99,17 +90,15 @@ const MenuItemGroupItem = defineComponent({
   },
   render () {
     const { onTap, updateCurrentPath, currentPath } = this.menusContext
-
-    return (
-      <li class={currentPath === this.path ? 'menus__item menus__item--group menus__item--active' : 'menus__item menus__item--group'}>
-        <p class="menus__text" onClick={() => {
-          onTap(this.path)
-          updateCurrentPath(this.path)
-        }}>
-          {this.$slots.default()}
-        </p>
-      </li>
-    )
+    return h('li', {
+      class: currentPath === this.path ? 'menus__item menus__item--group menus__item--active' : 'menus__item menus__item--group'
+    }, h('p', {
+      class: 'menus__text',
+      onClick: () => {
+        onTap(this.path)
+        updateCurrentPath(this.path)
+      }
+    }, this.$slots.default()))
   }
 })
 

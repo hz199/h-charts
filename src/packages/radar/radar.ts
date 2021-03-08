@@ -1,6 +1,7 @@
-import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
+// import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
+import { EChartsOption, LegendComponentOption, TitleOption, TooltipOption } from 'echarts/types/dist/shared'
 import { Columns, ObjectKey } from '../../utils/type'
-import { isBoolean, isObject } from '../../utils/utils'
+import { isBoolean } from '../../utils/utils'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
 
 export interface radarBaseColumns {
@@ -15,9 +16,9 @@ export interface RadarDataSource<T extends ObjectKey> {
 }
 
 export interface radarSettings {
-  title?: EChartTitleOption
-  tooltip?: EChartOption.Tooltip | boolean
-  legend?: EChartOption.Legend | boolean
+  title?: TitleOption
+  tooltip?: TooltipOption | boolean
+  legend?: LegendComponentOption | boolean
 }
 
 const radarTooltip = <T>(dataSource: RadarDataSource<T>, settings: radarSettings) => {
@@ -47,7 +48,7 @@ const handleRadar = <T = {}>(
   // const series = radarSeries<T>(dataSource, settings)
   // const { title = {} } = settings
 
-  const options = {
+  const options: EChartsOption = {
     title: {
       text: '基础雷达图'
     },
@@ -55,38 +56,28 @@ const handleRadar = <T = {}>(
     legend: {
       // data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
     },
-    radar: {
-      radius: '60%',
-      shape: 'circle',
-      name: {
-        textStyle: {
+    // radar: {
+    //   radius: '60%',
+    //   shape: 'circle',
+    //   name: {
+    //     textStyle: {
 
-          borderRadius: 3,
-          padding: [3, 5]
-        }
-      },
-      // axisLine: {
-      //   lineStyle: {
-      //     color: 'rgba(238, 197, 102, 0.5)'
-      //   }
-      // },
-      splitArea: {
-        show: false
-      },
-      // splitLine: {
-      //   lineStyle: {
-      //     color: 'rgba(238, 197, 102, 0.5)'
-      //   }
-      // },
-      indicator: [
-        { name: '销售（sales）' },
-        { name: '管理（Administration）' },
-        { name: '信息技术（Information Techology）' },
-        { name: '客服（Customer Support）' },
-        { name: '研发（Development）' },
-        { name: '市场（Marketing）' }
-      ]
-    },
+    //       borderRadius: 3,
+    //       padding: [3, 5]
+    //     }
+    //   },
+    //   splitArea: {
+    //     show: false
+    //   },
+    //   indicator: [
+    //     { name: '销售（sales）' },
+    //     { name: '管理（Administration）' },
+    //     { name: '信息技术（Information Techology）' },
+    //     { name: '客服（Customer Support）' },
+    //     { name: '研发（Development）' },
+    //     { name: '市场（Marketing）' }
+    //   ]
+    // },
     series: [{
       name: '预算 vs 开销（Budget vs spending）',
       type: 'radar',
@@ -112,7 +103,7 @@ const handleRadar = <T = {}>(
     }]
   }
 
-  return options as EChartOption
+  return options
 }
 
 export default handleRadar

@@ -2,10 +2,10 @@
 import Layout from './Layout/Layout'
 import Menus from './Menus/index'
 import Prism from './Prism/index'
-import ShowMore from './ShowMore'
-import Timeline from './Timeline'
+import ShowMore from './ShowMore/index.vue'
+import Timeline from './Timeline/index'
 import Article from './Article'
-import Table from './Table'
+import Table from './Table/index.vue'
 
 const components = [
   Layout,

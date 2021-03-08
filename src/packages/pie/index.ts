@@ -1,12 +1,14 @@
 import { App, defineComponent, h, PropType } from 'vue'
-import 'echarts/lib/chart/pie'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
-import { EChartOption } from 'echarts/lib/echarts'
+import * as echarts from 'echarts/core'
+import { EChartsOption } from 'echarts/types/dist/shared'
+import { PieChart } from 'echarts/charts'
 import handlePie, { PieDataSource, PieSettings } from './pie'
+echarts.use([PieChart])
 
 interface HPieData {
-  Options: EChartOption
+  Options: EChartsOption
 }
 
 const HPie = defineComponent({

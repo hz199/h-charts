@@ -5,7 +5,7 @@ import App from './App.vue'
 import './index.less'
 import Components from './components'
 import router from './router'
-import './registerServiceWorker'
+// import './registerServiceWorker'
 
 const app = createApp(App)
 

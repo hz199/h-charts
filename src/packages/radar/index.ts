@@ -2,7 +2,9 @@ import { App, defineComponent, h, PropType, Ref, ref, toRefs, watch } from 'vue'
 import 'echarts/lib/chart/radar'
 import commonProps from '../../utils/commonProps'
 import Chart from '../chart'
-import { EChartOption } from 'echarts/lib/echarts'
+// import { EChartOption } from 'echarts/lib/echarts'
+import { EChartsOption } from 'echarts/types/dist/shared'
+// import * as echarts from 'echarts/core'
 import handleradar, { RadarDataSource, radarSettings } from './radar'
 
 const Hradar = defineComponent({
@@ -10,7 +12,7 @@ const Hradar = defineComponent({
   setup (props) {
     const { dataSource, settings } = toRefs(props)
 
-    const options: Ref<EChartOption> = ref(handleradar(
+    const options: Ref<EChartsOption> = ref(handleradar(
       dataSource.value,
       settings.value
     ))

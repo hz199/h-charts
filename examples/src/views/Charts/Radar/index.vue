@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import BaseRadar from './BaseRadar'
+import BaseRadar from './BaseRadar/index.vue'
 // import DocsTable from './DocsTable'
 
 export default {

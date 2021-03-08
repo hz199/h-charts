@@ -1,4 +1,4 @@
-import { EChartOption } from 'echarts/lib/echarts'
+import { BarSeriesOption } from 'echarts/types/dist/shared'
 import { ObjectKey } from '../../utils/type'
 import { HistogramColumns, HistogramDataSource, HistogramSettings } from './histogram'
 
@@ -20,7 +20,7 @@ export const waterFallSeries = <T>(
 
   const waterRows: ObjectKey = rows[0] || {}
 
-  const series: EChartOption.Series[] = []
+  const series: BarSeriesOption[] = []
   const seriesData: number[] = []
   let seriesDataTotal = 0
   const seriesDataAuxiliary: number[] = [0]

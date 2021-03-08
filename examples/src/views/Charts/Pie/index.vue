@@ -9,11 +9,11 @@
   </div>
 </template>
 <script>
-import BasePie from './BasePie'
-import BasePie1 from './BasePie1'
-import RadiusPie from './RadiusPie'
-import RoseTypePie from './RoseTypePie'
-import DocsTable from './DocsTable'
+import BasePie from './BasePie/index.vue'
+import BasePie1 from './BasePie1/index.vue'
+import RadiusPie from './RadiusPie/index.vue'
+import RoseTypePie from './RoseTypePie/index.vue'
+import DocsTable from './DocsTable.vue'
 
 export default {
   name: 'Pie',

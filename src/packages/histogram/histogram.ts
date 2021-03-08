@@ -1,7 +1,5 @@
 import { Columns, ObjectKey, Tuple } from '../../utils/type'
-// import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
-import * as echarts from 'echarts/core'
-import { EChartsOption } from 'echarts/types/dist/shared'
+import { BarSeriesOption, EChartsOption, LineSeriesOption, TitleOption, TooltipOption, YAXisOption } from 'echarts/types/dist/shared'
 import { columnsToObject, isBoolean } from '../../utils/utils'
 import { defaultLegend, defaultTooltip } from '../../utils/defaultChartConfig'
 import { waterFallSeries, waterXAxis } from './waterfall'
@@ -15,25 +13,31 @@ export interface HistogramBaseColumns {
 
 export type HistogramColumns = Columns & HistogramBaseColumns
 
+export type LineBarSeriesOption = LineSeriesOption | BarSeriesOption
+
 export interface HistogramDataSource<T extends ObjectKey> {
   columns: Array<HistogramColumns>
   rows: Array<T>
   xAxis: Array<string>
 }
 
-const opt: echarts.EChartsCoreOption = {
-  baseOption: {}
+export declare const AXIS_TYPES: {
+  readonly value: 1
+  readonly category: 1
+  readonly time: 1
+  readonly log: 1
 }
+export type OptionAxisType = keyof typeof AXIS_TYPES
 
 export interface HistogramSettings {
-  title?: EChartTitleOption
-  xAxisType?: EChartOption.BasicComponents.CartesianAxis.Type
+  title?: TitleOption | TitleOption[]
+  xAxisType?: OptionAxisType,
   xVisible?: boolean
   // 区域图形显示
   area?: boolean,
   // 是否是平滑曲线
   smooth?: boolean
-  tooltip?: ECBasicOption.Tooltip | boolean
+  tooltip?: TooltipOption | boolean
 
   yFormatter?: Tuple<string | ((val: any) => string), 2>
   yVisible?: boolean
@@ -73,7 +77,7 @@ const histogramYAxis = <T>(
     yAxisName = []
   } = settings
 
-  const yAxisDefault: EChartOption.YAxis = {
+  const yAxisDefault: YAXisOption = {
     type: 'value',
     axisTick: {
       show: false
@@ -81,7 +85,7 @@ const histogramYAxis = <T>(
     show: yVisible
   }
 
-  const yAxisResult: EChartOption.YAxis[] = []
+  const yAxisResult: YAXisOption[] = []
 
   for (let i = 0; i < 2; i ++) {
     yAxisResult[i] = Object.assign({}, yAxisDefault, {
@@ -102,8 +106,8 @@ const histogramTooltip = <T>(dataSource: HistogramDataSource<T>, settings: Histo
   let defaultTip = defaultTooltip()
 
   if (waterfall) {
-    const waterFallTooltip: EChartOption.Tooltip = {
-      formatter: (params) => {
+    const waterFallTooltip: TooltipOption = {
+      formatter: (params: any) => {
         if (Array.isArray(params) && params.length >= 2) {
           const target = params[1]
 
@@ -155,21 +159,22 @@ const histogramSeries = <T>(
     }
   })
 
-  const series: EChartOption.Series[] = []
+  const series: LineBarSeriesOption[] = []
 
   for (let key in dataSourceMap) {
     const currentHistogramColumns = histogramColumns[key]
 
-    const barSeries = {
+    const barSeries: BarSeriesOption = {
       barGap,
-      stack,
+      // stack,
+      ...stack ? { stack: ''}: {},
       label: {
         show: labelShow,
         color: '#314659'
       }
     }
 
-    const lineSeries = {
+    const lineSeries: LineSeriesOption = {
       smooth,
       symbolSize: 10,
       ...area ? {
@@ -181,20 +186,28 @@ const histogramSeries = <T>(
 
     const type = currentHistogramColumns.type || 'line'
 
-    series.push({
+    const seriesItem: LineBarSeriesOption = {
       name: currentHistogramColumns.title + '',
-      type,
+      type: type,
       yAxisIndex: currentHistogramColumns.right ? 1 : 0,
       data: dataSourceMap[key],
       markPoint: {
-        data: [
-          ...currentHistogramColumns.markMax ? [{ name: '最大值', type: 'max' }] : [],
-          ...currentHistogramColumns.markMin ? [{ name: '最小值', type: 'min' }] : []
-        ]
+        data: []
       },
       ...type === 'line' ? lineSeries : {},
       ...type === 'bar' ? barSeries : {}
-    })
+    }
+
+    // 最大标记
+    if (currentHistogramColumns.markMax) {
+      seriesItem.markPoint?.data?.push({ name: '最大值', type: 'max' })
+    }
+    // 最小标记
+    if (currentHistogramColumns.markMin) {
+      seriesItem.markPoint?.data?.push({ name: '最小值', type: 'min' })
+    }
+
+    series.push(seriesItem)
   }
 
   return series
@@ -218,14 +231,15 @@ const handleHistogram = <T = any>(
   const series = settings.waterfall
     ? waterFallSeries<T>(dataSource, settings) :
     histogramSeries<T>(dataSource, settings, histogramColumns)
-  const tooltip = histogramTooltip<T>(dataSource, settings)
+  const tooltip = histogramTooltip<T>(dataSource, settings) as TooltipOption
   const legend = histogramLegend<T>(dataSource, settings)
   const { title = {} } = settings
 
-  const options: ECBasicOption = {
-    baseOption: {},
+  const options: EChartsOption = {
     aria: {
-      show: ariaShow
+      decal: {
+        show: ariaShow
+      }
     },
     title,
     legend,

@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import HHistogram from '@libs/packages/histogram'
+import HHistogram from '@/libs/packages/histogram'
 import { baseLineMock } from '@/mocks/line'
 import codePre from './codePre'
 

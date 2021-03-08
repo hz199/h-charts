@@ -1,5 +1,5 @@
 
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
 import Sider from './Sider'
 import './layout.less'
 
@@ -12,52 +12,36 @@ const Layout = defineComponent({
     }
   },
   render () {
-    return (
-      <div class={this.hasSider ? 'layout layout-has-sider' : 'layout'}>
-        {
-          this.$slots.default()
-        }
-      </div>
-    )
+    return h('div', {
+      class: this.hasSider ? 'layout layout-has-sider' : 'layout'
+    }, this.$slots.default())
   }
 })
 
 const Header = defineComponent({
   name: 'HHeader',
   render () {
-    return (
-      <header class="header">
-        {
-          this.$slots.default()
-        }
-      </header>
-    )
+    return h('header', {
+      class: 'header'
+    }, this.$slots.default())
   }
 })
 
 const Footer = defineComponent({
   name: 'HFooter',
   render () {
-    return (
-      <footer class="footer">
-        {
-          this.$slots.default()
-        }
-      </footer>
-    )
+    return h('footer', {
+      class: 'footer'
+    }, this.$slots.default())
   }
 })
 
 const MainContent = defineComponent({
   name: 'HMainContent',
   render () {
-    return (
-      <main class="main">
-        {
-          this.$slots.default()
-        }
-      </main>
-    )
+    return h('main', {
+      class: 'main'
+    }, this.$slots.default())
   }
 })
 

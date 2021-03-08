@@ -15,18 +15,18 @@
   </div>
 </template>
 <script>
-import BaseHistogram from './BaseHistogram'
-import AreaLine from './AreaLine'
-import DoubleYLine from './DoubleYLine'
-import BaseLineSmooth from './BaseLineSmooth'
-import LineMaxMin from './LineMaxMin'
-import XAxisType from './XAxisType'
-import XAxisTypeTime from './XAxisType/indexTime'
-import BarStack from './BarStack'
-import WaterFall from './WaterFall'
+import BaseHistogram from './BaseHistogram/index.vue'
+import AreaLine from './AreaLine/index.vue'
+import DoubleYLine from './DoubleYLine/index.vue'
+import BaseLineSmooth from './BaseLineSmooth/index.vue'
+import LineMaxMin from './LineMaxMin/index.vue'
+import XAxisType from './XAxisType/index.vue'
+import XAxisTypeTime from './XAxisType/indexTime.vue'
+import BarStack from './BarStack/index.vue'
+import WaterFall from './WaterFall/index.vue'
 
-import DocsTable from './DocsTable'
-import DocsColumnsTable from './DocsColumnsTable'
+import DocsTable from './DocsTable.vue'
+import DocsColumnsTable from './DocsColumnsTable.vue'
 
 export default {
   name: 'Line',
