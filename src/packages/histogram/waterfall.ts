@@ -35,42 +35,41 @@ export const waterFallSeries = <T>(
     seriesDataAuxiliary.push(surplusNumber)
   })
 
-  // series.push(...[
-  //   {
-  //     name: '',
-  //     type: 'bar',
-  //     stack: '总量',
-  //     label: {
-  //       show: false
-  //     },
-  //     itemStyle: {
-  //       barBorderColor: 'rgba(0,0,0,0)',
-  //       color: 'rgba(0,0,0,0)'
-  //     },
-  //     emphasis: {
-  //       itemStyle: {
-  //           barBorderColor: 'rgba(0,0,0,0)',
-  //           color: 'rgba(0,0,0,0)'
-  //       }
-  //     },
-  //     data: seriesDataAuxiliary
-  //   },
-  //   {
-  //     name: fallLegendName,
-  //     type: 'bar',
-  //     stack: '总量',
-  //     label: {
-  //       show: labelShow
-  //     },
-  //     itemStyle: {
-  //       color: fallBarColor
-  //     },
-  //     // backgroundStyle: {
-  //     //   color: ''
-  //     // },
-  //     // data: [seriesDataTotal, ...seriesData]
-  //   }
-  // ])
+  series[0] = {
+    name: '',
+    type: 'bar',
+    stack: '总量',
+    label: {
+      show: false
+    },
+    itemStyle: {
+      borderColor: 'rgba(0,0,0,0)',
+      color: 'rgba(0,0,0,0)'
+    },
+    emphasis: {
+      itemStyle: {
+        barBorderColor: 'rgba(0,0,0,0)',
+        color: 'rgba(0,0,0,0)'
+      }
+    },
+    data: seriesDataAuxiliary
+  }
+
+  series[1] = {
+    name: fallLegendName,
+    type: 'bar',
+    stack: '总量',
+    label: {
+      show: labelShow
+    },
+    itemStyle: {
+      color: fallBarColor
+    },
+    backgroundStyle: {
+      color: ''
+    },
+    data: [seriesDataTotal, ...seriesData]
+  }
 
   return series
 }

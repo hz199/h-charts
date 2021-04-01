@@ -167,7 +167,7 @@ const histogramSeries = <T>(
     const barSeries: BarSeriesOption = {
       barGap,
       // stack,
-      ...stack ? { stack: ''}: {},
+      ...stack ? { stack: 'stack'}: {},
       label: {
         show: labelShow,
         color: '#314659'

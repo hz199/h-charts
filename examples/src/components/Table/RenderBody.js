@@ -9,7 +9,7 @@ export default {
   },
   render: () => {
     const params = {
-      row: ctx.props.row
+      row: this.$props.row
     }
     return this.$props.render(h, params)
   }
