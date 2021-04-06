@@ -80,3 +80,21 @@ export const isBoolean = (payload: any) => {
 export const isObject = (payload: any) => {
   return toString.call(payload) === '[object Object]'
 }
+
+// function merge (source: Object, other: Object) {
+//   function isObject (value: any) {
+//     const type = typeof value
+//     return value !== null && (type === 'object' || type === 'function')
+//   }
+
+//   if (!isObject(source) || !isObject(other)) {
+//     return other === undefined ? source : other
+//   }
+//   return Object.keys({
+//     ...source,
+//     ...other
+//   }).reduce((acc, key) => {
+//     acc[key] = merge(source[key], other[key])
+//     return acc
+//   }, Array.isArray(source) ? [] : {})
+// }
