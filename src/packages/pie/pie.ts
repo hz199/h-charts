@@ -10,7 +10,7 @@ export interface PieBaseColumns {
 
 export type PieColumns = Columns & PieBaseColumns
 
-export interface PieDataSource<T extends ObjectKey> {
+export interface PieDataSource<T extends any> {
   columns: Array<PieColumns>
   rows: T
 }
@@ -42,13 +42,13 @@ const pieTooltip = <T>(dataSource: PieDataSource<T>, settings: PieSettings) => {
   ) : tooltip
 }
 
-const pieLegend = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: PieSettings) => {
+const pieLegend = <T extends any>(dataSource: PieDataSource<T>, settings: PieSettings) => {
   const { legend = true } = settings
 
   return isBoolean(legend) ? defaultLegend() : legend
 }
 
-const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: PieSettings) => {
+const pieSeries = <T extends any>(dataSource: PieDataSource<T>, settings: PieSettings) => {
   const { rows, columns } = dataSource
   const {
     eRadius = '60%',
@@ -73,8 +73,10 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
     name: string}> =[]
 
   columns.forEach(item => {
+    const rowsData = rows as ObjectKey
+
     seriesData.push({
-      value: rows[item.key],
+      value: rowsData[item.key],
       name: item.title + ''
     })
   })
@@ -123,7 +125,7 @@ const pieSeries = <T extends ObjectKey>(dataSource: PieDataSource<T>, settings: 
   return series
 }
 
-const handlePie = <T = {}>(
+const handlePie = <T extends any>(
   dataSource: PieDataSource<T>,
   settings: PieSettings,
   ariaShow?: boolean
