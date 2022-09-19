@@ -13,7 +13,7 @@
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
-    "echarts": "^5.0.2",
+    "echarts": "^5.3.3",
     "echarts-wordcloud": "^2.0.0",
     "size-sensor": "^1.0.1",
     "vue": "^3.0.7"

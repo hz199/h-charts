@@ -15,7 +15,7 @@ export type HistogramColumns = Columns & HistogramBaseColumns
 
 export type LineBarSeriesOption = LineSeriesOption | BarSeriesOption
 
-export interface HistogramDataSource<T extends ObjectKey> {
+export interface HistogramDataSource<T extends any> {
   columns: Array<HistogramColumns>
   rows: Array<T>
   xAxis: Array<string>
@@ -54,7 +54,7 @@ export interface HistogramSettings {
   fallBarColor?: string
 }
 
-const histogramXAxis = <T>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
+const histogramXAxis = <T extends any>(dataSource: HistogramDataSource<T>, settings: HistogramSettings) => {
   const {
     xAxisType = 'category',
     xVisible = true,
@@ -186,7 +186,7 @@ const histogramSeries = <T>(
 
     const type = currentHistogramColumns.type || 'line'
 
-    const seriesItem: LineBarSeriesOption = {
+    const seriesItem: LineBarSeriesOption = Object.assign({}, {
       name: currentHistogramColumns.title + '',
       type: type,
       yAxisIndex: currentHistogramColumns.right ? 1 : 0,
@@ -194,9 +194,7 @@ const histogramSeries = <T>(
       markPoint: {
         data: []
       },
-      ...type === 'line' ? lineSeries : {},
-      ...type === 'bar' ? barSeries : {}
-    }
+    }, type === 'line' ? lineSeries : {}, type === 'bar' ? barSeries : {})
 
     // 最大标记
     if (currentHistogramColumns.markMax) {

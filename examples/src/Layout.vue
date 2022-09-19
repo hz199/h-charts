@@ -46,28 +46,19 @@
   </HLayout>
 </template>
 
-<script>
+<script setup name="Layout">
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import menuConfig from './menuConfig'
 
-export default {
-  name: 'Layout',
-  components: {
-  },
-  data () {
-    return {
-      currentPath: '/',
-      menuConfig: menuConfig
-    }
-  },
-  methods: {
-    handleMenuTap (path) {
-      this.$router.push({path})
-    }
-  },
-  created () {
-    this.currentPath = this.$route.fullPath
+const router = useRouter();
+const route = useRoute();
 
-  }
+const currentPath = ref(route.fullPath)
+
+const handleMenuTap = (path) => {
+  console.log(path)
+  router.push(path)
 }
 </script>
 <style lang="less" scoped>

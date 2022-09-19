@@ -10,7 +10,7 @@ export interface radarBaseColumns {
 
 export type RadarColumns = Columns & radarBaseColumns
 
-export interface RadarDataSource<T extends ObjectKey> {
+export interface RadarDataSource<T extends any> {
   columns: Array<RadarColumns>
   rows: T
 }
