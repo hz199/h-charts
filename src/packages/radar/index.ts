@@ -12,10 +12,11 @@ const Hradar = defineComponent({
   setup (props) {
     const { dataSource, settings } = toRefs(props)
 
-    const options: Ref<EChartsOption> = ref(handleradar(
-      dataSource.value,
-      settings.value
-    ))
+    // const options: Ref<EChartsOption> = ref(handleradar(
+    //   dataSource.value,
+    //   settings.value
+    // ))
+    const options = ref({})
 
     watch([dataSource, settings], () => {
       options.value = handleradar(
