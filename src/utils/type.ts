@@ -1,3 +1,5 @@
+import type { AppContext, Plugin } from 'vue'
+
 export type ObjectKey<T = any> = {
   [x in (string | number)]: T
 }
@@ -8,3 +10,6 @@ export interface Columns {
   title: string | number
   key: string | number
 }
+
+export type SFCWithInstall<T> = T & Plugin
+

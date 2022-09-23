@@ -1,5 +1,6 @@
 import { App, defineComponent, h, CSSProperties, PropType } from 'vue'
 import commonProps from '../../utils/commonProps'
+import { withInstall } from '../../utils/install'
 
 import { bind, clear } from 'size-sensor'
 import { throttle } from '../../utils/utils'
@@ -149,4 +150,4 @@ HChart.install = (app: App) => {
   app.component(HChart.name, HChart)
 }
 
-export default HChart
+export default withInstall(HChart);
