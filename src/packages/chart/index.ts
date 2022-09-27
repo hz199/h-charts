@@ -51,7 +51,8 @@ const HChart = defineComponent({
           const chartInstance = echarts.init(el, currentTheme.name, {
             renderer,
             width: undefined,
-            height: undefined
+            height: undefined,
+            useCoarsePointer: true
           })
 
           CHART_INSTANCES.set(this, chartInstance)

@@ -10,6 +10,8 @@ import 'echarts/lib/chart/bar'
 import HChart from '@/packages/chart'
 import { optionsStr } from './code'
 
+console.log(HChart)
+
 const options ={
   tooltip: {
     trigger: 'axis',
