@@ -48,7 +48,7 @@ const HChart = defineComponent({
           const currentTheme = this.theme || defaultTheme
           // 设置主题
           echarts.registerTheme(currentTheme.name, currentTheme.value)
-          // 好坑啊 CHART_INSTANCE 不能做代理proxy 也就是不能用data 里面的参数 不然 resize 会报错。。。。。
+          // 好坑 CHART_INSTANCE 不能做代理proxy 也就是不能用data 里面的参数 不然 resize 会报错。。。。。
           const chartInstance = echarts.init(el, currentTheme.name, {
             renderer,
             width: undefined,

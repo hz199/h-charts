@@ -46,5 +46,6 @@
   "bugs": {
     "url": "https://github.com/hz199/h-charts/issues"
   },
-  "homepage": "https://github.com/hz199/h-charts#readme"
+  "homepage": "https://github.com/hz199/h-charts#readme",
+  "types": "./libs\\packages\\main.d.ts"
 }
