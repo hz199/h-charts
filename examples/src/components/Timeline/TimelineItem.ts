@@ -14,7 +14,7 @@ const TimelineItem = defineComponent({
       }),
       h('div', {
         class: 'timeline__item-content'
-      }, this.$slots.default())
+      }, this.$slots.default && this.$slots.default())
     ])
   },
 })

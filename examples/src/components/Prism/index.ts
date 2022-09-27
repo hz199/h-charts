@@ -23,7 +23,7 @@ const Prism = defineComponent({
     const prismLanguage = `language-${this.languages || 'javascript'}`
     const grammar = prismJs.languages[`${this.languages || 'javascript'}`]
 
-    const resultHtml = prismJs.highlight(this.code, grammar, prismLanguage)
+    const resultHtml = prismJs.highlight(this.code!, grammar, prismLanguage)
 
     return h('pre', {
       class: `language-${this.languages} ${this.isLineNumber ? 'line-numbers' : ''}`

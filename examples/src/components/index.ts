@@ -1,4 +1,4 @@
-// import { App } from 'vue'
+import { App } from 'vue'
 import Layout from './Layout/Layout'
 import Menus from './Menus/index'
 import Prism from './Prism/index'
@@ -27,7 +27,7 @@ const components = [
   Article.ArticleP
 ]
 
-const install = function install (app) {
+const install = function install (app: App) {
   components.forEach((component) => {
     app.component(component.name, component)
   })

@@ -19,12 +19,60 @@
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@esbuild/linux-loong64/-/linux-loong64-0.15.8.tgz#d64575fc46bf4eb689352aa9f8a139271b6e1647"
   integrity sha512-pE5RQsOTSERCtfZdfCT25wzo7dfhOSlhAXcsZmuvRYhendOv7djcdvtINdnDp2DAjP17WXlBB4nBO6sHLczmsg==
 
+"@types/prismjs@^1.26.0":
+  version "1.26.0"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@types/prismjs/-/prismjs-1.26.0.tgz#a1c3809b0ad61c62cac6d4e0c56d610c910b7654"
+  integrity sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==
+
 "@vitejs/plugin-vue@^3.1.0":
   version "3.1.0"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@vitejs/plugin-vue/-/plugin-vue-3.1.0.tgz#3a423ea6943a450e806da412a911150e928598ed"
   integrity sha512-fmxtHPjSOEIRg6vHYDaem+97iwCUg/uSIaTzp98lhELt2ISOQuDo2hbkBdXod0g15IhfPMQmAxh4heUks2zvDA==
 
-"@vue/compiler-core@3.2.39":
+"@volar/code-gen@0.40.13":
+  version "0.40.13"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@volar/code-gen/-/code-gen-0.40.13.tgz#cd69a67b11462b93d79ea2139f9f1e0a76e15111"
+  integrity sha512-4gShBWuMce868OVvgyA1cU5WxHbjfEme18Tw6uVMfweZCF5fB2KECG0iPrA9D54vHk3FeHarODNwgIaaFfUBlA==
+  dependencies:
+    "@volar/source-map" "0.40.13"
+
+"@volar/source-map@0.40.13":
+  version "0.40.13"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@volar/source-map/-/source-map-0.40.13.tgz#9acbc47614bbd8fa710d233d10fff1b18cb78a80"
+  integrity sha512-dbdkAB2Nxb0wLjAY5O64o3ywVWlAGONnBIoKAkXSf6qkGZM+nJxcizsoiI66K+RHQG0XqlyvjDizfnTxr+6PWg==
+  dependencies:
+    "@vue/reactivity" "3.2.38"
+
+"@volar/typescript-faster@0.40.13":
+  version "0.40.13"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@volar/typescript-faster/-/typescript-faster-0.40.13.tgz#5d9600333cc250ad53e8604ff6a2a32e4acfbc86"
+  integrity sha512-uy+TlcFkKoNlKEnxA4x5acxdxLyVDIXGSc8cYDNXpPKjBKXrQaetzCzlO3kVBqu1VLMxKNGJMTKn35mo+ILQmw==
+  dependencies:
+    semver "^7.3.7"
+
+"@volar/vue-language-core@0.40.13":
+  version "0.40.13"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@volar/vue-language-core/-/vue-language-core-0.40.13.tgz#13a79c29ef63d66a40afd1b29166404703b240c4"
+  integrity sha512-QkCb8msi2KUitTdM6Y4kAb7/ZlEvuLcbBFOC2PLBlFuoZwyxvSP7c/dBGmKGtJlEvMX0LdCyrg5V2aBYxD38/Q==
+  dependencies:
+    "@volar/code-gen" "0.40.13"
+    "@volar/source-map" "0.40.13"
+    "@vue/compiler-core" "^3.2.38"
+    "@vue/compiler-dom" "^3.2.38"
+    "@vue/compiler-sfc" "^3.2.38"
+    "@vue/reactivity" "^3.2.38"
+    "@vue/shared" "^3.2.38"
+
+"@volar/vue-typescript@0.40.13":
+  version "0.40.13"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@volar/vue-typescript/-/vue-typescript-0.40.13.tgz#50fe8e0965f4e14596eca57550b5ca13388c244c"
+  integrity sha512-o7bNztwjs8JmbQjVkrnbZUOfm7q4B8ZYssETISN1tRaBdun6cfNqgpkvDYd+VUBh1O4CdksvN+5BUNnwAz4oCQ==
+  dependencies:
+    "@volar/code-gen" "0.40.13"
+    "@volar/typescript-faster" "0.40.13"
+    "@volar/vue-language-core" "0.40.13"
+
+"@vue/compiler-core@3.2.39", "@vue/compiler-core@^3.2.38":
   version "3.2.39"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@vue/compiler-core/-/compiler-core-3.2.39.tgz#0d77e635f4bdb918326669155a2dc977c053943e"
   integrity sha512-mf/36OWXqWn0wsC40nwRRGheR/qoID+lZXbIuLnr4/AngM0ov8Xvv8GHunC0rKRIkh60bTqydlqTeBo49rlbqw==
@@ -34,7 +82,7 @@
     estree-walker "^2.0.2"
     source-map "^0.6.1"
 
-"@vue/compiler-dom@3.2.39":
+"@vue/compiler-dom@3.2.39", "@vue/compiler-dom@^3.2.38":
   version "3.2.39"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@vue/compiler-dom/-/compiler-dom-3.2.39.tgz#bd69d35c1a48fe2cea4ab9e96d2a3a735d146fdf"
   integrity sha512-HMFI25Be1C8vLEEv1hgEO1dWwG9QQ8LTTPmCkblVJY/O3OvWx6r1+zsox5mKPMGvqYEZa6l8j+xgOfUspgo7hw==
@@ -42,7 +90,7 @@
     "@vue/compiler-core" "3.2.39"
     "@vue/shared" "3.2.39"
 
-"@vue/compiler-sfc@3.2.39", "@vue/compiler-sfc@^3.2.39":
+"@vue/compiler-sfc@3.2.39", "@vue/compiler-sfc@^3.2.38", "@vue/compiler-sfc@^3.2.39":
   version "3.2.39"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@vue/compiler-sfc/-/compiler-sfc-3.2.39.tgz#8fe29990f672805b7c5a2ecfa5b05e681c862ea2"
   integrity sha512-fqAQgFs1/BxTUZkd0Vakn3teKUt//J3c420BgnYgEOoVdTwYpBTSXCMJ88GOBCylmUBbtquGPli9tVs7LzsWIA==
@@ -82,7 +130,14 @@
     estree-walker "^2.0.2"
     magic-string "^0.25.7"
 
-"@vue/reactivity@3.2.39":
+"@vue/reactivity@3.2.38":
+  version "3.2.38"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@vue/reactivity/-/reactivity-3.2.38.tgz#d576fdcea98eefb96a1f1ad456e289263e87292e"
+  integrity sha512-6L4myYcH9HG2M25co7/BSo0skKFHpAN8PhkNPM4xRVkyGl1K5M3Jx4rp5bsYhvYze2K4+l+pioN4e6ZwFLUVtw==
+  dependencies:
+    "@vue/shared" "3.2.38"
+
+"@vue/reactivity@3.2.39", "@vue/reactivity@^3.2.38":
   version "3.2.39"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@vue/reactivity/-/reactivity-3.2.39.tgz#e6e3615fe2288d4232b104640ddabd0729a78c80"
   integrity sha512-vlaYX2a3qMhIZfrw3Mtfd+BuU+TZmvDrPMa+6lpfzS9k/LnGxkSuf0fhkP0rMGfiOHPtyKoU9OJJJFGm92beVQ==
@@ -114,7 +169,12 @@
     "@vue/compiler-ssr" "3.2.39"
     "@vue/shared" "3.2.39"
 
-"@vue/shared@3.2.39":
+"@vue/shared@3.2.38":
+  version "3.2.38"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@vue/shared/-/shared-3.2.38.tgz#e823f0cb2e85b6bf43430c0d6811b1441c300f3c"
+  integrity sha512-dTyhTIRmGXBjxJE+skC8tTWCGLCVc4wQgRRLt8+O9p5ewBAjoBwtCAkLPrtToSr1xltoe3st21Pv953aOZ7alg==
+
+"@vue/shared@3.2.39", "@vue/shared@^3.2.38":
   version "3.2.39"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/@vue/shared/-/shared-3.2.39.tgz#302df167559a1a5156da162d8cc6760cef67f8e3"
   integrity sha512-D3dl2ZB9qE6mTuWPk9RlhDeP1dgNRUKC3NJxji74A4yL8M2MwlhLKUC/49WHjrNzSPug58fWx/yFbaTzGAQSBw==
@@ -387,6 +447,13 @@ less@^4.1.1:
     needle "^2.5.2"
     source-map "~0.6.0"
 
+lru-cache@^6.0.0:
+  version "6.0.0"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
+  integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
+  dependencies:
+    yallist "^4.0.0"
+
 magic-string@^0.25.7:
   version "0.25.7"
   resolved "https://registry.npmjs.org/magic-string/-/magic-string-0.25.7.tgz#3f497d6fd34c669c6798dcb821f2ef31f5445051"
@@ -488,6 +555,11 @@ prr@~1.0.1:
   resolved "https://registry.npmjs.org/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
   integrity sha1-0/wRS6BplaRexok/SEzrHXj19HY=
 
+register-service-worker@^1.7.2:
+  version "1.7.2"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/register-service-worker/-/register-service-worker-1.7.2.tgz#6516983e1ef790a98c4225af1216bc80941a4bd2"
+  integrity sha512-CiD3ZSanZqcMPRhtfct5K9f7i3OLCcBBWsJjLh1gW9RO/nS94sVzY59iS+fgYBOBqaBpf4EzfqUF3j9IG+xo8A==
+
 resolve@^1.22.1:
   version "1.22.1"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/resolve/-/resolve-1.22.1.tgz#27cb2ebb53f91abb49470a928bba7558066ac177"
@@ -523,6 +595,13 @@ semver@^5.6.0:
   version "5.7.1"
   resolved "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
+
+semver@^7.3.7:
+  version "7.3.7"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/semver/-/semver-7.3.7.tgz#12c5b649afdbf9049707796e22a4028814ce523f"
+  integrity sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==
+  dependencies:
+    lru-cache "^6.0.0"
 
 size-sensor@^1.0.1:
   version "1.0.1"
@@ -564,6 +643,11 @@ tslib@^1.10.0:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
+typescript@^4.8.3:
+  version "4.8.3"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/typescript/-/typescript-4.8.3.tgz#d59344522c4bc464a65a730ac695007fdb66dd88"
+  integrity sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==
+
 vite@^3.1.2:
   version "3.1.2"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/vite/-/vite-3.1.2.tgz#6b080f928490b1a46465ed3cbb4815f31f1a5376"
@@ -583,6 +667,14 @@ vue-router@^4.1.5:
   dependencies:
     "@vue/devtools-api" "^6.1.4"
 
+vue-tsc@^0.40.13:
+  version "0.40.13"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/vue-tsc/-/vue-tsc-0.40.13.tgz#0a193014f7cadb47459cf0809ce3953b74a1348c"
+  integrity sha512-xzuN3g5PnKfJcNrLv4+mAjteMd5wLm5fRhW0034OfNJZY4WhB07vhngea/XeGn7wNYt16r7syonzvW/54dcNiA==
+  dependencies:
+    "@volar/vue-language-core" "0.40.13"
+    "@volar/vue-typescript" "0.40.13"
+
 vue@^3.2.39:
   version "3.2.39"
   resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/vue/-/vue-3.2.39.tgz#de071c56c4c32c41cbd54e55f11404295c0dd62d"
@@ -593,6 +685,11 @@ vue@^3.2.39:
     "@vue/runtime-dom" "3.2.39"
     "@vue/server-renderer" "3.2.39"
     "@vue/shared" "3.2.39"
+
+yallist@^4.0.0:
+  version "4.0.0"
+  resolved "http://artifactory.hundsun.com:80/artifactory/api/npm/fais2-npm-virtual/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
+  integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
 zrender@5.0.4:
   version "5.0.4"

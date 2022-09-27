@@ -7,7 +7,7 @@ const Timeline = defineComponent({
   render() {
     return h('ul', {
       class: 'timeline'
-    }, this.$slots.default())
+    }, this.$slots.default && this.$slots.default())
   },
 })
 

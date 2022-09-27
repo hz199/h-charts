@@ -1,6 +1,12 @@
 import { defineComponent, provide, inject, h } from 'vue'
 import './index.less';
 
+export interface IMenusInstance {
+  onTap: (path: string) => void
+  updateCurrentPath: (path: string) => void
+  currentPath: string
+}
+
 const Menus = defineComponent({
   name: 'HMenus',
   props: {
@@ -19,10 +25,10 @@ const Menus = defineComponent({
   render () {
     return h('ul', {
       class: this.horizontal ? 'menus clearfix menus__horizontal' : 'menus'
-    }, this.$slots.default())
+    }, this.$slots.default && this.$slots.default())
   },
   methods: {
-    updateCurrentPath (path) {
+    updateCurrentPath (path: string) {
       this.$emit('update:currentPath', path)
     }
   },
@@ -35,7 +41,7 @@ const MenuItem = defineComponent({
   name: 'HMenuItem',
   setup () {
     return {
-      menusContext: inject('MenusContext')
+      menusContext: inject<IMenusInstance>('MenusContext')!
     }
   },
   props: {
@@ -55,7 +61,7 @@ const MenuItem = defineComponent({
         onTap(this.path)
         updateCurrentPath(this.path)
       }
-    }, this.$slots.default()))
+    }, this.$slots.default && this.$slots.default()))
   }
 })
 
@@ -67,10 +73,10 @@ const MenuItemGroup = defineComponent({
       }, [
         h('div', {
           class: 'menus__item-group-title'
-        }, this.$slots.title()),
+        }, this.$slots.title && this.$slots.title()),
         h('ul', {
           class: 'menu__item-group-list'
-        }, this.$slots.default())
+        }, this.$slots.default && this.$slots.default())
       ])
     }
 })
@@ -85,7 +91,7 @@ const MenuItemGroupItem = defineComponent({
   },
   setup () {
     return {
-      menusContext: inject('MenusContext')
+      menusContext: inject<IMenusInstance>('MenusContext')!
     }
   },
   render () {
@@ -98,7 +104,7 @@ const MenuItemGroupItem = defineComponent({
         onTap(this.path)
         updateCurrentPath(this.path)
       }
-    }, this.$slots.default()))
+    }, this.$slots.default && this.$slots.default()))
   }
 })
 

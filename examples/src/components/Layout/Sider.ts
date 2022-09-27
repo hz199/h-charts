@@ -7,7 +7,7 @@ const Sider = defineComponent({
       class: 'aside'
     }, h('div', {
       class: 'sider-children'
-    }, this.$slots.default()))
+    }, this.$slots.default && this.$slots.default()))
   }
 })
 
