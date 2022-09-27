@@ -13,16 +13,9 @@
     "sourceMap": false,
     "baseUrl": ".",
     "declaration": true,
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "experimentalDecorators": true
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/**/*.d.ts",
     "node_modules/vue-tsx-support/enable-check.d.ts"
   ],
   "exclude": ["node_modules", "build", "packages"]

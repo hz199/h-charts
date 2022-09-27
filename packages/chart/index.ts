@@ -32,6 +32,7 @@ const defaultStyle: CSSProperties = {
 const CHART_INSTANCES = new WeakMap<Object, echarts.ECharts | null>()
 
 const HChart = defineComponent({
+  name: 'HChart',
   props: {
     ...commonProps,
     options: {
@@ -145,9 +146,5 @@ const HChart = defineComponent({
     })
   }
 })
-
-HChart.install = (app: App) => {
-  app.component(HChart.name, HChart)
-}
 
 export default HChart;
