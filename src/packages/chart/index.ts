@@ -1,6 +1,5 @@
-import { App, defineComponent, h, CSSProperties, PropType } from 'vue'
+import { App, defineComponent, h, CSSProperties, PropType, toRaw, isProxy } from 'vue'
 import commonProps from '../../utils/commonProps'
-import { withInstall } from '../../utils/install'
 
 import { bind, clear } from 'size-sensor'
 import { throttle } from '../../utils/utils'
@@ -68,7 +67,7 @@ const HChart = defineComponent({
       const notMerge = this.notMerge
       const lazyUpdate = this.lazyUpdate
       const silent = this.silent
-      const options = this.options
+      const options = isProxy(this.options) ? toRaw(this.options) : this.options
 
       const chart = CHART_INSTANCES.get(this)
 
@@ -138,7 +137,7 @@ const HChart = defineComponent({
   },
   render() {
     const { style } = this
-    const initStyle = Object.assign({}, defaultStyle, style || {})
+    const initStyle = {...defaultStyle, ...(style || {})}
 
     return h('div', {
       style: initStyle
@@ -150,4 +149,4 @@ HChart.install = (app: App) => {
   app.component(HChart.name, HChart)
 }
 
-export default withInstall(HChart);
+export default HChart;
