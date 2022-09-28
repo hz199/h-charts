@@ -7,7 +7,7 @@
     "utils"
   ],
   "description": "echarts vue3.0",
-  "main": "libs/code/main.js",
+  "main": "libs/packages/main.js",
   "types": "libs/type/main.d.ts",
   "author": "H.Z",
   "license": "MIT",

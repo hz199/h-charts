@@ -5,7 +5,7 @@
     "target": "es2017",
     "module": "esnext",
     "strict": true,
-    "outDir": "libs/code",
+    "outDir": "libs/packages",
     "declarationDir": "libs/type",
     "importHelpers": true,
     "moduleResolution": "node",
