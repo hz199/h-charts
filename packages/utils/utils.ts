@@ -39,7 +39,7 @@ export function throttle(fn: Function, wait = 500) {
 }
 
 export function debounce (fn: Function, delay = 500) {
-  let timer:NodeJS.Timeout | null = null
+  let timer: any = null
   const self = function () {
     const args = arguments
     clearTimeout(timer!)

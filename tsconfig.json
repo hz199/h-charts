@@ -2,7 +2,7 @@
   "compilerOptions": {
     "jsx": "preserve",
     "jsxFactory": "VueTsxSupport",
-    "target": "ES2015",
+    "target": "es2017",
     "module": "esnext",
     "strict": true,
     "importHelpers": true,
@@ -16,7 +16,8 @@
     "experimentalDecorators": true
   },
   "include": [
-    "node_modules/vue-tsx-support/enable-check.d.ts"
+    "packages",
+    "utils"
   ],
-  "exclude": ["node_modules", "build", "packages"]
+  "exclude": ["node_modules", "build", "play"]
 }

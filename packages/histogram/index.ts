@@ -1,6 +1,6 @@
 import { App, defineComponent, h, PropType } from 'vue'
-import commonProps from '../../utils/commonProps'
-import Chart from '../chart'
+import commonProps from '@yyr1994/packages/utils/commonProps'
+import HChart from '@yyr1994/packages/chart'
 import handleHistogram, { HistogramDataSource, HistogramSettings } from './histogram'
 import * as echarts from 'echarts/core'
 import { BarChart, LineChart } from 'echarts/charts'
@@ -32,7 +32,7 @@ const HHistogram = defineComponent({
   render() {
     const { dataSource, settings, ...rest } = this.$props
 
-    return h(Chart, {
+    return h(HChart, {
       ...rest,
       options: this.Options
     })

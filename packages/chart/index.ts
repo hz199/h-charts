@@ -1,10 +1,10 @@
-import { App, defineComponent, h, CSSProperties, PropType, toRaw, isProxy } from 'vue'
-import commonProps from '../../utils/commonProps'
+import { defineComponent, h, CSSProperties, PropType, toRaw, isProxy, DefineComponent } from 'vue'
+import commonProps from '@yyr1994/packages/utils/commonProps'
 
 import { bind, clear } from 'size-sensor'
-import { throttle } from '../../utils/utils'
-import { defaultTheme } from '../../utils/themes'
-import { ObjectKey } from '../../utils/type'
+import { throttle } from '@yyr1994/packages/utils/utils'
+import { defaultTheme } from '@yyr1994/packages/utils/themes'
+import { ObjectKey } from '@yyr1994/packages/utils/type'
 import { EChartsOption } from 'echarts/types/dist/shared'
 import * as echarts from 'echarts/core'
 
@@ -147,4 +147,4 @@ const HChart = defineComponent({
   }
 })
 
-export default HChart;
+export default HChart as DefineComponent<{}, {}, any>;
