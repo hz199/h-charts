@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import HHistogram from '@yyr1994/packages/histogram'
+import HHistogram from '@yyr1994/h-charts/packages/histogram'
 import { doubleYLineMock } from '@/mocks/line'
 import codePre from './codePre'
 

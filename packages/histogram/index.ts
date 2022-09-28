@@ -1,6 +1,6 @@
 import { App, defineComponent, h, PropType } from 'vue'
-import commonProps from '@yyr1994/packages/utils/commonProps'
-import HChart from '@yyr1994/packages/chart'
+import commonProps from '@yyr1994/h-charts/packages/utils/commonProps'
+import HChart from '@yyr1994/h-charts/packages/chart'
 import handleHistogram, { HistogramDataSource, HistogramSettings } from './histogram'
 import * as echarts from 'echarts/core'
 import { BarChart, LineChart } from 'echarts/charts'
