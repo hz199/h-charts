@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import HRadar from '@/packages/radar'
+import HRadar from '@yyr1994/packages/radar'
 import { RadarBaseMock } from '@/mocks/radar'
 import codePre from './codePre'
 

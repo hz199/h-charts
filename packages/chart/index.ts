@@ -147,4 +147,4 @@ const HChart = defineComponent({
   }
 })
 
-export default HChart as DefineComponent<{}, {}, any>;
+export default HChart;

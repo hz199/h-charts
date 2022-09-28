@@ -1,7 +1,6 @@
 
 import fs from 'fs'
 import path from 'path'
-import jsx from 'acorn-jsx'
 // import pkg  from'../package.json'
 import plugins from './plugins'
 
@@ -35,7 +34,6 @@ function createRollupConfig(file, name) {
     plugins: [
       ...plugins
     ],
-    acornInjectPlugins: [jsx()],
     external: ['vue', /echarts/, 'size-sensor', 'lodash']
   }
   return config

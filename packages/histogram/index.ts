@@ -32,9 +32,11 @@ const HHistogram = defineComponent({
   render() {
     const { dataSource, settings, ...rest } = this.$props
 
+    const options = this.Options as EChartsOption;
+
     return h(HChart, {
       ...rest,
-      options: this.Options
+      options
     })
   },
   mounted () {
@@ -50,9 +52,5 @@ const HHistogram = defineComponent({
     }
   }
 })
-
-HHistogram.install = (app: App) => {
-  app.component(HHistogram.name, HHistogram)
-}
 
 export default HHistogram

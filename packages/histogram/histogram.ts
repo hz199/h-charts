@@ -247,7 +247,7 @@ const handleHistogram = <T = any>(
     tooltip
   }
 
-  return options
+  return options as EChartsOption
 }
 
 export default handleHistogram

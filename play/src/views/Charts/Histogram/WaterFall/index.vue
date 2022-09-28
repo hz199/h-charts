@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import HHistogram from '@/packages/histogram'
+import HHistogram from '@yyr1994/packages/histogram'
 import { waterFallMock } from '@/mocks/bar'
 import codePre from './codePre'
 

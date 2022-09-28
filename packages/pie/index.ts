@@ -32,9 +32,11 @@ const HPie = defineComponent({
   render() {
     const { dataSource, settings, ...rest } = this.$props
 
+    const options = this.Options as EChartsOption;
+
     return h(Chart, {
       ...rest,
-      options: this.Options
+      options
     })
   },
   mounted () {
