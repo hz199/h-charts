@@ -5,6 +5,7 @@
     "target": "es2017",
     "module": "esnext",
     "strict": true,
+    "outDir": "libs",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
