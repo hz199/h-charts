@@ -1,4 +1,4 @@
-import { defineComponent, h, CSSProperties, PropType, toRaw, isProxy, DefineComponent } from 'vue'
+import { defineComponent, h, CSSProperties, PropType, toRaw, isProxy } from 'vue'
 import commonProps from '@yyr1994/h-charts/packages/utils/commonProps'
 
 import { bind, clear } from 'size-sensor'
