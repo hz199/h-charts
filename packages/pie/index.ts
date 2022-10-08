@@ -1,6 +1,6 @@
 import { App, defineComponent, h, PropType } from 'vue'
-import commonProps from '../../utils/commonProps'
-import Chart from '../chart'
+import commonProps from '@yyr1994/h-charts/libs/packages/utils/commonProps'
+import Chart from '@yyr1994/h-charts/libs/packages/chart'
 import * as echarts from 'echarts/core'
 import { EChartsOption } from 'echarts/types/dist/shared'
 import { PieChart } from 'echarts/charts'
@@ -32,9 +32,11 @@ const HPie = defineComponent({
   render() {
     const { dataSource, settings, ...rest } = this.$props
 
+    const options = this.Options as EChartsOption;
+
     return h(Chart, {
       ...rest,
-      options: this.Options
+      options
     })
   },
   mounted () {

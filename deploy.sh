@@ -1,14 +1,14 @@
 #!/usr/bin/env sh
 
 set -e
-yarn build
-
-cd examples
+pnpm install
 
 # 构建
-yarn run build
+pnpm build:docs
 
 # 进入生成的构建文件夹
+cd play
+
 cd dist
 
 # read name

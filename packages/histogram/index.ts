@@ -1,6 +1,6 @@
 import { App, defineComponent, h, PropType } from 'vue'
-import commonProps from '../../utils/commonProps'
-import Chart from '../chart'
+import commonProps from '@yyr1994/h-charts/libs/packages/utils/commonProps'
+import HChart from '@yyr1994/h-charts/libs/packages/chart'
 import handleHistogram, { HistogramDataSource, HistogramSettings } from './histogram'
 import * as echarts from 'echarts/core'
 import { BarChart, LineChart } from 'echarts/charts'
@@ -32,9 +32,11 @@ const HHistogram = defineComponent({
   render() {
     const { dataSource, settings, ...rest } = this.$props
 
-    return h(Chart, {
+    const options = this.Options as EChartsOption;
+
+    return h(HChart, {
       ...rest,
-      options: this.Options
+      options
     })
   },
   mounted () {
@@ -50,9 +52,5 @@ const HHistogram = defineComponent({
     }
   }
 })
-
-HHistogram.install = (app: App) => {
-  app.component(HHistogram.name, HHistogram)
-}
 
 export default HHistogram

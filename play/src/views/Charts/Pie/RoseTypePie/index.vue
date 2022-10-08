@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import HPie from '@/packages/pie'
+import HPie from '@yyr1994/h-charts/libs/packages/pie'
 import { basePieMock } from '@/mocks/pie'
 import codePre from './codePre'
 

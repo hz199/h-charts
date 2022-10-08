@@ -1,6 +1,6 @@
 import { App, defineComponent, h, PropType, Ref, ref, toRefs, watch } from 'vue'
 import 'echarts/lib/chart/radar'
-import commonProps from '../../utils/commonProps'
+import commonProps from '@yyr1994/h-charts/libs/packages/utils/commonProps'
 import Chart from '../chart'
 // import { EChartOption } from 'echarts/lib/echarts'
 import { EChartsOption } from 'echarts/types/dist/shared'
