@@ -1,4 +1,3 @@
 packages:
-  - 'packages/*'
-  - 'play/*'
-  - 'utils/*'
+  - 'packages'
+  - 'play'

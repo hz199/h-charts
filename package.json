@@ -1,42 +1,34 @@
 {
   "name": "@yyr1994/h-charts",
-  "version": "0.1.3",
+  "version": "0.1.5",
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "echarts vue3.0",
   "main": "libs/packages/main.js",
+  "types": "libs/type/main.d.ts",
   "author": "H.Z",
   "license": "MIT",
   "scripts": {
-    "dev:docs": "cd examples && yarn dev",
-    "build:docs": "cd examples && yarn build",
+    "dev:docs": "pnpm -C play dev",
+    "build:docs": "pnpm -C play build",
     "dev": "tsc -w --outDir examples/src/libs",
-    "build": "tsc --outDir libs",
+    "build": "rimraf libs && tsc",
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "echarts": "^5.4.0",
     "echarts-wordcloud": "^2.0.0",
     "size-sensor": "^1.0.1",
-    "vue": "^3.0.7"
+    "vue": "^3.2.40"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.0",
-    "@rollup/plugin-babel": "^5.2.1",
-    "@rollup/plugin-commonjs": "^15.1.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@rollup/plugin-typescript": "^6.0.0",
-    "@types/lodash": "^4.14.162",
-    "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
-    "acorn-jsx": "^5.3.1",
-    "cssnano": "^4.1.10",
     "rimraf": "^3.0.2",
-    "rollup": "^2.30.0",
-    "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-postcss": "^3.1.8",
-    "tslib": "^2.0.3",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.2",
+    "tslib": "^2.4.0"
   },
   "directories": {
-    "example": "examples"
+    "example": "play"
   },
   "repository": {
     "type": "git",
@@ -46,6 +38,5 @@
   "bugs": {
     "url": "https://github.com/hz199/h-charts/issues"
   },
-  "homepage": "https://github.com/hz199/h-charts#readme",
-  "types": "./libs\\packages\\main.d.ts"
+  "homepage": "https://github.com/hz199/h-charts#readme"
 }

@@ -8,7 +8,7 @@ export default defineConfig({
   base: './',
   resolve: {
     alias: [
-      { find: '@', replacement: path.resolve(__dirname, '../src')}
+      { find: '@', replacement: path.resolve(__dirname, './src')}
     ]
   },
   server: {
@@ -23,5 +23,14 @@ export default defineConfig({
     //       changeOrigin: true,
     //   }
     // }
+  },
+  optimizeDeps: {
+    include: [
+      'vue',
+      'vue-router',
+      'echarts',
+      'mockjs',
+      'prismjs'
+    ]
   }
 })

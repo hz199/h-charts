@@ -1,8 +1,8 @@
 {
-  "name": "@yyr1994/packages",
+  "name": "@yyr1994/h-charts/packages",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@yyr1994/utils": "workspace:*"
+    "@yyr1994/h-charts/packages": "workspace:*"
   }
 }

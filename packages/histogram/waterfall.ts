@@ -1,5 +1,5 @@
 import { BarSeriesOption } from 'echarts/types/dist/shared'
-import { ObjectKey } from '../../utils/type'
+import { ObjectKey } from '@yyr1994/h-charts/packages/utils/type'
 import { HistogramColumns, HistogramDataSource, HistogramSettings } from './histogram'
 
 export const waterFallSeries = <T>(
