@@ -12,7 +12,7 @@
   "scripts": {
     "dev:docs": "pnpm -C play dev",
     "build:docs": "pnpm -C play build",
-    "dev": "tsc -w --outDir examples/src/libs",
+    "dev": "tsc -w",
     "build": "rimraf libs && tsc",
     "deploy": "bash deploy.sh"
   },

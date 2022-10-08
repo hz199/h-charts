@@ -24,10 +24,10 @@ importers:
   packages:
 
     specifiers:
-      '@yyr1994/h-charts/packages': workspace:*
+      '@yyr1994/h-charts/libs/packages': workspace:*
 
     dependencies:
-      '@yyr1994/h-charts/packages': 'link:'
+      '@yyr1994/h-charts/libs/packages': 'link:'
 
   play:
     specifiers:
@@ -36,7 +36,7 @@ importers:
       '@types/prismjs': ^1.26.0
       '@vitejs/plugin-vue': ^3.1.0
       '@vue/compiler-sfc': ^3.2.39
-      '@yyr1994/h-charts/packages': workspace:*
+      '@yyr1994/h-charts/libs/packages': workspace:*
       echarts: ^5.4.0
       less: ^4.1.1
       mockjs: ^1.1.0
@@ -66,7 +66,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue': 3.1.2_vite@3.1.6+vue@3.2.40
       '@vue/compiler-sfc': 3.2.40
-      '@yyr1994/h-charts/packages': link:../packages
+      '@yyr1994/h-charts/libs/packages': link:../packages
       less: 4.1.3
       vite: 3.1.6_less@4.1.3
 

@@ -1,8 +1,8 @@
 // import { EChartOption, EChartTitleOption } from 'echarts/lib/echarts'
 import { EChartsOption, LegendComponentOption, PieSeriesOption, TitleOption, TooltipOption } from 'echarts/types/dist/shared'
-import { Columns, ObjectKey } from '@yyr1994/h-charts/packages/utils/type'
-import { isBoolean, isObject } from '@yyr1994/h-charts/packages/utils/utils'
-import { defaultLegend, defaultTooltip } from '@yyr1994/h-charts/packages/utils/defaultChartConfig'
+import { Columns, ObjectKey } from '@yyr1994/h-charts/libs/packages/utils/type'
+import { isBoolean, isObject } from '@yyr1994/h-charts/libs/packages/utils/utils'
+import { defaultLegend, defaultTooltip } from '@yyr1994/h-charts/libs/packages/utils/defaultChartConfig'
 
 export interface PieBaseColumns {
 

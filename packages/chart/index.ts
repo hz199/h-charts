@@ -1,10 +1,10 @@
 import { defineComponent, h, CSSProperties, PropType, toRaw, isProxy } from 'vue'
-import commonProps from '@yyr1994/h-charts/packages/utils/commonProps'
+import commonProps from '@yyr1994/h-charts/libs/packages/utils/commonProps'
 
 import { bind, clear } from 'size-sensor'
-import { throttle } from '@yyr1994/h-charts/packages/utils/utils'
-import { defaultTheme } from '@yyr1994/h-charts/packages/utils/themes'
-import { ObjectKey } from '@yyr1994/h-charts/packages/utils/type'
+import { throttle } from '@yyr1994/h-charts/libs/packages/utils/utils'
+import { defaultTheme } from '@yyr1994/h-charts/libs/packages/utils/themes'
+import { ObjectKey } from '@yyr1994/h-charts/libs/packages/utils/type'
 import { EChartsOption } from 'echarts/types/dist/shared'
 import * as echarts from 'echarts/core'
 

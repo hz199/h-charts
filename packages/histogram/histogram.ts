@@ -1,7 +1,7 @@
-import { Columns, ObjectKey, Tuple } from '@yyr1994/h-charts/packages/utils/type'
+import { Columns, ObjectKey, Tuple } from '@yyr1994/h-charts/libs/packages/utils/type'
 import { BarSeriesOption, EChartsOption, LineSeriesOption, TitleOption, TooltipOption, YAXisOption } from 'echarts/types/dist/shared'
-import { columnsToObject, isBoolean } from '@yyr1994/h-charts/packages/utils/utils'
-import { defaultLegend, defaultTooltip } from '@yyr1994/h-charts/packages/utils/defaultChartConfig'
+import { columnsToObject, isBoolean } from '@yyr1994/h-charts/libs/packages/utils/utils'
+import { defaultLegend, defaultTooltip } from '@yyr1994/h-charts/libs/packages/utils/defaultChartConfig'
 import { waterFallSeries, waterXAxis } from './waterfall'
 
 export interface HistogramBaseColumns {

@@ -1,5 +1,5 @@
 {
-  "name": "@yyr1994/h-charts/packages",
+  "name": "@yyr1994/h-charts/libs/packages",
   "version": "1.0.0",
   "description": "",
   "main": "main.ts",
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@yyr1994/h-charts/packages": "workspace:*"
+    "@yyr1994/h-charts/libs/packages": "workspace:*"
   }
 }
