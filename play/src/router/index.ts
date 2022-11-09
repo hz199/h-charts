@@ -51,14 +51,14 @@ const router = createRouter({
             title: '饼状图'
           }
         },
-        {
-          path: 'radar',
-          name: 'Radar',
-          component: () => import('../views/Charts/Radar/index.vue'),
-          meta: {
-            title: '雷达图'
-          }
-        }
+        // {
+        //   path: 'radar',
+        //   name: 'Radar',
+        //   component: () => import('../views/Charts/Radar/index.vue'),
+        //   meta: {
+        //     title: '雷达图'
+        //   }
+        // }
       ]
     }
   ]

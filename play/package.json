@@ -24,7 +24,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.0",
     "@vue/compiler-sfc": "^3.2.39",
-    "@yyr1994/h-charts/libs/packages": "workspace:*",
+    "h-chart": "workspace:*",
     "less": "^4.1.1",
     "vite": "^3.1.2"
   }

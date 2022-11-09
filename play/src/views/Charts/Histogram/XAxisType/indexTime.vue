@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import HHistogram from '@yyr1994/h-charts/libs/packages/histogram'
+import { HHistogram } from 'h-chart'
 import { xTypeTimeLineMock } from '@/mocks/line'
 import codePreTime from './codePreTime'
 import 'echarts/lib/component/markPoint'

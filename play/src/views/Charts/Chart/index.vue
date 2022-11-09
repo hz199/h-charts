@@ -7,7 +7,7 @@
 </template>
 <script>
 import 'echarts/lib/chart/bar'
-import HChart from '@yyr1994/h-charts/libs/packages/chart'
+import { HChart } from 'h-chart'
 import { optionsStr } from './code'
 
 const options ={
