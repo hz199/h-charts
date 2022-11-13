@@ -27,7 +27,8 @@ function markdownToVuePlugin(options = {}): Plugin {
 
       // 查找是否具有组件内容
       let commentStart = content.indexOf(startTag);
-      let commentEnd = content.indexOf(endTag)
+      let commentEnd = content.indexOf(endTag);
+      let echartPathList = [];
 
       while (commentStart !== -1 && commentEnd !== -1) {
         // 将查找到组件之前的内容先添加进去
@@ -35,14 +36,15 @@ function markdownToVuePlugin(options = {}): Plugin {
 
         // <!-- *** ---> 找到之间的内容
         const commentContent = content.slice(commentStart + startTagLen, commentEnd)
-
         // 去掉标签的内容
         const html = stripTemplate(commentContent)
         const script = stripScript(commentContent)
         // 通过vue将html模板和script标签解析成组件内容
         const demoComponentName = `component-code-${componentId}`;
-        let demoComponentContent = genInlineComponentText(html, script, null, demoComponentName)
+        // echartPaths 需要单独处理
+        const { demoComponentContent, echartPaths } = genInlineComponentText(html, script, null, demoComponentName)
         
+        echartPathList.push(...echartPaths)
         output.push(`<template #source><${demoComponentName} /></template>`)
         componentsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`
 
@@ -53,12 +55,14 @@ function markdownToVuePlugin(options = {}): Plugin {
         commentEnd = content.indexOf(endTag, commentStart + startTagLen)
       }
 
+      const setEchartPaths = Array.from(new Set(echartPathList))
 
       // 有组件数据则注册组件，
       if (componentsString) {
         pageScript = `<script lang="ts">
                     import * as Vue from 'vue';
                     import prismJs from 'prismjs';
+                    ${setEchartPaths.join('')}
                     export default Vue.defineComponent({
                         name: 'component-code',
                         components: {

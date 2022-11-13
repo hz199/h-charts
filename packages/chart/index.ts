@@ -69,7 +69,7 @@ const HChart = defineComponent({
       const notMerge = this.notMerge
       const lazyUpdate = this.lazyUpdate
       const silent = this.silent
-      const options = isProxy(this.options) ? toRaw(this.options) : this.options
+      const options = isProxy(this.options) ? toRaw(this.options) : (this.options || {})
 
       const chart = CHART_INSTANCES.get(this)
 

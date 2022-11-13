@@ -30,27 +30,27 @@ const router = createRouter({
         {
           path: 'chart',
           name: 'Chart',
-          component: () => import('../views/Charts/Chart/index.vue'),
+          component: () => import('../views/Charts/Chart/index.md'),
           meta: {
             title: 'chart'
           }
         },
-        {
-          path: 'histogram',
-          name: 'Histogram',
-          component: () => import('../views/Charts/Histogram/index.vue'),
-          meta: {
-            title: '直方图'
-          }
-        },
-        {
-          path: 'pie',
-          name: 'Pie',
-          component: () => import('../views/Charts/Pie/index.vue'),
-          meta: {
-            title: '饼状图'
-          }
-        },
+        // {
+        //   path: 'histogram',
+        //   name: 'Histogram',
+        //   component: () => import('../views/Charts/Histogram/index.vue'),
+        //   meta: {
+        //     title: '直方图'
+        //   }
+        // },
+        // {
+        //   path: 'pie',
+        //   name: 'Pie',
+        //   component: () => import('../views/Charts/Pie/index.vue'),
+        //   meta: {
+        //     title: '饼状图'
+        //   }
+        // },
         // {
         //   path: 'radar',
         //   name: 'Radar',

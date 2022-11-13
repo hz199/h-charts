@@ -1,16 +1,18 @@
-<template>
-  <div class="home">
-    <HChart :options="options" :events="chartEvents"></HChart>
+:::CustomBlock
+```html
+<HChart :options="options"></HChart>
+<div>{{options}}</div>
 
-    <Prism languages="html" isLineNumber :code="optionsStr"></Prism>
-  </div>
-</template>
-<script>
-import 'echarts/lib/chart/bar'
-import { HChart } from 'h-chart'
-import { optionsStr } from './code'
+<script lang="ts">
+import 'echarts/lib/chart/bar';
+import { reactive } from 'vue';
+// import { HChart } from 'h-chart'
 
-const options ={
+export default {
+  name: 'Chart',
+  data () {
+    return {
+      options: {
   tooltip: {
     trigger: 'axis',
     show: true,
@@ -66,17 +68,7 @@ const options ={
       data: [5, 60, 20, 45, 15, 55, 25]
     },
   ]
-};
-
-export default {
-  name: 'Chart',
-  components: {
-    HChart
-  },
-  data () {
-    return {
-      optionsStr,
-      options,
+},
 
       chartEvents: {
         click: (...args) => {
@@ -90,6 +82,4 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
-
-</style>
+```

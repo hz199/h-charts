@@ -2,8 +2,9 @@
 import { compileTemplate, SFCTemplateCompileOptions } from '@vue/compiler-sfc'
 
 export function stripScript(content) {
-  const result = content.match(/<(script)>([\s\S]+)<\/\1>/)
-  return result && result[2] ? result[2].trim() : ''
+  // const result = content.match(/<(script)>([\s\S]+)<\/script>/)
+  const result = content.match(/<script.*?>([\s\S]+?)<\/script>/)
+  return result && result[1] ? result[1].trim() : ''
 }
 
 export function stripStyle(content) {
@@ -27,6 +28,7 @@ export function pad(source) {
 }
 
 const templateReplaceRegex = /<template>([\s\S]+)<\/template>/g
+
 export function genInlineComponentText(template, script, extendsScript = '', id = '') {
   let source = template
   if (templateReplaceRegex.test(source)) {
@@ -61,11 +63,21 @@ export function genInlineComponentText(template, script, extendsScript = '', id 
   let demoComponentContent = `
     ${compiled.code.replace('return function render', 'function render')}
   `
-  script = script.trim()
+  script = script.trim();
+
+  let echartPaths = [];
+
   if (script) {
+    const paths = script.match(/import ('|")(echarts\/lib\/chart\/)([a-zA-Z]+)('|");/g);
+
+    if (paths && Array.isArray(paths)) {
+      echartPaths.push(...paths)
+    }
+
     script = script
       .replace(/export\s+default/, 'const democomponentExport =')
       .replace(/import ({.*}) from 'vue'/g, (s, s1) => `const ${s1} = Vue`)
+      .replace(/import ('|")(echarts\/lib\/chart\/)([a-zA-Z]+)('|");/g, '')
   } else {
     script = 'const democomponentExport = {}'
   }
@@ -80,6 +92,10 @@ export function genInlineComponentText(template, script, extendsScript = '', id 
       ${extendsScript ? `extends: ${extendsScript},` : ''}
     }
   })()`
-  return demoComponentContent
+
+  return {
+    demoComponentContent,
+    echartPaths
+  }
 }
 

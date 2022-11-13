@@ -5,7 +5,7 @@
 :::CustomBlock
 ```html
 <input v-model="msg" placeholder="请输入内容"/>
-<script>
+<script lang="ts">
     import {ref} from 'vue'
     export default {
         setup() {

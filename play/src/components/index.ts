@@ -7,6 +7,7 @@ import Timeline from './Timeline/index'
 import Article from './Article'
 import Table from './Table/index.vue'
 import MarkdownBlock from './MarkdownBlock.vue'
+import ChartList from './Chart'
 
 const components = [
   Layout,
@@ -26,7 +27,8 @@ const components = [
   Article.ArticleH1,
   Article.ArticleH3,
   Article.ArticleP,
-  MarkdownBlock
+  MarkdownBlock,
+  ...ChartList
 ]
 
 const install = function install (app: App) {
