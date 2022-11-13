@@ -1,12 +1,16 @@
 <template>
   <div class="home">
-    
+    <TestComp/>
   </div>
 </template>
-<script>
+<script lang="ts">
+import TestComp from './Test.md';
 
 export default {
-  name: "Start"
+  name: "Start",
+  components: {
+    TestComp
+  }
 };
 </script>
 <style lang="less" scoped>

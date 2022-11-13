@@ -6,6 +6,7 @@ import ShowMore from './ShowMore/index.vue'
 import Timeline from './Timeline/index'
 import Article from './Article'
 import Table from './Table/index.vue'
+import MarkdownBlock from './MarkdownBlock.vue'
 
 const components = [
   Layout,
@@ -24,7 +25,8 @@ const components = [
   Table,
   Article.ArticleH1,
   Article.ArticleH3,
-  Article.ArticleP
+  Article.ArticleP,
+  MarkdownBlock
 ]
 
 const install = function install (app: App) {
