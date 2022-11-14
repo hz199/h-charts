@@ -68,7 +68,7 @@ export function genInlineComponentText(template, script, extendsScript = '', id 
   let echartPaths = [];
 
   if (script) {
-    const paths = script.match(/import ('|")(echarts\/lib\/chart\/)([a-zA-Z]+)('|");/g);
+    const paths = script.match(/import ('|")(echarts\/lib\/([a-zA-Z]+)\/)([a-zA-Z]+)('|");/g, '');
 
     if (paths && Array.isArray(paths)) {
       echartPaths.push(...paths)
@@ -77,7 +77,7 @@ export function genInlineComponentText(template, script, extendsScript = '', id 
     script = script
       .replace(/export\s+default/, 'const democomponentExport =')
       .replace(/import ({.*}) from 'vue'/g, (s, s1) => `const ${s1} = Vue`)
-      .replace(/import ('|")(echarts\/lib\/chart\/)([a-zA-Z]+)('|");/g, '')
+      .replace(/import ('|")(echarts\/lib\/([a-zA-Z]+)\/)([a-zA-Z]+)('|");/g, '')
   } else {
     script = 'const democomponentExport = {}'
   }
