@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import viteCompression from 'vite-plugin-compression';
 import markdownToVuePlugin from './builds/markdownToVuePlugin'
 import * as path from 'path'
 
@@ -10,6 +11,9 @@ export default defineConfig({
     vue({
       include: [/(\.vue)$/, /\.md$/]
     }),
+    viteCompression({
+      threshold: 1024 * 500
+    })
   ],
   base: './',
   resolve: {
@@ -38,5 +42,15 @@ export default defineConfig({
       'mockjs',
       'prismjs'
     ]
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vue-js': ['vue', 'vue-router'],
+          'common-js': ['echarts', 'mockjs', 'prismjs'],
+        }
+      }
+    }
   }
 })
