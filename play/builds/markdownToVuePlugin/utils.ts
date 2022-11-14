@@ -1,4 +1,3 @@
-// plugin/util.js
 import { compileTemplate, SFCTemplateCompileOptions } from '@vue/compiler-sfc'
 
 export function stripScript(content) {
@@ -36,7 +35,7 @@ export function genInlineComponentText(template, script, extendsScript = '', id 
   }
   const finalOptions: SFCTemplateCompileOptions = {
     id: id,
-    source: `<div>${source}</div>`,
+    source: `<div class="compile-template-wrapper">${source}</div>`,
     filename: 'inline-component',
     // compiler: TemplateCompiler,
     compilerOptions: {
