@@ -35,14 +35,14 @@ const router = createRouter({
             title: 'chart'
           }
         },
-        // {
-        //   path: 'histogram',
-        //   name: 'Histogram',
-        //   component: () => import('../views/Charts/Histogram/index.vue'),
-        //   meta: {
-        //     title: '直方图'
-        //   }
-        // },
+        {
+          path: 'histogram',
+          name: 'Histogram',
+          component: () => import('../views/Charts/Histogram/index.vue'),
+          meta: {
+            title: '直方图'
+          }
+        },
         // {
         //   path: 'pie',
         //   name: 'Pie',

@@ -1,0 +1,159 @@
+@import '../vars.less';
+
+.markdown-wrapper {
+  // font-family: Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  a {
+    font-weight: 500;
+    text-decoration: none;
+    color: @primary-color;
+  }
+  a:after {
+    content: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiPjxkZWZzPjxzdHlsZS8+PC9kZWZzPjxwYXRoIGQ9Ik04MzIgMTI4SDY0MHY2NGgxNDYuNzUyTDUyMS4zNzYgNDU3LjM3Nmw0NS4yNDggNDUuMjQ4TDgzMiAyMzcuMjQ4VjM4NGg2NFYxMjh6IiBmaWxsPSIjM2VhZjdjIi8+PHBhdGggZD0iTTc2OCA4MzJIMTkyVjI1NmgzNTJ2LTY0SDE2MGEzMiAzMiAwIDAwLTMyIDMydjY0MGEzMiAzMiAwIDAwMzIgMzJoNjQwYTMyIDMyIDAgMDAzMi0zMlY0ODBoLTY0djM1MnoiIGZpbGw9IiMzZWFmN2MiLz48L3N2Zz4=);
+    margin-left: 2px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    color: #111;
+    line-height: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+  }
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 2.5em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+  h4 {
+    font-size: 1.2em;
+  }
+  h5 {
+    font-size: 1em;
+  }
+  h6 {
+    font-size: 0.9em;
+  }
+
+  h1:before, h2:before, h3:before, h4:before, h5:before, h6:before {
+    content: "#";
+    display: inline-block;
+    color: @primary-color;
+    padding-right: 0.23em;
+    // opacity: 0;
+    cursor: pointer;
+  }
+
+  // h1:hover::before, h2:hover::before, h3:hover::before, h4:hover::before, h5:hover::before, h6:hover::before {
+  //   display: inline-block;
+  // }
+
+  blockquote {
+    margin: 2em 0;
+    padding: 24px 32px;
+    border-left: 4px solid @primary-color;
+    background: #3eaf7c0c;
+    position: relative;
+  }
+
+  blockquote::before {
+    content: "❝";
+    top: 8px;
+    left: 8px;
+    color: @primary-color;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 700;
+    position: absolute;
+    opacity: .7;
+  }
+
+  blockquote::after {
+    content: "❞";
+    font-size: 30px;
+    position: absolute;
+    right: 8px;
+    bottom: 0;
+    color: @primary-color;
+    opacity: .7;
+  }
+
+  blockquote cite {
+    font-size: 14px;
+    line-height: 20px;
+    color: #bfbfbf;
+  }
+  blockquote cite:before {
+    content: "\2014 \00A0";
+  }
+
+  blockquote > p {
+    color: #666;
+    margin: 10px 0;
+  }
+  // table -------------------
+  table {
+    border-spacing: 0;
+    width: 100%;
+    border: solid @table-border-color 1px;
+    border-radius: 1px;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  table th {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid @table-border-color;
+    border-right: 1px solid @table-border-color;
+    text-align: left;
+    padding: 0 6px;
+  }
+  table thead {
+    background-color: #f7f8f7;
+  }
+  table tbody tr:nth-of-type(even) {
+    background: #f8f8f7;
+  }
+  table td {
+    height: 36px;
+    line-height: 36px;
+    vertical-align: top;
+    border-bottom: 1px solid @table-border-color;
+    border-right: 1px solid @table-border-color;
+    padding: 0 6px;
+  }
+  ul li,
+  ol li {
+    margin-bottom: 6px;
+    padding-left: 10px;
+    line-height: 2;
+  }
+
+  ul li::marker {
+    content: '•';
+  }
+
+  p {
+    margin: 12px 0;
+  }
+
+  ul {
+    padding-inline-start: 40px;
+  }
+
+}

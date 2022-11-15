@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <BaseHistogram></BaseHistogram>
+    <!-- <BaseHistogram></BaseHistogram>
     <AreaLine></AreaLine>
     <DoubleYLine></DoubleYLine>
     <BaseLineSmooth></BaseLineSmooth>
@@ -10,39 +10,38 @@
     <BarStack></BarStack>
     <WaterFall></WaterFall>
     
-    <DocsColumnsTable/>
+    <DocsColumnsTable/> -->
     <DocsTable></DocsTable>
   </div>
 </template>
 <script>
-import BaseHistogram from './BaseHistogram/index.vue'
-import AreaLine from './AreaLine/index.vue'
-import DoubleYLine from './DoubleYLine/index.vue'
-import BaseLineSmooth from './BaseLineSmooth/index.vue'
-import LineMaxMin from './LineMaxMin/index.vue'
-import XAxisType from './XAxisType/index.vue'
-import XAxisTypeTime from './XAxisType/indexTime.vue'
-import BarStack from './BarStack/index.vue'
-import WaterFall from './WaterFall/index.vue'
+// import BaseHistogram from './BaseHistogram/index.vue'
+// import AreaLine from './AreaLine/index.vue'
+// import DoubleYLine from './DoubleYLine/index.vue'
+// import BaseLineSmooth from './BaseLineSmooth/index.vue'
+// import LineMaxMin from './LineMaxMin/index.vue'
+// import XAxisType from './XAxisType/index.vue'
+// import XAxisTypeTime from './XAxisType/indexTime.vue'
+// import BarStack from './BarStack/index.vue'
+// import WaterFall from './WaterFall/index.vue'
 
-import DocsTable from './DocsTable.vue'
-import DocsColumnsTable from './DocsColumnsTable.vue'
+import DocsTable from './DocsTable.md'
+// import DocsColumnsTable from './DocsColumnsTable.vue'
 
 export default {
-  name: 'Line',
   components: {
-    BaseHistogram,
-    AreaLine,
-    DoubleYLine,
-    BaseLineSmooth,
-    LineMaxMin,
-    XAxisType,
-    XAxisTypeTime,
-    BarStack,
-    WaterFall,
+    // BaseHistogram,
+    // AreaLine,
+    // DoubleYLine,
+    // BaseLineSmooth,
+    // LineMaxMin,
+    // XAxisType,
+    // XAxisTypeTime,
+    // BarStack,
+    // WaterFall,
 
     DocsTable,
-    DocsColumnsTable
+    // DocsColumnsTable
   },
   data () {
     return {

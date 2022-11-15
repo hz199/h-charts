@@ -79,7 +79,9 @@ function markdownToVuePlugin(options = {}): Plugin {
       output.push(content.slice(start))
       const html = `
                     <template>
+                      <div class="markdown-wrapper">
                         ${output.join('')}
+                      </div>  
                     </template>
                     ${pageScript}
                     `;
