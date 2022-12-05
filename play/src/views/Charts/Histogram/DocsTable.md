@@ -1,11 +1,21 @@
-# eee
+# Settings 配置项
 
-|  表头   | 表头  |
-|  ----  | ----  |
-| 单元格  | 单元格 |
-| 单元格  | 单元格 |
+|配置属性|类型|描述|默认值|使用条件|
+|----|----|----|----|----| 
+| title  | `EChartTitleOption` | 图表标题 | `{}` | `bar/line` |
+| 单元格  | 单元格 | 单元格 | 单元格 | 单元格 |
 
-> 大师傅似的
+
+```js
+import { createApp } from 'vue'
+import MyPlugin from './plugins/MyPlugin'
+
+const app = createApp({
+  /* ... */
+})
+
+app.use(MyPlugin)
+```
 
 ---
 

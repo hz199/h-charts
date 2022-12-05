@@ -48,7 +48,8 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vue-js': ['vue', 'vue-router'],
-          'common-js': ['echarts', 'mockjs', 'prismjs'],
+          'common-js': ['mockjs', 'prismjs'],
+          'echarts-js': ['echarts']
         }
       }
     }
